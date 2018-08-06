@@ -103,3 +103,4 @@ The url to your repository and to your deployed project
 
 ### Slides.com
 
+[Slides](https://slides.com/xavifs/deck-2)
