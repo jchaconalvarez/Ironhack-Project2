@@ -3,7 +3,7 @@
 ## Description
 
 News aggregator.
- 
+
  ## User Stories
 
  - **404** - Users will see a 404 error page when the view they are trying to access is not found.
@@ -16,13 +16,13 @@ News aggregator.
  - **Search for headlines** - Users will be able to search for the headlines they want to see.
  - **Add/remove headlines to favorites** - Users will be able to add and remove headlines to their list of favorite headlines.
  - **Add/remove comments to articles** - Users will be able to post and delete comments for each article.
- - **share headlines** - Users will be able to share headlines with other users.
+ - **Share headlines** - Users will be able to share headlines with other users.
 
 ## Backlog
 
-- **find users** - Users will be able to search for and view other users' profiles.
-- **follow/unfollow users** - Users will be able to follow and unfollow users. Users will see headlines favorited by the users they follow in their home page.
-- **message other users** - Users will be able to message other users.
+- **Find users** - Users will be able to search for and view other users' profiles.
+- **Follow/unfollow users** - Users will be able to follow and unfollow users. Users will see headlines favorited by the users they follow in their home page.
+- **Message other users** - Users will be able to message other users.
 
 
 ## ROUTES
@@ -32,7 +32,7 @@ Method | Route | View | Destination | Private
 GET | / | index | - | ✘
  | | | | | |
 GET | /auth/signup | user/signup | - | ✘
-POST | /auth/sigup | - | /home |  ✔
+POST | /auth/signup | - | /home |  ✔
 GET | /auth/login | user/login | - | ✘
 POST | /auth/login | - | /home | ✘
 POST | /auth/logout | - | / |  ✔
@@ -102,4 +102,3 @@ The url to your repository and to your deployed project
 [jchaconalvarez/Ironhack-Project2 · GitHub](https://github.com/jchaconalvarez/Ironhack-Project2)
 
 ### Slides.com
-
