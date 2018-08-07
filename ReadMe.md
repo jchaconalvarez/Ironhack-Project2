@@ -65,8 +65,8 @@ POST | /article/:id/addfav | - | - |  ✔
   "articles": "Array",
   "following":"Array",
 }
-```    
- 
+```
+
 ```json
 "article": {
   "id": "id",
@@ -102,3 +102,5 @@ The url to your repository and to your deployed project
 [jchaconalvarez/Ironhack-Project2 · GitHub](https://github.com/jchaconalvarez/Ironhack-Project2)
 
 ### Slides.com
+
+[https://slides.com/xavifs/deck-2# · Slides](https://slides.com/xavifs/deck-2)
