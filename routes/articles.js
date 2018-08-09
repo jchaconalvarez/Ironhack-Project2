@@ -18,7 +18,7 @@ router.get('/:id', (req, res, next) => {
 });
 router.put('/:id', (req, res, next) => {
   // TODO: PUT
-  res.redirect('article/:id');
+  res.redirect('/article/:id');
 });
 
 module.exports = router;

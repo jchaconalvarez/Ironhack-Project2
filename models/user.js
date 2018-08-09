@@ -37,7 +37,7 @@ const userSchema = new mongoose.Schema({
     default: 'en',
   }],
   articles: [{ type : ObjectId, ref: 'Article' }],
-  following: [String], // TODO : [{ type : ObjectId, ref: 'User' }]
+  following: [{ type : ObjectId, ref: 'User' }],
 });
 
 const User = mongoose.model('User', userSchema);
