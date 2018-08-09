@@ -4,11 +4,11 @@ const router = express.Router();
 
 /* GET users listing. */
 router.get('/', (req, res, next) => {
-  res.redirect('/users/home');
+  res.redirect('/user/home');
 });
 
 router.get('/home', (req, res, next) => {
-  res.render('home');
+  res.render('user/home');
 });
 
 

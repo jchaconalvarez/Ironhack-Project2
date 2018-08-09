@@ -18,7 +18,7 @@ router.get('/:id/edit', (req, res, next) => {
 });
 router.post('/:id/edit', (req, res, next) => {
   req.flash('title', 'Return from POST edit in index');
-  res.rendirect('/:id/edit');
+  res.redirect('/:id/edit');
 });
 router.delete('/:id', (req, res, next) => {
   req.flash('title', 'Return from DELETE in index');
