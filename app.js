@@ -13,7 +13,7 @@ const flash = require('express-flash');
 const dbName = 'ironhack_prj2';
 const dbUser = 'admin';
 const dbPassword = 'admin2018';
-mongoose.connect(`mongodb://${dbUser}:${dbPassword}@ds115442.mlab.com:15442/${dbName}`);
+mongoose.connect(`mongodb://${dbUser}:${dbPassword}@ds115442.mlab.com:15442/${dbName}`, { useNewUrlParser: true });
 
 // routers
 const indexRouter = require('./routes/index');
@@ -30,7 +30,7 @@ app.set('view engine', 'ejs');
 app.set('layout extractScripts', true);
 app.set('layout extractStyles', true);
 app.set('layout extractMetas', true);
-app.set('layout', 'index');
+app.set('layout', 'layout/layout');
 app.use(expressLayouts);
 
 app.use(session({
@@ -48,9 +48,9 @@ app.use(cookieParser());
 app.use(flash());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use('/auth', authRouter);
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/auth', authRouter);
 // app.use('/articles', articlesRouter);
 
 // catch 404 and forward to error handler
