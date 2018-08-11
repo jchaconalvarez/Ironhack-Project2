@@ -19,7 +19,7 @@ mongoose.connect(`mongodb://${dbUser}:${dbPassword}@ds115442.mlab.com:15442/${db
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const authRouter = require('./routes/auth');
-// const articlesRouter = require('./routes/articles');
+const articlesRouter = require('./routes/articles');
 
 const app = express();
 
@@ -48,10 +48,19 @@ app.use(cookieParser());
 app.use(flash());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/auth', authRouter);
+const checkSession = (req, res, next) => {
+  if (req.session.currentUser) {
+    next();
+  } else {
+    req.flash('info', 'You must be logged in to view this page');
+    res.redirect('/auth/login');
+  }
+};
+
 app.use('/', indexRouter);
-app.use('/user', usersRouter);
-// app.use('/articles', articlesRouter);
+app.use('/auth', authRouter);
+app.use('/user', checkSession, usersRouter);
+app.use('/articles', checkSession, articlesRouter);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
