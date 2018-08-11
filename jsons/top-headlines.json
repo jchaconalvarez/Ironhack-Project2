@@ -1,0 +1,205 @@
+{
+  "status": "ok",
+  "totalResults": 20,
+  "articles": [{"source": {
+      "id": "usa-today",
+      "name": "USA Today"
+    },
+    "author": "Tom Vanden Brook",
+    "title": "Korean War remains returned by North Korea could take years to identify, Pentagon says",
+    "description": "It will likely take years to ID remains of what are believed to be fallen U.S. troops in 55 boxes turned over by North Korea, Pentagon officials said.",
+    "url": "https://www.usatoday.com/story/news/politics/2018/08/02/korean-war-remains-could-take-years-identify-trump-kim-jong-un/889587002/",
+    "urlToImage": "https://www.gannett-cdn.com/presto/2018/08/02/USAT/23982133-4145-4be0-aaa6-c70760956eea-Remains007.JPG?crop=4250,2391,x78,y578&width=3200&height=1680&fit=bounds",
+    "publishedAt": "2018-08-02T21:30:15Z"
+  }, {"source": {
+      "id": null,
+      "name": "Yahoo.com"
+    },
+    "author": null,
+    "title": "Iran conducts naval exercise in Gulf: US official",
+    "description": "Iran launched a naval exercise in the Gulf on Thursday, just days before the US reimposes sanctions on Tehran, a defense official told AFP.  The timing of the exercise is unusual, as it appears to be similar in scale and nature to a drill that ordinarily happ…",
+    "url": "https://www.yahoo.com/news/iran-conducts-naval-exercise-persian-gulf-us-official-171353167.html",
+    "urlToImage": "https://s.yimg.com/uu/api/res/1.2/THM6lUFwVcoawjOlgfSvjw--~B/aD02NjY7dz0xMDI0O3NtPTE7YXBwaWQ9eXRhY2h5b24-/http://media.zenfs.com/en_us/News/afp.com/Part-NIC-Nic6163408-1-1-0.jpg",
+    "publishedAt": "2018-08-02T21:26:00Z"
+  }, {"source": {
+      "id": "the-huffington-post",
+      "name": "The Huffington Post"
+    },
+    "author": "Sara Boboltz",
+    "title": "Judge Throws Out Lawsuit By Seth Rich's Parents Against Fox News",
+    "description": "The network peddled a conspiracy theory about their slain son last year.",
+    "url": "https://www.huffingtonpost.com/entry/seth-rich-family-fox-news-lawsuit-dismissed_us_5b63577ee4b0b15abaa1102f",
+    "urlToImage": "https://img.huffingtonpost.com/asset/5b6359dd2000007a03378d10.jpeg?cache=CtApKfTF5V&ops=1200_630",
+    "publishedAt": "2018-08-02T21:03:50Z"
+  }, {"source": {
+      "id": null,
+      "name": "Latimes.com"
+    },
+    "author": "Hannah Fry",
+    "title": "Blaze Bernstein slaying suspect faces hate crime sentencing enhancement",
+    "description": "A 21-year-old Newport Beach man charged with murder in the stabbing death of former high school classmate Blaze Bernstein will also face a hate crime sentencing enhancement, the Orange County district attorney announced Thursday.",
+    "url": "http://www.latimes.com/local/lanow/la-me-blaze-bernstein-20180802-story.html",
+    "urlToImage": "http://www.latimes.com/resizer/edvMmiTRBAEyyJTPEEDUOVtopxE=/1200x0/arc-anglerfish-arc2-prod-tronc.s3.amazonaws.com/public/X7YY6VYVJRAJRGXR7APMZT5DGU.jpg",
+    "publishedAt": "2018-08-02T20:40:30Z"
+  }, {"source": {
+      "id": "fortune",
+      "name": "Fortune"
+    },
+    "author": "Kevin Kelleher",
+    "title": "Apple Just Became the First US Company to Reach a $1 Trillion Market Cap",
+    "description": "",
+    "url": "http://fortune.com/2018/08/02/apple-hits-1-trillion-market-cap/",
+    "urlToImage": "https://fortunedotcom.files.wordpress.com/2018/07/gettyimages-913147726.jpg",
+    "publishedAt": "2018-08-02T20:33:51Z"
+  }, {"source": {
+      "id": "abc-news",
+      "name": "ABC News"
+    },
+    "author": "Bill Hutchinson",
+    "title": "Training exercise triggers active shooter panic, lockdown at Ohio Air Force base",
+    "description": "A training exercise sparked panic at an Ohio Air Force base on Thursday.",
+    "url": "https://abcnews.go.com/US/ohio-air-force-base-lock-reports-active-shooter/story?id=56994029",
+    "urlToImage": "https://s.abcnews.com/images/US/shooting-afb-4-abc-er-180802_hpMain_16x9_992.jpg",
+    "publishedAt": "2018-08-02T20:27:00Z"
+  }, {"source": {
+      "id": "usa-today",
+      "name": "USA Today"
+    },
+    "author": "Caroline Simon",
+    "title": "What is red tide, and why is it currently roiling Southwest Florida?",
+    "description": "Coastal regions in Southwest Florida are suffering in a severe case of red tide – a burst of algae growth in the ocean that can kill marine wildlife.",
+    "url": "https://www.usatoday.com/story/news/2018/08/02/red-tide-impacts-florida-coast-algae-growth-kills-wildlife/891352002/",
+    "urlToImage": "https://www.gannett-cdn.com/-mm-/74cd121322c4cb00955d3c7184c815b93db711ae/c=0-278-5472-3370/local/-/media/2018/08/01/FortMyers/FortMyers/636687261817040858-red-tide009.JPG?width=3200&height=1680&fit=crop",
+    "publishedAt": "2018-08-02T19:46:00Z"
+  }, {"source": {
+      "id": "the-washington-post",
+      "name": "The Washington Post"
+    },
+    "author": "http://www.facebook.com/rachel.elise.weiner, http://www.facebook.com/matt.zapotosky",
+    "title": "Paul Manafort trial Day 3: Bookkeeper testifies about overseas accounts, cash flow problems, unpaid bills",
+    "description": "Updates from the courtroom where Trump's former campaign chairman is facing bank and tax fraud charges.",
+    "url": "https://www.washingtonpost.com/news/local/wp/2018/08/02/paul-manafort-trial-day-3-live-updates/",
+    "urlToImage": "https://www.washingtonpost.com/resizer/hA692OXW2YSnxXbo1DMNCpTPeME=/1484x0/arc-anglerfish-washpost-prod-washpost.s3.amazonaws.com/public/BTCLC7QA3Q325NCFNJYXRMO2VQ.jpg",
+    "publishedAt": "2018-08-02T19:07:58Z"
+  }, {"source": {
+      "id": "the-new-york-times",
+      "name": "The New York Times"
+    },
+    "author": "https://www.nytimes.com/by/coral-davenport",
+    "title": "Trump Administration Unveils Its Plan to Relax Car Pollution Rules",
+    "description": "The proposal would freeze rules requiring cleaner, more efficient cars and unravel one of President Obama’s signature policies to fight global warming.",
+    "url": "https://www.nytimes.com/2018/08/02/climate/trump-auto-emissions-california.html",
+    "urlToImage": "https://static01.nyt.com/images/2018/08/03/climate/03CLI-AUTOEMISSIONS1/03CLI-AUTOEMISSIONS1-facebookJumbo.jpg",
+    "publishedAt": "2018-08-02T18:54:46Z"
+  }, {"source": {
+      "id": "usa-today",
+      "name": "USA Today"
+    },
+    "author": "John Fritze",
+    "title": "President Trump's spokeswoman declines to say if press is 'enemy of the people' during combative briefing",
+    "description": "White House press secretary Sarah Huckabee Sanders blasted the media Thursday for what she termed a \"verbal assault\" against President Donald Trump and declined to walk back the president's assertion that reporters are \"the enemy of the people.\"",
+    "url": "https://www.usatoday.com/story/news/politics/2018/08/02/sarah-sanders-declines-say-if-press-enemy-people/891010002/",
+    "urlToImage": "https://www.gannett-cdn.com/presto/2018/08/02/USAT/858731d2-cb8a-465b-8939-622d1987bd18-AFP_AFP_1835CG.JPG?crop=3989,2244,x0,y265&width=3200&height=1680&fit=bounds",
+    "publishedAt": "2018-08-02T18:53:54Z"
+  }, {"source": {
+      "id": null,
+      "name": "Espn.com"
+    },
+    "author": null,
+    "title": "FAQ: What we know about Urban Meyer and the Ohio State situation",
+    "description": "A guide to why coach Urban Meyer was placed on administrative leave and who the key players are in the investigation of assistant coach Zach Smith's domestic violence accusations.",
+    "url": "http://www.espn.com/college-football/story/_/id/24265385/ohio-state-faq-know-urban-meyer-zach-smith-investigation",
+    "urlToImage": "http://a4.espncdn.com/combiner/i?img=%2Fphoto%2F2016%2F0824%2Fr118130_2_1296x729_16%2D9.jpg",
+    "publishedAt": "2018-08-02T18:51:28Z"
+  }, {"source": {
+      "id": "cbs-news",
+      "name": "CBS News"
+    },
+    "author": "Sarah Lynch Baldwin",
+    "title": "\"We believe that Mollie is still alive\": Missing woman's family announces $172000 reward",
+    "description": "\"It is our greatest hope that if someone has her that they would just release her and claim that money that we have raised for her freedom,\" said Mollie Tibbetts' mother",
+    "url": "https://www.cbsnews.com/news/mollie-tibbetts-iowa-family-announces-reward-fund-today-2018-08-02/",
+    "urlToImage": "https://cbsnews3.cbsistatic.com/hub/i/r/2018/07/24/5cd829ba-250b-49af-a174-b1f57538ef06/thumbnail/1200x630g2/d48042359c003e8fb8356a5ee235b5ad/ap-18205607346837.jpg",
+    "publishedAt": "2018-08-02T17:54:39Z"
+  }, {"source": {
+      "id": "the-washington-post",
+      "name": "The Washington Post"
+    },
+    "author": null,
+    "title": "National Archives says it won't be able to produce all Kavanaugh documents until end of October",
+    "description": "The timeline for the Republicans’ request raises questions about whether the Senate can vote on the Supreme Court nominee before the midterm elections.",
+    "url": "https://www.washingtonpost.com/politics/national-archives-says-it-wont-be-able-to-produce-all-kavanaugh-documents-until-end-of-october/2018/08/02/011a9f1e-966f-11e8-8ffb-5de6d5e49ada_story.html",
+    "urlToImage": "https://www.washingtonpost.com/resizer/pfnaKMkr4nlK9_JsVc_p7cR-AiA=/1484x0/arc-anglerfish-washpost-prod-washpost.s3.amazonaws.com/public/RDHRWCUWOAI6RAIML6TQLET5KQ.jpg",
+    "publishedAt": "2018-08-02T17:26:15Z"
+  }, {"source": {
+      "id": "cnn",
+      "name": "CNN"
+    },
+    "author": "Joe Sutton, Nicole Chavez and Jason Hanna, CNN",
+    "title": "Worker at immigrant children's shelter accused of molesting teen",
+    "description": "A worker at a Southwest Key immigrant children's shelter in Arizona has been arrested on suspicion of molesting a 14-year-old girl at the facility, police said.",
+    "url": "https://www.cnn.com/2018/08/02/us/southwest-key-worker-arrested/index.html",
+    "urlToImage": "https://cdn.cnn.com/cnnnext/dam/assets/180802103049-fernando-magaz-negrete-mug-super-tease.jpg",
+    "publishedAt": "2018-08-02T16:47:00Z"
+  }, {"source": {
+      "id": "fox-news",
+      "name": "Fox News"
+    },
+    "author": "Brian Flood",
+    "title": "New York Times stands by new tech writer Sarah Jeong after racist tweets surface",
+    "description": "The New York Times is under fire for adding Sarah Jeong to its editorial board as derogatory tweets sent from her Twitter account have been unearthed.",
+    "url": "http://www.foxnews.com/entertainment/2018/08/02/new-york-times-stands-by-new-tech-writer-sarah-jeong-after-racist-tweets-surface.html",
+    "urlToImage": "http://a57.foxnews.com/images.foxnews.com/content/fox-news/entertainment/2018/08/02/new-york-times-stands-by-new-tech-writer-sarah-jeong-after-racist-tweets-surface/_jcr_content/par/featured_image/media-0.img.jpg/0/0/1533229320863.jpg?ve=1",
+    "publishedAt": "2018-08-02T16:43:04Z"
+  }, {"source": {
+      "id": "the-new-york-times",
+      "name": "The New York Times"
+    },
+    "author": "http://www.nytimes.com/by/elisabetta-povoledo, http://www.nytimes.com/by/laurie-goodstein",
+    "title": "Pope Declares Death Penalty Unacceptable in All Cases",
+    "description": "The statement ushered in a change in Roman Catholic teaching by Francis, who has spoken out against capital punishment before.",
+    "url": "https://www.nytimes.com/2018/08/02/world/europe/pope-death-penalty.html",
+    "urlToImage": "https://static01.nyt.com/images/2018/08/03/world/03Vatican/03Vatican-facebookJumbo.jpg",
+    "publishedAt": "2018-08-02T16:07:30Z"
+  }, {"source": {
+      "id": "the-huffington-post",
+      "name": "The Huffington Post"
+    },
+    "author": "Michelle Lou",
+    "title": "Smith College Employee Called Police On Black Student Eating Lunch",
+    "description": "\"All I did was be black,\" Oumou Kanoute said.",
+    "url": "https://www.huffingtonpost.com/entry/smith-college-student-police_us_5b630b98e4b0fd5c73d6ee6d",
+    "urlToImage": "https://img.huffingtonpost.com/asset/5b6316c11900002900c6b6cb.jpeg?ops=1200_630",
+    "publishedAt": "2018-08-02T15:52:00Z"
+  }, {"source": {
+      "id": null,
+      "name": "Mlive.com"
+    },
+    "author": "Mark Torregrossa | mtorregr@mlive.com",
+    "title": "3 reasons why Atlantic hurricane season could be less active this year",
+    "description": "These three features could help produce a less active second half of the Atlantic hurricane season.",
+    "url": "https://www.mlive.com/weather/index.ssf/2018/08/3_reasons_why_atlantic_hurrica.html",
+    "urlToImage": "https://image.mlive.com/home/mlive-media/width620/img/weather_impact/photo/24740975-standard.gif",
+    "publishedAt": "2018-08-02T14:48:55Z"
+  }, {"source": {
+      "id": "usa-today",
+      "name": "USA Today"
+    },
+    "author": "Bart Jansen",
+    "title": "TSA studies eliminating checkpoints at smaller airports, but criticism is fierce",
+    "description": "The Transportation Security Administration has studied eliminating checkpoints at small airports to save money, but criticism is broad and vocal.",
+    "url": "https://www.usatoday.com/story/travel/flights/todayinthesky/2018/08/02/tsa-studies-dropping-checkpoints-small-airports-but-criticism-fierce/887724002/",
+    "urlToImage": "https://www.gannett-cdn.com/-mm-/db2fdb435b5befa6f08ff9ab0fb94bcfacaaa897/c=0-230-4975-3041/local/-/media/2018/08/02/USATODAY/USATODAY/636687960337625291-tsa-1-.JPG?width=3200&height=1680&fit=crop",
+    "publishedAt": "2018-08-02T13:01:00Z"
+  }, {"source": {
+      "id": null,
+      "name": "9news.com.au"
+    },
+    "author": null,
+    "title": "What is Momo? Terrifying 'game' linked to 12-year-old's suicide",
+    "description": "A terrifying new online 'challenge' has been linked to the suicide of a 12-year-old girl, prompting an urge...",
+    "url": "https://www.9news.com.au/world/2018/08/02/13/51/what-is-momo-terrifying-game-linked-to-12-year-olds-suicide",
+    "urlToImage": "http://prod.static9.net.au/_/media/2018/08/02/14/11/0208_momo.jpg",
+    "publishedAt": "2018-08-02T04:27:12Z"
+  }]
+}

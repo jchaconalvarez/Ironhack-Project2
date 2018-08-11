@@ -1,9 +1,9 @@
 const express = require('express');
 const bcrypt = require('bcrypt');
+const User = require('../models/user');
 
 const router = express.Router();
 const saltRounds = 10;
-const User = require('../models/user');
 
 router.get('/', (req, res, next) => {
   res.redirect('/auth/login');  // control root of auth. alwais redirect /auth/loggin
@@ -17,10 +17,10 @@ router.post('/login', (req, res, next) => {
   const { email, password } = req.body;
 
   if (!email || !password) {
-    req.flash('error', 'email and Password are required');
+    req.flash('error', 'email and password are required');
     res.redirect('auth/login');
   } else {
-    User.findOne( {email} )
+    User.findOne({ email })
       .then((user) => {
         if (user && bcrypt.compareSync(password, user.password)) {
           req.session.currentUser = user.name ? user.name : user.email; // TODO: update if change profile
@@ -46,7 +46,7 @@ router.post('/signup', (req, res, next) => {
     req.flash('error', 'Username and Password are required');
     res.redirect('/auth/signup');
   } else {
-    User.findOne({email})
+    User.findOne({ email })
       .then((user) => {
         if (user) {
           req.flash('error', `Username ${user.name} exist, try login`);
@@ -57,7 +57,7 @@ router.post('/signup', (req, res, next) => {
             .then((newUser) => {
               req.session.currentUser = newUser.name ? newUser.name : newUser.email; // TODO: update if change profile
               res.redirect('/user/home');
-            })
+            });
         }
       })
       .catch(next);
