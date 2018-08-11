@@ -1,4 +1,6 @@
 const express = require('express');
+const NewsAPI = require('newsapi');
+const newsapi = new NewsAPI('da5125e659e04c93929fa448a270da80');
 
 const router = express.Router();
 const Articles = require('../models/article');
