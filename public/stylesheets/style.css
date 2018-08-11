@@ -20,6 +20,13 @@ body .bg {
   z-index: -1;
 }
 
+h1 {
+  font-family: "Rajdhani", sans-serif;
+}
+h1 span {
+  color: #FF3A3A;
+}
+
 .container {
   height: 100%;
   display: flex;
@@ -34,19 +41,8 @@ body .bg {
   justify-content: space-between;
   align-items: center;
 }
-.index-buttons .btn {
-  background: none;
-  padding: 0.2em 2em;
-  border: 1px solid #000;
-  border-radius: 5px;
-}
-.index-buttons .btn:hover {
-  background-color: #FF3A3A;
-  border: 1px solid #FFF;
-  color: #FFF;
-}
 .index-buttons p {
-  margin-top: 0.5em;
+  margin-top: 0.2em;
   font-size: 0.8em;
 }
 .index-buttons p a {
@@ -54,11 +50,23 @@ body .bg {
   color: #FF3A3A;
 }
 
-h1 {
-  font-family: "Rajdhani", sans-serif;
+.btn {
+  background: none;
+  padding: 0.2em 2em;
+  border: 1px solid #000;
+  border-radius: 5px;
 }
-h1 span {
-  color: #FF3A3A;
+.btn:hover {
+  background-color: #FF3A3A;
+  border: 1px solid #FFF;
+  color: #FFF;
+}
+
+.form-group .form-control {
+  margin-bottom: 0.3em;
+}
+.form-group small {
+  text-align: center;
 }
 
 /*# sourceMappingURL=style.css.map */
