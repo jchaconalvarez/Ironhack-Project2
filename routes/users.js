@@ -13,7 +13,6 @@ router.get('/', (req, res, next) => {
 });
 
 router.get('/home', (req, res, next) => {
-
   newsapi.v2.topHeadlines({ language: 'en', country: 'us' })
     .then((response) => {
       const { articles } = response;
