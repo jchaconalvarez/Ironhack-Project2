@@ -19,7 +19,7 @@ mongoose.connect(`mongodb://${dbUser}:${dbPassword}@ds115442.mlab.com:15442/${db
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const authRouter = require('./routes/auth');
-// const articlesRouter = require('./routes/articles');
+const articlesRouter = require('./routes/articles');
 
 const app = express();
 
@@ -51,7 +51,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/auth', authRouter);
 app.use('/', indexRouter);
 app.use('/user', usersRouter);
-// app.use('/articles', articlesRouter);
+app.use('/articles', articlesRouter);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
