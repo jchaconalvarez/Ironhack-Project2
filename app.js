@@ -8,18 +8,19 @@ const mongoose = require('mongoose');
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 const flash = require('express-flash');
+require('dotenv').config();
 
 // db connection
-const dbName = 'ironhack_prj2';
-const dbUser = 'admin';
-const dbPassword = 'admin2018';
-mongoose.connect(`mongodb://${dbUser}:${dbPassword}@ds115442.mlab.com:15442/${dbName}`, { useNewUrlParser: true });
+mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true });
 
 // routers
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const authRouter = require('./routes/auth');
 const articlesRouter = require('./routes/articles');
+
+// middlewares
+const authMiddlewares = require('./middleware/auth.js');
 
 const app = express();
 
@@ -34,7 +35,7 @@ app.set('layout', 'layout/layout');
 app.use(expressLayouts);
 
 app.use(session({
-  secret: 'ironhack_prj2',
+  secret: process.env.MONGOSESSION_SECRET,
   cookie: { maxAge: 60000 },
   store: new MongoStore({
     mongooseConnection: mongoose.connection,
@@ -48,19 +49,10 @@ app.use(cookieParser());
 app.use(flash());
 app.use(express.static(path.join(__dirname, 'public')));
 
-const checkSession = (req, res, next) => {
-  if (req.session.currentUser) {
-    next();
-  } else {
-    req.flash('info', 'You must be logged in to view this page');
-    res.redirect('/auth/login');
-  }
-};
-
 app.use('/', indexRouter);
 app.use('/auth', authRouter);
-app.use('/user', checkSession, usersRouter);
-app.use('/articles', checkSession, articlesRouter);
+app.use('/user', authMiddlewares.checkSession, usersRouter);
+app.use('/articles', authMiddlewares.checkSession, articlesRouter);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
