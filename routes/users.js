@@ -6,7 +6,6 @@ const Articles = require('../models/article');
 const newsapi = new NewsAPI('da5125e659e04c93929fa448a270da80');
 
 const router = express.Router();
-
 /* GET users listing. */
 router.get('/', (req, res, next) => {
   res.redirect('/user/home');
@@ -14,20 +13,20 @@ router.get('/', (req, res, next) => {
 
 
 router.get('/home', (req, res, next) => {
+  console.log(req.session.usr.languages.length);
   newsapi.v2.topHeadlines({ country: ['us'] })
     .then((topHeadlines) => {
+      console.log(topHeadlines);
       const { articles: articlesCarousel } = topHeadlines;
 
       Users.findById(req.session.usr._id).populate('articles')
         .then((user) => {
+          console.log(user);
           const { articles: articlesUser } = user;
           res.render('user/home', { articlesCarousel, articlesUser });
         });
     })
     .catch(next);
-
-  //
-  //   .catch(next);
 });
 
 module.exports = router;

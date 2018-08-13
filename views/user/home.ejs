@@ -1,6 +1,4 @@
 
-<div class="container-fluid">
-
   <h3>Top-Headlines</h3>
   <div id="carouselSlidesOnly" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner">
@@ -11,39 +9,45 @@
       <% articlesCarousel.forEach((article) => { %>
         <div class="carousel-item">
           <div class="row border">
-            <div class="col-md-12 bg-secondary text-white">
-              <p class="font-italic text-monospace "><%= article.title %></p>
+
+            <div class="col-md-2"> </div>
+            <div class="col-md-8">
+                <div class="col-md-12 bg-secondary text-white">
+                  <p class="font-italic text-monospace "><%= article.title %></p>
+                  <div class="row border">
+                  <div class="col-md-8">
+                    <a target="_blank" href=<%= article.url %>  >
+                      <img class="d-block w-100 img-thumbnail img-fluid rounded p-3" src=<%= article.urlToImage %> >
+                    </a>
+                    <ul class="">
+                        <i class="far fa-star"></i>
+                        <i class="fas fa-star invisible "></i>
+                        <i class="far fa-thumbs-up"></i>
+                        <i class="fas fa-thumbs-up invisible"></i>
+                        <i class="far fa-thumbs-down"></i>
+                        <i class="fas fa-thumbs-down invisible"></i>
+                        <i class="fas fa-share-alt"></i>
+                    </ul>
+                  </div>
+                  <div class="col-md-4 ">
+                    <p class="text-monospace p-2 text-justify">
+                      <%= article.description %>
+                    </p>
+                  </div>
+                  </div>
+                </div>
             </div>
-            <div class="row bg-light p-1">
-            </div>
-            <div class="col-md-3">
-              <a target="_blank" href=<%= article.url %>  >
-                <img class="img-thumbnail img-fluid rounded p-3" src=<%= article.urlToImage %> >
-              </a>
-            </div>
-            <div class="col-md-7 ">
-              <p class="text-monospace p-2 text-justify">
-                <%= article.description %>
-              </p>
-            </div>
-            <div class="col-md-2">
-              <i class="far fa-star"></i>
-              <i class="fas fa-star invisible "></i>
-              <i class="far fa-thumbs-up"></i>
-              <i class="fas fa-thumbs-up invisible"></i>
-              <i class="far fa-thumbs-down"></i>
-              <i class="fas fa-thumbs-down invisible"></i>
-              <i class="fas fa-share-alt"></i>
-            </div>
+
+            <div class="col-md-2"></div>
           </div>
         </div>
         <% }); %>
     </div>
-    <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
+    <a class="carousel-control-prev" href="#carouselSlidesOnly" role="button" data-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="sr-only">Previous</span>
       </a>
-      <a class="carousel-control-next" href="#carouselExampleFade" role="button" data-slide="next">
+      <a class="carousel-control-next" href="#carouselSlidesOnly" role="button" data-slide="next">
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="sr-only">Next</span>
       </a>
@@ -88,8 +92,8 @@
           </p>
         </div>
         <div class="col-md-2">
-          <i class="far fa-star"></i>
-          <i class="fas fa-star invisible "></i>
+          <i class="far fa-star invisible"></i>
+          <i class="fas fa-star  "></i>
           <i class="far fa-thumbs-up"></i>
           <i class="fas fa-thumbs-up invisible"></i>
           <i class="far fa-thumbs-down"></i>
@@ -98,5 +102,4 @@
       </div>
     </div>
   <% }); %>
-
-</div>
+<div class="container-fluid"></div>
