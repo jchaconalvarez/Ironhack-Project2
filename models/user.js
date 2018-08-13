@@ -3,12 +3,12 @@ const mongoose = require('mongoose');
 const  ObjectId  = mongoose.SchemaTypes.ObjectId;
 
 const userSchema = new mongoose.Schema({
-  userId: {  // TODO: tenemos dos ID
-    type: ObjectId,
-    index: true,
-    required: true,
-    auto: true,
-  },
+  // userId: {  // TODO: tenemos dos ID
+  //   type: ObjectId,
+  //   index: true,
+  //   required: true,
+  //   auto: true,
+  // },
   name: {
     type: String,
     trim: true,
@@ -24,9 +24,9 @@ const userSchema = new mongoose.Schema({
       'ae', 'ar', 'at', 'au', 'be', 'bg', 'br', 'ca', 'ch', 'cn', 'co', 'cu', 'cz', 'de', 'eg', 'fr',
       'gb', 'gr', 'hk', 'hu', 'id', 'ie', 'il', 'in', 'it', 'jp', 'kr', 'lt', 'lv', 'ma', 'mx', 'my',
       'ng', 'nl', 'no', 'nz', 'ph', 'pl', 'pt', 'ro', 'rs', 'ru', 'sa', 'se', 'sg', 'si', 'sk', 'th',
-      'tr', 'tw', 'ua', 'us', 've', 'za', 'es',
+      'tr', 'tw', 'ua', 'us', 've', 'za',
     ],
-    default: 'es',
+    default: 'us',
   }],
   languages: [{
     type: String,

@@ -24,6 +24,9 @@ router.post('/login', (req, res, next) => {
       .then((user) => {
         if (user && bcrypt.compareSync(password, user.password)) {
           req.session.currentUser = user.name ? user.name : user.email; // TODO: update if change profile
+          req.session.usr = user;
+          // console.log(req.session);
+
           res.redirect('/user/home');
         } else {
           req.flash('error', 'Username or Password incorrect');
@@ -49,13 +52,14 @@ router.post('/signup', (req, res, next) => {
     User.findOne({ email })
       .then((user) => {
         if (user) {
-          req.flash('error', `Username ${user.name} exist, try login`);
+          req.flash('error', `Username ${name} exist, try login`);
           res.redirect('/auth/login');
         } else {
           hashedPassword = bcrypt.hashSync(password, bcrypt.genSaltSync(saltRounds));
           User.create({ email, password: hashedPassword })
             .then((newUser) => {
               req.session.currentUser = newUser.name ? newUser.name : newUser.email; // TODO: update if change profile
+
               res.redirect('/user/home');
             });
         }

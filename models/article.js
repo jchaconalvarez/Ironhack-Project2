@@ -4,12 +4,12 @@ const mongoose = require('mongoose');
 const  ObjectId  = mongoose.SchemaTypes.ObjectId;
 
 const articleSchema = new mongoose.Schema({
-  idArticle: {
-    type: ObjectId,
-    index: true,
-    required: true,
-    auto: true,
-  },
+  // idArticle: {
+  //   type: ObjectId,
+  //   index: true,
+  //   required: true,
+  //   auto: true,
+  // },
   source: {
     id: String,
     name: String,
@@ -23,13 +23,13 @@ const articleSchema = new mongoose.Schema({
   starred: Number,
   shared: Number,
   comment: [{
-    id: {
-      type: ObjectId,
-      index: true,
-      required: true,
-      auto: true,
-    },
-    user: String, // TODO : [{ type : ObjectId, ref: 'User' }]
+    // id: {
+    //   type: ObjectId,
+    //   index: true,
+    //   required: true,
+    //   auto: true,
+    // },
+    user:{ type : ObjectId, ref: 'User' },
     text: String,
     rating: Number,
     likes: Number,
