@@ -6,36 +6,36 @@
             <h1>Top Hea<span>d</span>lines</h1>
           </div>
         <% articles.forEach((article) => { %>
-        <div class="carousel-item">
-          <div class="row border">
-            <div class="col-md-12 bg-secondary text-white">
-              <p class="font-italic text-monospace ">
-                <%= article.title %>
-              </p>
-            </div>
-            <div class="row bg-light p-1">
-            </div>
-            <div class="col-md-3">
-              <a href=<%= article.url %> >
-                <img class="img-thumbnail img-fluid rounded p-3" src=<%= article.urlToImage %> >
-              </a>
-            </div>
-            <div class="col-md-7 ">
-              <p class="text-monospace p-2 text-justify">
-                <%= article.description %>
-              </p>
-            </div>
-            <div class="col-md-2">
-              <i class="far fa-star"></i>
-              <i class="fas fa-star invisible "></i>
-              <i class="far fa-thumbs-up"></i>
-              <i class="fas fa-thumbs-up invisible"></i>
-              <i class="far fa-thumbs-down"></i>
-              <i class="fas fa-thumbs-down invisible"></i>
-              <i class="fas fa-share-alt"></i>
+          <div class="carousel-item">
+            <div class="row border">
+              <div class="col-md-12 bg-secondary text-white">
+                <p class="font-italic text-monospace ">
+                  <%= article.title %>
+                </p>
+              </div>
+              <div class="row bg-light p-1">
+              </div>
+              <div class="col-md-3">
+                <a href=<%= article.url %> >
+                  <img class="img-thumbnail img-fluid rounded p-3" src=<%= article.urlToImage %> >
+                </a>
+              </div>
+              <div class="col-md-7 ">
+                <p class="text-monospace p-2 text-justify">
+                  <%= article.description %>
+                </p>
+              </div>
+              <div class="col-md-2">
+                <i class="far fa-star"></i>
+                <i class="fas fa-star invisible "></i>
+                <i class="far fa-thumbs-up"></i>
+                <i class="fas fa-thumbs-up invisible"></i>
+                <i class="far fa-thumbs-down"></i>
+                <i class="fas fa-thumbs-down invisible"></i>
+                <i class="fas fa-share-alt"></i>
+              </div>
             </div>
           </div>
-        </div>
         <% }); %>
       </div>
     </div>
