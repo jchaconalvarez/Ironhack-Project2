@@ -14,7 +14,7 @@ router.post('/:id/addfav', (req, res, next) => {
 router.delete('/:id/:commentId', (req, res, next) => {
   // const element = req.
   Articles.findOne()
-    .then((article )=> {
+    .then((article) => {
       res.render('article/', { title: 'Return from delete comment in Articles' });
     })
     .catch();
