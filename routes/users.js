@@ -30,6 +30,12 @@ router.get('/home', (req, res, next) => {
   //   .catch(next);
 });
 
+router.get('/edit', (req, res, next) => {
+  const user = req.session.usr;
+
+  res.render('user/edit', { user });
+});
+
 module.exports = router;
 
 // function extendNews(originalJSON, newJson) {

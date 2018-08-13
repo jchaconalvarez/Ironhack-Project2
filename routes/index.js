@@ -14,9 +14,9 @@ router.post('/:id/favs', (req, res, next) => {
   req.flash('title', 'Return from POST favs in index');
   res.rendirect('/:id/edit');
 });
-router.get('/:id/edit', (req, res, next) => {
-  res.render('profile', { title: 'Return from GET edit in index' });
-});
+// router.get('/:id/edit', (req, res, next) => {
+//   res.render('user/edit', { title: 'Return from GET edit in index' });
+// });
 router.post('/:id/edit', (req, res, next) => {
   req.flash('title', 'Return from POST edit in index');
   res.redirect('/:id/edit');
