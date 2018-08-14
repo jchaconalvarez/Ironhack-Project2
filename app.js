@@ -21,6 +21,7 @@ const articlesRouter = require('./routes/articles');
 
 // middlewares
 const authMiddlewares = require('./middleware/auth.js');
+const queriesMiddlewares = require('./middleware/queries');
 
 const app = express();
 
@@ -51,7 +52,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/auth', authRouter);
-app.use('/user', authMiddlewares.checkSession, usersRouter);
+app.use('/user', authMiddlewares.checkSession,
+  queriesMiddlewares.queryCurrentUserRelations,
+  usersRouter);
 app.use('/articles', authMiddlewares.checkSession, articlesRouter);
 
 // catch 404 and forward to error handler
