@@ -59,8 +59,8 @@ router.post('/signup', (req, res, next) => {
           User.create({ email, password: hashedPassword })
             .then((newUser) => {
               req.session.currentUser = newUser.name ? newUser.name : newUser.email; // TODO: update if change profile
-
-              res.redirect('/user/home');
+              req.session.usr = user;
+              res.redirect('/user/profile');
             });
         }
       })
@@ -70,8 +70,9 @@ router.post('/signup', (req, res, next) => {
 
 router.post('/logout', (req, res) => {
   delete req.session.currentUser;
+  delete req.session.user;
+  delete req.session.news;
   res.redirect('/');
 });
-
 
 module.exports = router;
