@@ -12,6 +12,7 @@ $colors: (
 
 body, html {
   height: 100%;
+  font-size: 12px;
 }
 
 body {
@@ -35,6 +36,11 @@ h1 {
   }
 }
 
+a {
+  text-decoration: none;
+  color: color(primary);
+}
+
 .container {
   height: 100%;
   display: flex;
@@ -51,10 +57,6 @@ h1 {
   p {
     margin-top: 0.2em;
     font-size: 0.8em;
-    a {
-      text-decoration: none;
-      color: color(primary);
-    }
   }
 }
 
@@ -76,5 +78,27 @@ h1 {
   }
   small {
     text-align: center;
+  }
+}
+
+// CAROUSEL
+.carousel {
+  h1 {
+    text-align: center;
+  }
+}
+
+.carousel-headline {
+  // background: lightcyan;
+  p {
+    font-size: 0.8em;
+    line-height: 1em;
+    font-weight: bold;
+  }
+}
+
+.carousel-image {
+  img {
+    max-width: 100%;
   }
 }

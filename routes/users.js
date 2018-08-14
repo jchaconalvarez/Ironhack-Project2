@@ -17,7 +17,6 @@ router.get('/home', (req, res, next) => {
   newsapi.v2.topHeadlines({ country: ['us'] })
     .then((topHeadlines) => {
       const { articles: articlesCarousel } = topHeadlines;
-
       Users.findById(req.session.usr._id).populate('articles')
         .then((user) => {
           const { articles: articlesUser } = user;

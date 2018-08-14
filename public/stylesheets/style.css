@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Rajdhani");
 body, html {
   height: 100%;
+  font-size: 12px;
 }
 
 body {
@@ -27,6 +28,11 @@ h1 span {
   color: #FF3A3A;
 }
 
+a {
+  text-decoration: none;
+  color: #FF3A3A;
+}
+
 .container {
   height: 100%;
   display: flex;
@@ -44,10 +50,6 @@ h1 span {
 .index-buttons p {
   margin-top: 0.2em;
   font-size: 0.8em;
-}
-.index-buttons p a {
-  text-decoration: none;
-  color: #FF3A3A;
 }
 
 .btn {
@@ -67,6 +69,20 @@ h1 span {
 }
 .form-group small {
   text-align: center;
+}
+
+.carousel h1 {
+  text-align: center;
+}
+
+.carousel-headline p {
+  font-size: 0.8em;
+  line-height: 1em;
+  font-weight: bold;
+}
+
+.carousel-image img {
+  max-width: 100%;
 }
 
 /*# sourceMappingURL=style.css.map */
