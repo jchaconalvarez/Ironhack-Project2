@@ -7,7 +7,8 @@ const router = express.Router();
 const Articles = require('../models/article');
 
 router.get('/', (req, res, next) => {
-  res.render
+  //TODO: favoritos
+  //res.render
 })
 // CRUD
 // Create

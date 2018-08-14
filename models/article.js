@@ -19,20 +19,19 @@ const articleSchema = new mongoose.Schema({
   description: String,
   url: String,
   urlToImage: String,
-  publishedAt: Date,
+  publishedAt: { type:Date, default: Date.now },
   starred: Number,
+  likes: Number,
+  unlikes: Number,
   shared: Number,
-  comment: [{
-    // id: {
-    //   type: ObjectId,
-    //   index: true,
-    //   required: true,
-    //   auto: true,
-    // },
+  comments: [{
+    timeStamp:{ type:Date, default:Date.now },
     user:{ type : ObjectId, ref: 'User' },
     text: String,
     rating: Number,
     likes: Number,
+    unlikes: Number,
+    shared: Number,
   }],
 
 });
