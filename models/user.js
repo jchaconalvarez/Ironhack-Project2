@@ -18,7 +18,7 @@ const userSchema = new mongoose.Schema({
     unique: true,
   },
   password: String,
-  country: [{
+  countries: [{
     type: String,
     enum: [
       'ae', 'ar', 'at', 'au', 'be', 'bg', 'br', 'ca', 'ch', 'cn', 'co', 'cu', 'cz', 'de', 'eg', 'fr',
