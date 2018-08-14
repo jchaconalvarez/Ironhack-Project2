@@ -11,28 +11,37 @@ router.get('/', (req, res, next) => {
   res.redirect('/user/home');
 });
 
-
 router.get('/home', (req, res, next) => {
-  console.log(req.session.usr.languages.length);
-  newsapi.v2.topHeadlines({ country: ['us'] })
-    .then((topHeadlines) => {
-      console.log(topHeadlines);
-      const { articles: articlesCarousel } = topHeadlines;
+  const numLanguages = req.session.usr.languages.length;
+  const numCountries = req.session.usr.countries.length;
 
-      Users.findById(req.session.usr._id).populate('articles')
-        .then((user) => {
-          console.log(user);
-          const { articles: articlesUser } = user;
-          res.render('user/home', { articlesCarousel, articlesUser });
-        });
+  newsapi.v2.topHeadlines({ language: req.session.usr.languages })
+    .then((topHeadlines) => {
+      const { articles: articlesCarousel } = topHeadlines;
+      const { articles: articlesUser } = req.session.usr;
+      res.render('user/home', { articlesCarousel, articlesUser });
     })
     .catch(next);
 });
 
 router.get('/edit', (req, res, next) => {
-  const user = req.session.usr;
+  const msg = {
+    error: req.flash('error'),
+    msg:'Edit Profile',
+    user: req.session.usr,
+  };
+  res.render('user/edit', msg);
+});
 
-  res.render('user/edit', { user });
+router.put('/save', (req, res, next) => {
+  const { data } = req.body;
+  console.log(data);
+  Users.findByIdAndUpdate(req.session.usr._id, data)
+    .then(() => {
+      const msg = { error: req.flash('error'), msg:'Profile updated' };
+    })
+    .catch(next);
+  res.render('user/edit', msg);
 });
 
 module.exports = router;

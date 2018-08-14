@@ -75,11 +75,4 @@ router.post('/logout', (req, res) => {
   res.redirect('/');
 });
 
-router.get('/profile', (req, res, next) => {
-
-});
-router.post('/profile', (req, res, next) => {
-
-});
-
 module.exports = router;
