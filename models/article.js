@@ -37,5 +37,8 @@ const articleSchema = new mongoose.Schema({
 });
 
 const Article = mongoose.model('Article', articleSchema);
+const ArticleMSRV = mongoose.model('ArticleMSRV', articleSchema);
+
 
 module.exports = Article;
+module.exports = ArticleMSRV;
