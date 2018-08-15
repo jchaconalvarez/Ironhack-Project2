@@ -116,4 +116,22 @@ a {
   margin: 0 1em;
 }
 
+.navbar {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background: oldlace;
+  z-index: 1;
+}
+.navbar ul {
+  list-style: none;
+  margin: 0;
+}
+.navbar ul li {
+  display: inline-block;
+  text-align: center;
+  margin: 0 1em;
+}
+
 /*# sourceMappingURL=style.css.map */

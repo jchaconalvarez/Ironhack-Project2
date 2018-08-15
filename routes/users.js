@@ -14,12 +14,13 @@ router.get('/', (req, res, next) => {
 router.get('/home', (req, res, next) => {
   const numLanguages = req.session.usr.languages.length;
   const numCountries = req.session.usr.countries.length;
+  const user = req.session.usr;
 
   newsapi.v2.topHeadlines({ language: req.session.usr.languages })
     .then((topHeadlines) => {
       const { articles: articlesCarousel } = topHeadlines;
       const { articles: articlesUser } = req.session.usr;
-      res.render('user/home', { articlesCarousel, articlesUser });
+      res.render('user/home', { user, articlesCarousel, articlesUser });
     })
     .catch(next);
 });
