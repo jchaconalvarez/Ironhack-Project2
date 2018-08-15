@@ -1,12 +1,9 @@
 @import url("https://fonts.googleapis.com/css?family=Rajdhani");
 body, html {
   height: 100%;
-  font-size: 12px;
+  font-size: 14px;
 }
 
-body {
-  background-color: #FF3A3A;
-}
 body .bg {
   clip-path: polygon(50% 0%, 100% 0, 100% 65%, 50% 100%, 0 100%, 0 35%);
   background: #FDFAF7;
@@ -74,15 +71,49 @@ a {
 .carousel h1 {
   text-align: center;
 }
-
-.carousel-headline p {
-  font-size: 0.8em;
+.carousel .carousel-headline p {
   line-height: 1em;
   font-weight: bold;
 }
-
-.carousel-image img {
+.carousel .carousel-image img {
   max-width: 100%;
+}
+
+.article-container {
+  height: 100%;
+}
+.article-container .row {
+  max-width: 100%;
+}
+
+.article-card {
+  margin-bottom: 2em;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+.article-card .article-headline {
+  padding: 0.8em 1em 0.4em 1em;
+}
+.article-card .article-headline p {
+  font-weight: bold;
+}
+.article-card .article-img {
+  max-width: 100%;
+}
+.article-card .article-description {
+  padding: 1em 1em 0em 1em;
+}
+.article-card .article-social {
+  display: flex;
+  justify-content: center;
+}
+.article-card .article-social ul {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 1em 0;
+}
+.article-card .article-social ul li {
+  display: inline-block;
+  margin: 0 1em;
 }
 
 /*# sourceMappingURL=style.css.map */
