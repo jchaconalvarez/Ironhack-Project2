@@ -1,32 +1,35 @@
-<div class="container-fluid">
- <h1>Favo<span>r</span>ites</h1>
-  <% articlesUser.forEach((article) => { %>
-    <div class="row">
-      <div class="col-md-12 bg-secondary text-white">
-        <p class="font-italic text-monospace "><%= article.title %></p>
+<% articlesUser.forEach((article) => { %>
+  <div class="article-card">
+    <div class="row no-gutters">
+      <div class="article-headline col-12">
+        <small><%= article.source.name %></small>
+        <h5 class="article-headline"><%= article.title %></h5>
       </div>
     </div>
-    <div class="row bg-light p-1">
-      <div class="col-md-3">
-        <a target="_blank" href=<%= article.url %> >
-          <img class="img-thumbnail img-fluid rounded p-3" src=<%= article.urlToImage %> >
+    <div class="row no-gutters">
+      <div class="col-12">
+        <a target="_blank" href=<%= article.url %>>
+          <img class="article-img" src=<%= article.urlToImage %>>
         </a>
       </div>
-      <div class="col-md-7 ">
-        <p class="text-monospace p-2 text-justify">
-          <%= article.description %>
-        </p>
-      </div>
-      <div class="col-md-2">
-        <i class="far fa-star invisible"></i>
-        <i class="fas fa-star  "></i>
-        <i class="far fa-thumbs-up"></i>
-        
-        <i class="fas fa-thumbs-up invisible"></i>
-        <i class="far fa-thumbs-down"></i>
-        <i class="fas fa-thumbs-down invisible"></i>
-        <i class="fas fa-share-alt"></i>
     </div>
-  <% }); %>
-
+    <div class="row no-gutters">
+      <div class="article-description col-12">
+        <p><%= article.description %></p>
+      </div>
+    </div>
+    <div class="row no-gutters">
+      <div class="article-social col-12">
+        <ul>
+          <!-- <li><i class="far fa-star invisible"></i></li> -->
+          <li><i class="fas fa-star  "></i></li>
+          <li><i class="fas fa-angle-up"></i></li>
+          <!-- <li><i class="fas fa-thumbs-up invisible"></i></li> -->
+          <li><i class="fas fa-angle-down"></i></li>
+          <!-- <li><i class="fas fa-thumbs-down invisible"></i></li> -->
+          <li><i class="fas fa-share-alt"></i></li>
+        </ul>
+      </div>
+    </div>
   </div>
+<% }); %>

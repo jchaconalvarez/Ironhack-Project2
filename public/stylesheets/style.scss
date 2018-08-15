@@ -12,11 +12,11 @@ $colors: (
 
 body, html {
   height: 100%;
-  font-size: 12px;
+  font-size: 14px;
 }
 
 body {
-  background-color: color(primary);
+  // background-color: color(primary);
   .bg {
     clip-path: polygon(50% 0%, 100% 0, 100% 65%, 50% 100%, 0 100%, 0 35%);
     background: color(background) ; /* fallback for old browsers */
@@ -86,19 +86,53 @@ a {
   h1 {
     text-align: center;
   }
-}
-
-.carousel-headline {
-  // background: lightcyan;
-  p {
-    font-size: 0.8em;
-    line-height: 1em;
-    font-weight: bold;
+  .carousel-headline {
+    p {
+      line-height: 1em;
+      font-weight: bold;
+    }
+  }
+  .carousel-image {
+    img {
+      max-width: 100%;
+    }
   }
 }
 
-.carousel-image {
-  img {
+//ARTICLE
+.article-container {
+  height: 100%;
+  .row {
     max-width: 100%;
+  }
+}
+
+.article-card {
+  margin-bottom: 2em;
+  box-shadow: 0 0 5px rgba(.2, .2, .2, .2);
+  .article-headline {
+    padding: 0.8em 1em 0.4em 1em;
+    p {
+      font-weight: bold;
+    }
+  }
+  .article-img {
+    max-width: 100%;
+  }
+  .article-description {
+    padding: 1em 1em 0em 1em;
+  }
+  .article-social {
+    display: flex;
+    justify-content: center;
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0 0 1em 0;;
+      li {
+        display: inline-block;
+        margin: 0 1em;
+      }
+    }
   }
 }
