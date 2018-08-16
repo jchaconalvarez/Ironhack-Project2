@@ -4,7 +4,7 @@ body, html {
   font-size: 14px;
 }
 
-body .bg {
+.bg {
   clip-path: polygon(50% 0%, 100% 0, 100% 65%, 50% 100%, 0 100%, 0 35%);
   background: #FDFAF7;
   /* fallback for old browsers */
@@ -88,7 +88,8 @@ a {
 
 .article-card {
   margin-bottom: 2em;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  background: #FFF;
+  box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.2);
 }
 .article-card .article-headline {
   padding: 0.8em 1em 0.4em 1em;
@@ -121,19 +122,22 @@ a {
   left: 0;
   bottom: 0;
   width: 100%;
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.95);
+  border-top: 1px solid #DDD;
   z-index: 1;
 }
-.navbar ul {
-  list-style: none;
-  margin: 0;
+.navbar .row {
+  width: inherit;
+  display: flex;
+  justify-content: space-between;
 }
-.navbar ul li {
-  display: inline-block;
-  text-align: center;
-  margin: 0 1em;
+.navbar .navbar-element {
+  margin-top: 0.3em;
 }
-.navbar ul li a {
+.navbar .navbar-element a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-decoration: none;
   color: #555;
 }
