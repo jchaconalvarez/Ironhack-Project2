@@ -1,0 +1,21 @@
+<%- include('../partials/navBarPartial', user); %>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div>
+        <h1>Hello, <%- user.name %>!</h1>
+        <p>This is your profile page</p>
+      </div>
+
+      <div>
+        <p>Name: <%- user.name %></p>
+        <p>Email: <%- user.email %></p>
+      </div>
+      <a href="/user/edit"><button class="btn">Edit</button></a>
+    </div>
+  </div>
+<h1>Favorite articles</h1>
+</div>
+<div class="article-container">
+  <%- include('../partials/showArticles', articlesUser) %>
+</div>

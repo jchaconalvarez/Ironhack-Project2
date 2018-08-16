@@ -49,11 +49,11 @@ router.post('/signup', (req, res, next) => {
     User.findOne({ email })
       .then((user) => {
         if (user) {
-          req.flash('error', `Username ${name} exist, try login`);
+          req.flash('error', `Email ${email} exist, try login`);
           res.redirect('/auth/login');
         } else {
           hashedPassword = bcrypt.hashSync(password, bcrypt.genSaltSync(saltRounds));
-          User.create({ email, password: hashedPassword })
+          User.create({ email, password: hashedPassword, name })
             .then((newUser) => {
               req.session.currentUser = newUser.name ? newUser.name : newUser.email; // TODO: update if change profile
               req.session.usr = newUser;
