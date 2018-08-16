@@ -2,16 +2,16 @@
 <div class="container">
   <div class="row">
     <div class="col">
-      <form action="/user/edit" metod="PUT" class="form-group">
+      <form action="/user/profile" metod="PUT" class="form-group">
         <label for="name">Name:</label>
         <input name="name" type="text" value="<%- user.name %>" class="form-control">
         <label for="email">Email:</label>
         <input name="email" type="email" value="<%- user.email %>" class="form-control">
         <label for="password">Password:</label>
-        <input name="password" type="password" value="<%- user.password %>" class="form-control">
+        <input name="password" type="password" placeholder="only if you change it"  class="form-control">
         <input type="submit" class="form-contol btn">
       </form>
-      <a href="#"><button class="btn">Edit</button></a>
+      <p><a href="/user/profile" class="form-contol btn">Cancel</a></p>
     </div>
   </div>
 <h1>Favorite articles</h1>

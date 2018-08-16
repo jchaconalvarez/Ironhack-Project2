@@ -30,18 +30,19 @@ router.get('/profile', (req, res, next) => {
   res.render('user/profile', { user, articlesUser });
 });
 
-router.get('/profile/edit', (req, res, next) => {
+router.get('/edit', (req, res, next) => {
   const { usr: user } = req.session;
   const { articles: articlesUser } = req.session.usr;
 
-  res.render('user/profile/edit', { user, articlesUser });
+  res.render('user/edit', { user, articlesUser });
 });
 
-router.put('/profile/save', (req, res, next) => {
+router.put('/save', (req, res, next) => {
   const { data } = req.body;
   console.log(data);
   Users.findByIdAndUpdate(req.session.usr.id, data)
     .then((element) => {
+      console.log(element)
       req.session.usr = element;
       const { usr: user } = req.session;
       const { articles: articlesUser } = req.session.usr;
