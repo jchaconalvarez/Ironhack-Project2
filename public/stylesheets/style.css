@@ -116,4 +116,26 @@ a {
   margin: 0 1em;
 }
 
+.navbar {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.9);
+  z-index: 1;
+}
+.navbar ul {
+  list-style: none;
+  margin: 0;
+}
+.navbar ul li {
+  display: inline-block;
+  text-align: center;
+  margin: 0 1.6em;
+}
+.navbar ul li a {
+  text-decoration: none;
+  color: #555;
+}
+
 /*# sourceMappingURL=style.css.map */
