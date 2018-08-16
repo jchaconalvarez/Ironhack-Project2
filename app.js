@@ -20,8 +20,9 @@ const authRouter = require('./routes/auth');
 const articlesRouter = require('./routes/articles');
 
 // middlewares
-const authMiddlewares = require('./middleware/auth.js');
+const authMiddlewares = require('./middleware/auth');
 const queriesMiddlewares = require('./middleware/queries');
+const msgMiddlewares = require('./middleware/messages');
 
 const app = express();
 
@@ -47,7 +48,7 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(flash());
+app.use(flash(), msgMiddlewares.notifications);
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);

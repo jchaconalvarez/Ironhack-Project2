@@ -16,11 +16,12 @@ router.get('/home', (req, res, next) => {
   const numCountries = req.session.usr.countries.length;
   const user = req.session.usr;
 
-  newsapi.v2.topHeadlines({ language: req.session.usr.languages })
+  // newsapi.v2.topHeadlines({ language: req.session.usr.languages })
+  Articles.find()
     .then((topHeadlines) => {
-      const { articles: articlesCarousel } = topHeadlines;
-      const { articles: articlesUser } = req.session.usr;
-      res.render('user/home', { user, articlesCarousel, articlesUser });
+      const articlesCarousel  = topHeadlines;// const { articles: articlesCarousel } = topHeadlines;
+      const  articlesUser = topHeadlines; // req.session.usr;
+      res.render('user/home', { articlesCarousel, articlesUser });
     })
     .catch(next);
 });
