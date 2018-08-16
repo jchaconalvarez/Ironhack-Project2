@@ -17,7 +17,23 @@ let serverStatus = String;
 
 mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true });
 
-const wait = ms => new Promise(timer => setInterval(timer, ms));
+const wait = ms => new Promise(timer => setTimeout(timer, ms));
+
+const queriesService = (ms, arrayOfLanguages) => new Promise((resolve, reject) => {
+  setInterval(() => {
+    const promises = [];
+    arrayOfLanguages.forEach((language, index) => {
+      promises.push(switchAPIKey
+        ? newsapi1.v2.topHeadlines({ language })
+        : newsapi2.v2.topHeadlines({ language }));
+      console.log(`${switchAPIKey ? 'API1' : 'API2'} HeadLines->${index}`);
+    });
+    switchAPIKey = !switchAPIKey;
+    Promise.all(promises)
+      .then(queryReasult => resolve(queryReasult))
+      .catch(error => reject(error));
+  }, ms);
+});
 
 app.get('/start', (req, res, next) => {
   queryService('start');
@@ -32,34 +48,21 @@ app.get('/start', (req, res, next) => {
 
 app.listen(process.env.PORT_MICROSERVICE_APINEWS, () => {
   console.log('server listening at localhost port 3003');
-  console.log(__dirname);
 });
 
-function queryService(status) {
+const queryService = (status) => {
   switch (status) {
     case 'start':
-      wait(process.env.TIME_MICROSERVICE)
-        .then(() => {
-          const promises = [];
-          languages.forEach((language, index) => {
-            if (switchAPIKey) {
-              promises.push(newsapi1.v2.topHeadlines({ language }));
-              console.log(`API1 HeadLines->${index}`);
-            } else {
-              promises.push(newsapi2.v2.topHeadlines({ language }));
-              console.log(`API2 HeadLines->${index}`);
-            }
-          });
-          switchAPIKey = !switchAPIKey;
-          return Promise.all(promises);
-        })
+      queriesService(process.env.TIME_MICROSERVICE, languages)
         .then((topHeadlinesArray) => {
           topHeadlinesArray.forEach((topHeadlines, index) => {
             console.log(`article ->${index}`);
-            const { articles } = topHeadlines;
+            const { articles  } = topHeadlines;
             articles.forEach((article) => {
               ArticlesMSRV.findOne(article)
-                .then((match) => { if (!match)  ArticlesMSRV.create(article); });
+                .then((match) => {
+                  if (!match) ArticlesMSRV.create(article);
+                });
             });
           });
         })
@@ -70,9 +73,9 @@ function queryService(status) {
       serverStatus = 'queries service started';
       break;
     case 'stop':
-      clearInterval(wait);
+      clearInterval(queriesService);
       serverStatus = 'queries service stopped';
       break;
     default:
   }
-}
+};
