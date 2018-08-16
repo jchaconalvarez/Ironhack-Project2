@@ -131,7 +131,7 @@ a {
 .navbar ul li {
   display: inline-block;
   text-align: center;
-  margin: 0 1.6em;
+  margin: 0 1em;
 }
 .navbar ul li a {
   text-decoration: none;

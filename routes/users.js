@@ -21,18 +21,16 @@ router.get('/home', (req, res, next) => {
     .then((topHeadlines) => {
       const articlesCarousel  = topHeadlines;// const { articles: articlesCarousel } = topHeadlines;
       const  articlesUser = topHeadlines; // req.session.usr;
-      res.render('user/home', { articlesCarousel, articlesUser });
+      res.render('user/home', { articlesCarousel, articlesUser, user });
     })
     .catch(next);
 });
 
 router.get('/edit', (req, res, next) => {
-  const msg = {
-    error: req.flash('error'),
-    msg:'Edit Profile',
-    user: req.session.usr,
-  };
-  res.render('user/edit', msg);
+  const { usr: user } = req.session;
+  const { articles: articlesUser } = req.session.usr;
+
+  res.render('user/edit', { user, articlesUser });
 });
 
 router.put('/save', (req, res, next) => {
