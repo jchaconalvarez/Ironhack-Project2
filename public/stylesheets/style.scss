@@ -143,7 +143,7 @@ a {
   left: 0;
   bottom: 0;
   width: 100%;
-  background: oldlace;
+  background: rgba(255, 255, 255, 0.9);
   z-index: 1;
   ul {
     list-style: none;
@@ -151,7 +151,11 @@ a {
     li {
       display: inline-block;
       text-align: center;
-      margin: 0 1em;
+      margin: 0 1.6em;
+      a {
+        text-decoration: none;
+        color: #555;
+      }
     }
   }
 }
