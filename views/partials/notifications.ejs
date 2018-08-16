@@ -1,25 +1,30 @@
-<% infoMessages && infoMessages.forEach((message) => { %>
+notifications
+<% if(locals.messages) { %>
+    <div class="alert alert-info"><%= locals.messages %></div>
+  <% } %>
+
+<% locals.infoMessages && locals.infoMessages.forEach((message) => { %>
   <div class="alert alert-info">
-    <%- message %>
+    <%= message %>
   </div>
-  <% })
-dangerMessages && dangerMessages.forEach((message) => { %>
-    <div class="alert alert-danger">
-      <%- message %>
-    </div>
-    <% })
-errorMessages && errorMessages.forEach((message) => { %>
-      <div class="alert alert-danger">
-        <%- message %>
-      </div>
-      <% })
-successMessages && successMessages.forEach((message) => { %>
-        <div class="alert alert-success">
-          <%- message %>
-        </div>
-        <% })
-warningMessages && warningMessages.forEach((message) => { %>
-          <div class="alert alert-warning">
-            <%- message %>
-          </div>
-          <% }) %>
+  <% }) %>
+<% locals.dangerMessages && locals.dangerMessages.forEach((message) => { %>
+<div class="alert alert-danger">
+<%= message %>
+</div>
+<% }) %>
+<% locals.errorMessages && locals.errorMessages.forEach((message) => { %>
+<div class="alert alert-danger">
+<%= message %>
+</div>
+<% }) %>
+<% locals.successMessages && locals.successMessages.forEach((message) => { %>
+<div class="alert alert-success">
+<%- message %>
+</div>
+<% }) %>
+<% locals.warningMessages && locals.warningMessages.forEach((message) => { %>
+<div class="alert alert-warning">
+<%- message %>
+</div>
+<% }) %>
