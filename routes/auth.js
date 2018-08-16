@@ -65,7 +65,7 @@ router.post('/signup', (req, res, next) => {
   }
 });
 
-router.post('/logout', (req, res) => {
+router.get('/logout', (req, res) => {
   delete req.session.currentUser;
   delete req.session.user;
   delete req.session.news;
