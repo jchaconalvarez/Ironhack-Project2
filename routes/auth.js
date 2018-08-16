@@ -10,27 +10,24 @@ router.get('/', (req, res, next) => {
 });
 
 router.get('/login', (req, res) => {
-  const msg = { error: req.flash('error') };
-  res.render('auth/login', { title: 'login', msg });
+  res.render('auth/login');
 });
 router.post('/login', (req, res, next) => {
   const { email, password } = req.body;
 
   if (!email || !password) {
     req.flash('error', 'email and password are required');
-    res.redirect('auth/login');
+    res.redirect('/auth/login');
   } else {
     User.findOne({ email })
       .then((user) => {
         if (user && bcrypt.compareSync(password, user.password)) {
           req.session.currentUser = user.name ? user.name : user.email; // TODO: update if change profile
           req.session.usr = user;
-          // console.log(req.session);
-
           res.redirect('/user/home');
         } else {
           req.flash('error', 'Username or Password incorrect');
-          res.redirect('auth/login');
+          res.redirect('/auth/login');
         }
       })
       .catch(next);
@@ -38,9 +35,9 @@ router.post('/login', (req, res, next) => {
 });
 
 router.get('/signup', (req, res, next) => {
-  const msg = { error: req.flash('error') };
+ // const msg = { error: req.flash('error') };
 
-  res.render('auth/signup', msg);
+  res.render('auth/signup');
 });
 router.post('/signup', (req, res, next) => {
   const { email, password, name } = req.body;

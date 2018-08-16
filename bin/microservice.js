@@ -30,7 +30,7 @@ const queriesService = (ms, arrayOfLanguages) => new Promise((resolve, reject) =
     });
     switchAPIKey = !switchAPIKey;
     Promise.all(promises)
-      .then(queryReasult => resolve(queryReasult))
+      .then(queryResult => resolve(queryResult))
       .catch(error => reject(error));
   }, ms);
 });
@@ -66,10 +66,7 @@ const queryService = (status) => {
             });
           });
         })
-        .catch((error) => {
-          console.log(error);
-          next(error);
-        });
+        .catch(next);
       serverStatus = 'queries service started';
       break;
     case 'stop':

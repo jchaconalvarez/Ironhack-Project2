@@ -26,6 +26,8 @@ const msgMiddlewares = require('./middleware/messages');
 
 const app = express();
 
+app.use(express.static(path.join(__dirname, 'public')));
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -38,7 +40,7 @@ app.use(expressLayouts);
 
 app.use(session({
   secret: process.env.MONGOSESSION_SECRET,
-  cookie: { maxAge: 60000 },
+  cookie: { maxAge: 900000 },
   store: new MongoStore({
     mongooseConnection: mongoose.connection,
     ttl: 24 * 60 * 60,
@@ -48,19 +50,27 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(flash(), msgMiddlewares.notifications);
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(flash());
+app.use(msgMiddlewares.notifications);
 
 app.use('/', indexRouter);
 app.use('/auth', authRouter);
 app.use('/user', authMiddlewares.checkSession,
   queriesMiddlewares.queryCurrentUserRelations,
   usersRouter);
-app.use('/articles', authMiddlewares.checkSession, articlesRouter);
+app.use('/articles', authMiddlewares.checkSession,
+  articlesRouter);
 
-// catch 404 and forward to error handler
+// catch 404 and go to error page
 app.use((req, res, next) => {
-  next(createError(404));
+  // next(createError(404));
+  res.status(404).sendfile('public/error/HTTP404.html');
+});
+
+// catch 500 and go to error page
+app.use((req, res, next) => {
+  // next(createError(500));
+  res.status(500).sendFile('public/error/HTTP500.html');
 });
 
 // error handler
