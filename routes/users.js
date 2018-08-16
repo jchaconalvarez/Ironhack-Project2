@@ -23,28 +23,32 @@ router.get('/home', (req, res, next) => {
     .catch(next);
 });
 
-router.get('/edit', (req, res, next) => {
+router.get('/profile', (req, res, next) => {
   const { usr: user } = req.session;
   const { articles: articlesUser } = req.session.usr;
 
-  res.render('user/edit', { user, articlesUser });
+  res.render('user/profile', { user, articlesUser });
 });
 
-router.put('/save', (req, res, next) => {
+router.get('/profile/edit', (req, res, next) => {
+  const { usr: user } = req.session;
+  const { articles: articlesUser } = req.session.usr;
+
+  res.render('user/profile/edit', { user, articlesUser });
+});
+
+router.put('/profile/save', (req, res, next) => {
   const { data } = req.body;
   console.log(data);
-  Users.findByIdAndUpdate(req.session.usr._id, data)
-    .then(() => {
-      const msg = { error: req.flash('error'), msg:'Profile updated' };
+  Users.findByIdAndUpdate(req.session.usr.id, data)
+    .then((element) => {
+      req.session.usr = element;
+      const { usr: user } = req.session;
+      const { articles: articlesUser } = req.session.usr;
+
+      res.render('user/profile', { user, articlesUser });
     })
     .catch(next);
-  res.render('user/edit', msg);
 });
 
 module.exports = router;
-
-// function extendNews(originalJSON, newJson) {
-//   for (let key in newJson)
-//     if (newJson.hasOwnProperty(key)) originalJSON[key] = newJson[key];
-//   return originalJSON;
-// }
