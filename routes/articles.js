@@ -10,7 +10,7 @@ router.get('/', (req, res, next) => {
   res.redirect('/user/home');
 });
 router.get('/new', (req, res, next) => {
-  res.render('/articles/new');
+  res.render('/articles/new', req.session.usr);
 });
 // CRUD
 // Create
