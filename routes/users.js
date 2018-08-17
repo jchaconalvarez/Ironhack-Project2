@@ -19,8 +19,8 @@ router.get('/home', (req, res, next) => {
 
   Articles.find()
     .then((topHeadlines) => {
-      const articlesCarousel  = topHeadlines;
-      const  articlesUser = topHeadlines;
+      const articlesCarousel = topHeadlines;// const { articles: articlesCarousel } = topHeadlines;
+      const articlesUser = topHeadlines; // req.session.usr;
       res.render('user/home', { articlesCarousel, articlesUser, user });
     })
     .catch(next);

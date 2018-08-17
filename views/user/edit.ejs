@@ -2,6 +2,10 @@
 <div class="container">
   <div class="row">
     <div class="col">
+<<<<<<< HEAD
+=======
+      <h1>Edit profile</h1>
+>>>>>>> javidev
       <form action="/user/save" method="POST" class="form-group">
         <label for="name">Name:</label>
         <input name="name" type="text" value="<%- user.name %>" class="form-control">
@@ -11,11 +15,14 @@
         <input name="password" type="password" placeholder="only be saved if you change it"  class="form-control">
         <input type="submit" class="form-contol btn">
       </form>
+<<<<<<< HEAD
       <p><a href="/user/profile" class="form-contol btn">Cancel</a></p>
+=======
+>>>>>>> javidev
     </div>
   </div>
-<h1>Favorite articles</h1>
 </div>
+<h1>Favorite articles</h1>
 <div class="article-container">
   <%- include('../partials/showArticles', articlesUser) %>
 </div>
