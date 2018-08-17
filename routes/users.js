@@ -20,10 +20,17 @@ router.get('/home', (req, res, next) => {
   Articles.find()
     .then((topHeadlines) => {
       const articlesCarousel  = topHeadlines;// const { articles: articlesCarousel } = topHeadlines;
-      const  articlesUser = topHeadlines; // req.session.usr;
+      const articlesUser = topHeadlines; // req.session.usr;
       res.render('user/home', { articlesCarousel, articlesUser, user });
     })
     .catch(next);
+});
+
+router.get('/profile', (req, res, next) => {
+  const { usr: user } = req.session;
+  const { articles: articlesUser } = req.session.usr;
+
+  res.render('user/profile', { user, articlesUser });
 });
 
 router.get('/edit', (req, res, next) => {
@@ -33,15 +40,14 @@ router.get('/edit', (req, res, next) => {
   res.render('user/edit', { user, articlesUser });
 });
 
-router.put('/save', (req, res, next) => {
+router.post('/save', (req, res, next) => {
   const { data } = req.body;
   console.log(data);
   Users.findByIdAndUpdate(req.session.usr._id, data)
     .then(() => {
-      const msg = { error: req.flash('error'), msg:'Profile updated' };
+      res.render('user/profile');
     })
     .catch(next);
-  res.render('user/edit', msg);
 });
 
 module.exports = router;

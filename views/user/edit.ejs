@@ -2,7 +2,8 @@
 <div class="container">
   <div class="row">
     <div class="col">
-      <form action="/user/edit" metod="PUT" class="form-group">
+      <h1>Edit profile</h1>
+      <form action="/user/save" method="POST" class="form-group">
         <label for="name">Name:</label>
         <input name="name" type="text" value="<%- user.name %>" class="form-control">
         <label for="email">Email:</label>
@@ -11,11 +12,10 @@
         <input name="password" type="password" value="<%- user.password %>" class="form-control">
         <input type="submit" class="form-contol btn">
       </form>
-      <a href="#"><button class="btn">Edit</button></a>
     </div>
   </div>
-<h1>Favorite articles</h1>
 </div>
+<h1>Favorite articles</h1>
 <div class="article-container">
   <%- include('../partials/showArticles', articlesUser) %>
 </div>
