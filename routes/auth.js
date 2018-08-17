@@ -12,6 +12,7 @@ router.get('/', (req, res, next) => {
 router.get('/login', (req, res) => {
   res.render('auth/login');
 });
+
 router.post('/login', (req, res, next) => {
   const { email, password } = req.body;
 
@@ -35,10 +36,9 @@ router.post('/login', (req, res, next) => {
 });
 
 router.get('/signup', (req, res, next) => {
- // const msg = { error: req.flash('error') };
-
   res.render('auth/signup');
 });
+
 router.post('/signup', (req, res, next) => {
   const { email, password, name } = req.body;
 

@@ -1,11 +1,14 @@
 const express = require('express');
 const NewsAPI = require('newsapi');
+const bcrypt = require('bcrypt');
 const Users = require('../models/user');
 const Articles = require('../models/article');
 
 const newsapi = new NewsAPI('da5125e659e04c93929fa448a270da80');
 
 const router = express.Router();
+const saltRounds = 10;
+
 /* GET users listing. */
 router.get('/', (req, res, next) => {
   res.redirect('/user/home');
@@ -37,17 +40,30 @@ router.get('/edit', (req, res, next) => {
   res.render('user/edit', { user, articlesUser });
 });
 
-router.put('/save', (req, res, next) => {
-  const { data } = req.body;
-  console.log(data);
-  Users.findByIdAndUpdate(req.session.usr.id, data)
-    .then((element) => {
-      console.log(element)
-      req.session.usr = element;
-      const { usr: user } = req.session;
-      const { articles: articlesUser } = req.session.usr;
+router.post('/save', (req, res, next) => {
+  const { name, email, password } = req.body;
 
-      res.render('user/profile', { user, articlesUser });
+  hashedPassword = bcrypt.hashSync(password, bcrypt.genSaltSync(saltRounds));
+  const newDataOfUserPassword = { name, email, password : hashedPassword };
+  const newDataOfUser = { name, email };
+
+  console.log(newDataOfUser);
+
+  Users.findByIdAndUpdate(req.session.usr.id, password ? newDataOfUserPassword : newDataOfUser)
+    .then(() => {
+      Users.findOne({ email })
+        .populate('articles')
+        .populate('users')
+        .then((updatedUser) => {
+          console.log(updatedUser);
+          req.session.currentUser = updatedUser.user;
+          req.session.usr = updatedUser;
+
+          const { usr: user } = req.session;
+          const { articles: articlesUser } = req.session.usr;
+          res.render('user/profile', { user, articlesUser });
+        })
+        .catch(next);
     })
     .catch(next);
 });
