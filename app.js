@@ -40,7 +40,7 @@ app.use(expressLayouts);
 
 app.use(session({
   secret: process.env.MONGOSESSION_SECRET,
-  cookie: { maxAge: 900000 },
+  cookie: { maxAge: 180000 },
   store: new MongoStore({
     mongooseConnection: mongoose.connection,
     ttl: 24 * 60 * 60,
