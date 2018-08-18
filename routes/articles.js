@@ -38,22 +38,9 @@ router.post('/new', (req, res, next) => {
     .catch(next);
 });
 
-// Read OK
-router.get('/:id', (req, res, next) => {
-  const { id } = req.params;
-  const { usr : user } = req.session;
-
-  Articles.findById(id)
-    .then((article) => {
-      console.log(article);
-
-      res.render('articles/view', { article, user });
-    })
-    .catch(next);
-});
 
 // Update
-router.get('/:id/save', (req, res, next) => {
+router.post('/:id/save', (req, res, next) => {
   const { articleToUpdate } = req.body;
   const { _id } = req.body;
 
@@ -66,7 +53,7 @@ router.get('/:id/save', (req, res, next) => {
 });
 
 // Delete ok
-router.get('/:id/delete', (req, res, next) => {
+router.post('/:id/delete', (req, res, next) => {
   const { id } = req.params;
   Articles.findByIdAndRemove(id)
     .then((article) => {
@@ -77,22 +64,40 @@ router.get('/:id/delete', (req, res, next) => {
 });
 
 // FAVORITES
-router.get('/:id/addfav', (req, res, next) => {
+router.post('/:id/addfav', (req, res, next) => {
   const { id } = req.params;
   const { usr : user } = req.session;
+
   // TODO: addFav
   console.log(req.body);
   console.log(req.params);
   console.log(id);
 
-  res.redirect(`/article/${id}`);
+  res.redirect(`/articles/${id}`);
 });
 
 router.post('/:id/removefav', (req, res, next) => {
   const { id } = req.params;
   const { usr : user } = req.session;
   // TODO: deleteFav
-  res.redirect(`/article/${id}`);
+  res.redirect(`/articles/${id}`);
 });
+
+// Read OK
+router.get('/:id', (req, res, next) => {
+  const { id } = req.params;
+  const { usr : user } = req.session;
+
+  console.log(req.params);
+
+  Articles.findById(id)
+    .then((article) => {
+      console.log(article);
+
+      res.render('articles/view', { article, user });
+    })
+    .catch(next);
+});
+
 
 module.exports = router;
