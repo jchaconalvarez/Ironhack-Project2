@@ -5,7 +5,8 @@
   "scripts": {
     "start": "node ./bin/www",
     "dev": "nodemon ./bin/www",
-    "services": "nodemon ./bin/microservice.js"
+    "services:dev": "nodemon ./bin/microservice.js",
+    "services": "node ./bin/microservice.js"
   },
   "dependencies": {
     "axios": "^0.18.0",
