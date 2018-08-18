@@ -40,7 +40,7 @@ app.use(expressLayouts);
 
 app.use(session({
   secret: process.env.MONGOSESSION_SECRET,
-  cookie: { maxAge: 180000 },
+  cookie: { maxAge: 24 * 60 * 60 * 1000 },
   store: new MongoStore({
     mongooseConnection: mongoose.connection,
     ttl: 24 * 60 * 60,
@@ -66,8 +66,6 @@ app.use((req, res, next) => {
   // next(createError(404));
   res.status(404).sendfile('public/error/HTTP404.html');
 });
-
-// catch 500 and go to error page
 app.use((req, res, next) => {
   // next(createError(500));
   res.status(500).sendFile('public/error/HTTP500.html');
@@ -80,7 +78,7 @@ app.use((err, req, res, next) => {
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
   // render the error page
-  res.status(err.status || 500);
+  res.status(err.status );//|| 500);
   res.render('error');
 });
 

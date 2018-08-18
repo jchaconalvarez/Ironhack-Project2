@@ -1,15 +1,10 @@
 const mongoose = require('mongoose');
 
 
-const  ObjectId  = mongoose.SchemaTypes.ObjectId;
+const  { ObjectId } = mongoose.SchemaTypes;
 
 const articleSchema = new mongoose.Schema({
-  // idArticle: {
-  //   type: ObjectId,
-  //   index: true,
-  //   required: true,
-  //   auto: true,
-  // },
+  // idArticle: { type: ObjectId, index: true, required: true, auto: true, },
   source: {
     id: String,
     name: String,
@@ -41,4 +36,4 @@ const ArticleMSRV = mongoose.model('ArticleMSRV', articleSchema);
 
 
 module.exports = Article;
-module.exports = ArticleMSRV;
+// module.exports = ArticleMSRV;

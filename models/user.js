@@ -1,14 +1,9 @@
 const mongoose = require('mongoose');
 
-const  ObjectId  = mongoose.SchemaTypes.ObjectId;
+const  { ObjectId }  = mongoose.SchemaTypes;
 
 const userSchema = new mongoose.Schema({
-  // userId: {  // TODO: tenemos dos ID
-  //   type: ObjectId,
-  //   index: true,
-  //   required: true,
-  //   auto: true,
-  // },
+  // userId: { type: ObjectId, index: true, required: true, auto: true },
   name: {
     type: String,
     trim: true,

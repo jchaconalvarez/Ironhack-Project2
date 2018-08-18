@@ -1,28 +1,30 @@
-<div class="navbar">
-  <div class="row no-gutters">
-    <div class="navbar-element col">
-      <a href="/user/home">
-        <i class="far fa-newspaper fa-lg"></i>
-        <p>Headlines</p>
+<% if(locals.currentUser) { %>
+  <div class="navbar">
+    <div class="row no-gutters">
+      <div class="navbar-element col">
+        <a href="/user/home">
+          <i class="far fa-newspaper fa-lg"></i>
+          <p>Headlines</p>
+        </a>
+      </div>
+      <div class="navbar-element col">
+        <a href="/user/profile">
+          <i class="fas fa-user fa-lg"></i>
+          <p><%= currentUser %></p>
+        </a>
+      </div>
+      <div class="navbar-element col">
+      <a href="/articles/new">
+        <i class="fas fa-plus-circle"></i>
+        <p>New</p>
       </a>
     </div>
-    <div class="navbar-element col">
-      <a href="/user/profile">
-        <i class="fas fa-user fa-lg"></i>
-        <p><%= user.name %></p>
+      <div class="navbar-element col">
+      <a href="/auth/logout">
+        <i class="fas fa-sign-out-alt"></i>
+        <p>Log Out</p>
       </a>
     </div>
-    <div class="navbar-element col">
-    <a href="/articles/new">
-      <i class="fas fa-plus-circle"></i>
-      <p>New</p>
-    </a>
+    </div>
   </div>
-    <div class="navbar-element col">
-    <a href="/auth/logout">
-      <i class="fas fa-sign-out-alt"></i>
-      <p>Log Out</p>
-    </a>
-  </div>
-  </div>
-</div>
+<% } %>

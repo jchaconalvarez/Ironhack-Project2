@@ -1,0 +1,26 @@
+<div class="container-fluid">
+  <h1>art<span>i</span>cle</h1>
+  <p><%= article._id %></p>
+  <p><%= article.title %></p>
+  <a target="_blank" href=<%= article.url %> >
+    <img class="img-thumbnail img-fluid rounded p-3" src=<%= article.urlToImage %> >
+  </a>
+  <br>
+
+  <p><%= article.source.id %></p>
+  <p><%= article.source.name %></p>
+  <p><%= article.author %></p>
+  <p><%= article.title %></p>
+  <p><%= article.description %></p>
+  <p><%= article.url %></p>
+  <p><%= article.urlToImage %></p>
+  <p><%= article.publishedAt %></p>
+  <p><%= article.starred %></p>
+  <p><%= article.shared %></p>
+  <% article.comments.forEach((element) => { %>
+  <p>  <%= element._id %></p>
+  <p>  <%= element.text %></p>
+  <p>  <%= element.rating %></p>
+  <p>  <%= element.likes %></p>
+  <% }); %>
+</div>

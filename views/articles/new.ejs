@@ -1,27 +1,21 @@
+<div class="container">
+  <h1>Rem<span>e</span>mber</h1>
+  <p>Remember your favorite articles</p>
 
-
-<div class="container-fluid">
-  <h1>art<span>i</span>cles</h1>
-  <%= article.title %></p>
-  <a target="_blank" href=<%= article.url %> >
-    <img class="img-thumbnail img-fluid rounded p-3" src=<%= article.urlToImage %> >
-  </a>
-  <br>
-
-  <%= article.source.id %>
-  <%= article.source.name %>
-  <%= article.author %>
-  <%= article.title %>
-  <%= article.description %>
-  <%= article.url %>
-  <%= article.urlToImage %>
-  <%= article.publishedAt %>
-  <%= article.starred %>
-  <%= article.shared %>
-  <%= article.comment %>
-  <%= article.comment_id %>
-  <%= article.comment.user %>
-  <%= article.comment.comment.text %>
-  <%= article.rating %>
-  <%= article.comment.likes %>
+  <form  action="/articles/new" method="POST" class="form-group" >
+    <label  for="origin">Source name:</label>
+    <input class="form-control"  placeholder="Where have you seen the news?"  type="text" id="origin" name="origin" >
+    <label  for="author">Author:</label>
+    <input class="form-control"  placeholder="Who is the journalist?"  type="text" id="author" name="author">
+    <label  for="title">Title:</label>
+    <input class="form-control"  placeholder="what is its title?"  type="text" id="title" name="title" required>
+    <label  for="description">Description:</label>
+    <input class="form-control"  placeholder="what is it about?"  type="text" id="description" name="description" required>
+    <label  for="url">URL:</label>
+    <input class="form-control"  placeholder="paste the URL"  type="text" id="url" name="url" required>
+    <label  for="urlToImage">Image:</label>
+    <input class="form-control"  placeholder="What image do you want to use? Paste the URL"  type="text" id="urlToImage" name="urlToImage">
+    <input type="submit" class="form-control btn">
+    <small class="form-text text-muted">All fields are required.</small>
+  </form>
 </div>
