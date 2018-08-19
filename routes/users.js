@@ -49,21 +49,18 @@ router.post('/save', (req, res, next) => {
 
   console.log(newDataOfUser);
 
-  Users.findByIdAndUpdate(req.session.usr.id, password ? newDataOfUserPassword : newDataOfUser)
-    .then(() => {
-      Users.findOne({ email })
-        .populate('articles')
-        .populate('users')
-        .then((updatedUser) => {
-          console.log(updatedUser);
-          req.session.currentUser = updatedUser.user;
-          req.session.usr = updatedUser;
+  Users.findByIdAndUpdate(req.session.usr.id,
+    password ? newDataOfUserPassword : newDataOfUser)
+    .then(() => Users.findOne({ email })
+      .populate('articles', 'users'))
+    .then((updatedUser) => {
+      console.log(updatedUser);
+      req.session.currentUser = updatedUser.user;
+      req.session.usr = updatedUser;
 
-          const { usr: user } = req.session;
-          const { articles: articlesUser } = req.session.usr;
-          res.render('user/profile', { user, articlesUser });
-        })
-        .catch(next);
+      const { usr: user } = req.session;
+      const { articles: articlesUser } = req.session.usr;
+      res.render('user/profile', { user, articlesUser });
     })
     .catch(next);
 });

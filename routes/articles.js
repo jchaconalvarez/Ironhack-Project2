@@ -23,17 +23,21 @@ router.post('/new', (req, res, next) => {
   console.log(articleToCreate);
 
   Articles.create(articleToCreate)
-    .then((article) => {
+    .then((newArticle) => {
       console.log('newarticle---de create------------------------------');
-      console.log(article);
-      const { id } = req.session.usr;
-      const { _id : idArticle } = article;
-      return Users.findByIdAndUpdate(id, { $push: [{ articles: [{ ref: idArticle }] }] });
+      console.log(newArticle);
+      console.log(req.session.usr);
+
+      // const { _id  } = newArticle;
+      return Users.findByIdAndUpdate({ _id:req.session.usr._id },
+        { $push:  { articles: { _id:newArticle._id } } })
+        .populate('articles')
+        .populate('users');
     })
     .then((article) => {
       console.log('newarticle---de find and update------------------------------');
       console.log(article);
-      res.render('articles/article', article);
+      res.render('articles/profile', article);
     })
     .catch(next);
 });
