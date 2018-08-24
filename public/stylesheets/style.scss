@@ -110,12 +110,12 @@ a {
   box-shadow: 0 0 5px 1px rgba(.2, .2, .2, .2);
   .article-headline {
     padding: 0.8em 1em 0.4em 1em;
+    a {
+      color: #000;
+    }
     p {
       font-weight: bold;
     }
-  }
-  .article-img {
-    max-width: 100%;
   }
   .article-description {
     padding: 1em 1em 0em 1em;
@@ -132,6 +132,9 @@ a {
         margin: 0 1em;
       }
     }
+  }
+  .article-img {
+    max-width: 100%;
   }
 }
 

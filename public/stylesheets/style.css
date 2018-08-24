@@ -94,11 +94,11 @@ a {
 .article-card .article-headline {
   padding: 0.8em 1em 0.4em 1em;
 }
+.article-card .article-headline a {
+  color: #000;
+}
 .article-card .article-headline p {
   font-weight: bold;
-}
-.article-card .article-img {
-  max-width: 100%;
 }
 .article-card .article-description {
   padding: 1em 1em 0em 1em;
@@ -115,6 +115,9 @@ a {
 .article-card .article-social ul li {
   display: inline-block;
   margin: 0 1em;
+}
+.article-card .article-img {
+  max-width: 100%;
 }
 
 .navbar {
