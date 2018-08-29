@@ -1,20 +1,19 @@
 <div class="container">
-  <h1>Rem<span>e</span>mber</h1>
-  <p>Remember your favorite articles</p>
+  <h1>Subm<span>i</span>t article</h1>
 
   <form  action="/articles/new" method="POST" class="form-group" >
-    <label  for="origin">Source name:</label>
-    <input class="form-control"  placeholder="Where have you seen the news?"  type="text" id="origin" name="origin" >
-    <label  for="author">Author:</label>
-    <input class="form-control"  placeholder="Who is the journalist?"  type="text" id="author" name="author">
-    <label  for="title">Title:</label>
-    <input class="form-control"  placeholder="what is its title?"  type="text" id="title" name="title" required>
-    <label  for="description">Description:</label>
-    <input class="form-control"  placeholder="what is it about?"  type="text" id="description" name="description" required>
     <label  for="url">URL:</label>
-    <input class="form-control"  placeholder="paste the URL"  type="text" id="url" name="url" required>
+    <input class="form-control"  placeholder="URL to article"  type="text" id="url" name="url" required>
+    <label  for="title">Headline:</label>
+    <input class="form-control"  placeholder="Article headline"  type="text" id="title" name="title" required>
+    <label  for="origin">Source name:</label>
+    <input class="form-control"  placeholder="Source name"  type="text" id="origin" name="origin" >
+    <label  for="author">Author:</label>
+    <input class="form-control"  placeholder="Article author"  type="text" id="author" name="author">
+    <label  for="description">Description:</label>
+    <input class="form-control"  placeholder="Descritption"  type="text" id="description" name="description" required>
     <label  for="urlToImage">Image:</label>
-    <input class="form-control"  placeholder="What image do you want to use? Paste the URL"  type="text" id="urlToImage" name="urlToImage">
+    <input class="form-control"  placeholder="Image URL"  type="text" id="urlToImage" name="urlToImage">
     <input type="submit" class="form-control btn">
     <small class="form-text text-muted">All fields are required.</small>
   </form>
