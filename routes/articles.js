@@ -14,26 +14,51 @@ router.get('/new', (req, res, next) => {
 });
 // CRUD
 // Create
-router.post('/new', (req, res, next) => {
-  console.log('post /new');
+// router.post('/new', (req, res, next) => {
+//   console.log('post /new');
 
-  const { body : articleToCreate } = req;
-  // const articleToCreate= {source: { id: origin, name: origin }}
-  console.log('query----------------------------------');
-  console.log(articleToCreate);
+//   const { body : articleToCreate } = req;
+//   // const articleToCreate= {source: { id: origin, name: origin }}
+//   console.log('query----------------------------------');
+//   console.log(articleToCreate);
+
+//   Articles.create(articleToCreate)
+//     .then((article) => {
+//       console.log('newarticle---de create------------------------------');
+//       console.log(article);
+//       const { _id : userId } = req.session.usr;
+//       const { _id : articleId } = article;
+//       Users.findByIdAndUpdate(userId, { $push: [{ articles: [{ ref: articleId }] }] }, { new: true });
+//     })
+//     .then((user) => {
+//       console.log('newarticle---de find and update------------------------------');
+//       const artId = user.articles[user.articles.length - 1];
+//       console.log(user.articles);
+//       console.log(user.articles[user.articles.length - 1]);
+//       return Articles.findById(artId);
+//     })
+//     .then((article) => {
+//       console.log(article);
+//       // res.render(`articles/${article._id}`, article);
+//     })
+//     .catch(next);
+// });
+
+router.post('/new', (req, res, next) => {
+  const { body: articleToCreate } = req;
 
   Articles.create(articleToCreate)
     .then((article) => {
-      console.log('newarticle---de create------------------------------');
-      console.log(article);
-      const { id } = req.session.usr;
-      const { _id : idArticle } = article;
-      return Users.findByIdAndUpdate(id, { $push: [{ articles: [{ ref: idArticle }] }] });
-    })
-    .then((article) => {
-      console.log('newarticle---de find and update------------------------------');
-      console.log(article);
-      res.render('articles/article', article);
+      const { _id: userId } = req.session.usr;
+      const { _id: articleId } = article;
+      Users.findByIdAndUpdate(userId, { $push: { articles:  articleId } }, { new: true })
+        .then((user) => {
+          const artId = user.articles[user.articles.length - 1];
+          Articles.findById(artId)
+            .then((article) => {
+              res.redirect(`/articles/${article._id}`);
+            });
+        });
     })
     .catch(next);
 });

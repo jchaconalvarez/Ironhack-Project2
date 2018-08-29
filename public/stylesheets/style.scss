@@ -38,7 +38,8 @@ a {
   color: color(primary);
 }
 
-.container {
+//INDEX
+.index-container {
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -162,4 +163,12 @@ a {
   }
 }
 
-//ARTICLE
+//PROFILE
+.profile-container {
+  display: flex;
+  flex-direction: column;
+  padding: 1em;
+  // h1 {
+  //   text-align: center;
+  // }
+}

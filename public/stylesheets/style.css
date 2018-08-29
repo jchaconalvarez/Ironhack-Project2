@@ -30,7 +30,7 @@ a {
   color: #FF3A3A;
 }
 
-.container {
+.index-container {
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -141,6 +141,12 @@ a {
   align-items: center;
   text-decoration: none;
   color: #555;
+}
+
+.profile-container {
+  display: flex;
+  flex-direction: column;
+  padding: 1em;
 }
 
 /*# sourceMappingURL=style.css.map */
