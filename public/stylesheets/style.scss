@@ -96,7 +96,7 @@ a {
   }
 }
 
-//ARTICLE
+//SHOW ARTICLES
 .article-container {
   height: 100%;
   .row {
@@ -110,12 +110,9 @@ a {
   box-shadow: 0 0 5px 1px rgba(.2, .2, .2, .2);
   .article-headline {
     padding: 0.8em 1em 0.4em 1em;
-    p {
-      font-weight: bold;
+    a {
+      color: #000;
     }
-  }
-  .article-img {
-    max-width: 100%;
   }
   .article-description {
     padding: 1em 1em 0em 1em;
@@ -133,6 +130,10 @@ a {
       }
     }
   }
+}
+
+.article-img {
+  max-width: 100%;
 }
 
 //NAVBAR
@@ -160,3 +161,5 @@ a {
     }
   }
 }
+
+//ARTICLE
