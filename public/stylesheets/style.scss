@@ -38,7 +38,8 @@ a {
   color: color(primary);
 }
 
-.container {
+//INDEX
+.index-container {
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -96,7 +97,7 @@ a {
   }
 }
 
-//ARTICLE
+//SHOW ARTICLES
 .article-container {
   height: 100%;
   .row {
@@ -112,9 +113,6 @@ a {
     padding: 0.8em 1em 0.4em 1em;
     a {
       color: #000;
-    }
-    p {
-      font-weight: bold;
     }
   }
   .article-description {
@@ -136,6 +134,10 @@ a {
   .article-img {
     max-width: 100%;
   }
+}
+
+.article-img {
+  max-width: 100%;
 }
 
 //NAVBAR
@@ -162,4 +164,14 @@ a {
       color: #555;
     }
   }
+}
+
+//PROFILE
+.profile-container {
+  display: flex;
+  flex-direction: column;
+  padding: 1em;
+  // h1 {
+  //   text-align: center;
+  // }
 }

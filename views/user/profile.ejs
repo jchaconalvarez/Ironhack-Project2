@@ -1,20 +1,19 @@
-<div class="container">
+<div class="profile-container">
+    <h1>Pr<span>o</span>file</h1>
   <div class="row">
     <div class="col">
-      <div>
-        <h1>Hello, <%- user.name %>!</h1>
-        <p>This is your profile page</p>
-      </div>
-
-      <div>
-        <p>Name: <%- user.name %></p>
-        <p>Email: <%- user.email %></p>
-      </div>
+      <p>Name: <%- user.name %></p>
+      <p>Email: <%- user.email %></p>
+    </div>
+    <div class="col">
       <a href="/user/edit"><button class="btn">Edit</button></a>
     </div>
   </div>
+  <div class="row">
+  </div>
+  <h1>Favorite articles</h1>
 </div>
-<h1>Favorite articles</h1>
+
 <div class="article-container">
   <%- include('../partials/showArticles', articlesUser) %>
 </div>
