@@ -50,7 +50,7 @@ router.post('/:id/save', (req, res, next) => {
 router.post('/:id/delete', (req, res, next) => {
   const { id } = req.params;
   Articles.findByIdAndRemove(id)
-    .then((article) => {
+    .then(() => {
       req.flash('success', 'Article removed');
       res.redirect('/user/profile');
     })
@@ -60,20 +60,25 @@ router.post('/:id/delete', (req, res, next) => {
 // FAVORITES
 router.post('/:id/addfav', (req, res, next) => {
   const { id } = req.params;
-  const { _id : userId } = req.session.usr;
+  const user = req.session.usr;
 
-  Users.findByIdAndUpdate(userId, { $push: { favorites: id } })
+  const checkIfFavorite = (article) => {
+    return article._id === id;
+  };
+
+  const updateFavorites = new Promise((resolve, reject) => {
+    if (user.favorites.some(checkIfFavorite)) {
+      resolve(Users.findByIdAndUpdate(user._id, { $pull: { favorites: id } }));
+    } else {
+      resolve(Users.findByIdAndUpdate(user._id, { $push: { favorites: id } }));
+    }
+  });
+
+  updateFavorites
     .then(() => {
       res.redirect('/user/home');
     })
     .catch(next);
-});
-
-router.post('/:id/removefav', (req, res, next) => {
-  const { id } = req.params;
-  const { usr : user } = req.session;
-  // TODO: deleteFav
-  res.redirect(`/articles/${id}`);
 });
 
 // Read OK
