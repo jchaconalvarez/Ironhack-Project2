@@ -32,6 +32,7 @@ const userSchema = new mongoose.Schema({
     default: 'en',
   }],
   articles: [{ type : ObjectId, ref: 'Article' }],
+  favorites: [{ type: ObjectId, ref: 'Article' }],
   following: [{ type : ObjectId, ref: 'User' }],
 });
 

@@ -14,36 +14,6 @@ router.get('/new', (req, res, next) => {
 });
 // CRUD
 // Create
-// router.post('/new', (req, res, next) => {
-//   console.log('post /new');
-
-//   const { body : articleToCreate } = req;
-//   // const articleToCreate= {source: { id: origin, name: origin }}
-//   console.log('query----------------------------------');
-//   console.log(articleToCreate);
-
-//   Articles.create(articleToCreate)
-//     .then((article) => {
-//       console.log('newarticle---de create------------------------------');
-//       console.log(article);
-//       const { _id : userId } = req.session.usr;
-//       const { _id : articleId } = article;
-//       Users.findByIdAndUpdate(userId, { $push: [{ articles: [{ ref: articleId }] }] }, { new: true });
-//     })
-//     .then((user) => {
-//       console.log('newarticle---de find and update------------------------------');
-//       const artId = user.articles[user.articles.length - 1];
-//       console.log(user.articles);
-//       console.log(user.articles[user.articles.length - 1]);
-//       return Articles.findById(artId);
-//     })
-//     .then((article) => {
-//       console.log(article);
-//       // res.render(`articles/${article._id}`, article);
-//     })
-//     .catch(next);
-// });
-
 router.post('/new', (req, res, next) => {
   const { body: articleToCreate } = req;
 
@@ -51,7 +21,7 @@ router.post('/new', (req, res, next) => {
     .then((article) => {
       const { _id: userId } = req.session.usr;
       const { _id: articleId } = article;
-      Users.findByIdAndUpdate(userId, { $push: { articles:  articleId } }, { new: true })
+      Users.findByIdAndUpdate(userId, { $push: { articles: articleId } }, { new: true })
         .then((user) => {
           const artId = user.articles[user.articles.length - 1];
           Articles.findById(artId)
@@ -62,7 +32,6 @@ router.post('/new', (req, res, next) => {
     })
     .catch(next);
 });
-
 
 // Update
 router.post('/:id/save', (req, res, next) => {
@@ -91,14 +60,13 @@ router.post('/:id/delete', (req, res, next) => {
 // FAVORITES
 router.post('/:id/addfav', (req, res, next) => {
   const { id } = req.params;
-  const { usr : user } = req.session;
+  const { _id : userId } = req.session.usr;
 
-  // TODO: addFav
-  console.log(req.body);
-  console.log(req.params);
-  console.log(id);
-
-  res.redirect(`/articles/${id}`);
+  Users.findByIdAndUpdate(userId, { $push: { favorites: id } })
+    .then(() => {
+      res.redirect('/user/home');
+    })
+    .catch(next);
 });
 
 router.post('/:id/removefav', (req, res, next) => {

@@ -20,24 +20,24 @@ router.get('/home', (req, res, next) => {
   Articles.find()
     .then((topHeadlines) => {
       const articlesCarousel = topHeadlines;// const { articles: articlesCarousel } = topHeadlines;
-      const articlesUser = topHeadlines; // req.session.usr;
-      res.render('user/home', { articlesCarousel, articlesUser, user });
+      const articles = topHeadlines; // req.session.usr;
+      res.render('user/home', { articlesCarousel, articles, user });
     })
     .catch(next);
 });
 
 router.get('/profile', (req, res, next) => {
   const { usr: user } = req.session;
-  const { articles: articlesUser } = req.session.usr;
+  const { favorites: articles } = req.session.usr;
 
-  res.render('user/profile', { user, articlesUser });
+  res.render('user/profile', { user, articles });
 });
 
 router.get('/edit', (req, res, next) => {
   const { usr: user } = req.session;
-  const { articles: articlesUser } = req.session.usr;
+  const { favorites: articles } = req.session.usr;
 
-  res.render('user/edit', { user, articlesUser });
+  res.render('user/edit', { user, articles });
 });
 
 router.post('/save', (req, res, next) => {
@@ -60,8 +60,8 @@ router.post('/save', (req, res, next) => {
           req.session.usr = updatedUser;
 
           const { usr: user } = req.session;
-          const { articles: articlesUser } = req.session.usr;
-          res.render('user/profile', { user, articlesUser });
+          const { articles: articles } = req.session.usr;
+          res.render('user/profile', { user, articles });
         })
         .catch(next);
     })
