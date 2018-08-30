@@ -25,7 +25,7 @@ const articleSchema = new mongoose.Schema({
     text: String,
     rating: Number,
     likes: Number,
-    unlikes: Number,
+    dislikes: Number,
     shared: Number,
   }],
 

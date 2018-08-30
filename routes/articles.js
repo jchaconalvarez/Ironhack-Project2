@@ -12,6 +12,7 @@ router.get('/new', (req, res, next) => {
   const { usr: user } = req.session;
   res.render('articles/new', { user });
 });
+
 // CRUD
 // Create
 router.post('/new', (req, res, next) => {
@@ -39,7 +40,7 @@ router.post('/:id/save', (req, res, next) => {
   const { _id } = req.body;
 
   Articles.findByIdAndUpdate(_id, articleToUpdate)
-    .then((article) => {
+    .then(() => {
       req.flash('success', 'Article updated');
       res.redirect(`/article/${id}`);
     })
@@ -97,5 +98,25 @@ router.get('/:id', (req, res, next) => {
     .catch(next);
 });
 
+// LIKES
+router.get('/:id/like', (req, res, next) => {
+  const { id } = req.params;
+
+  Articles.findByIdAndUpdate(id, { $inc: { likes: 1 } })
+    .then(() => {
+      res.redirect('/user/home');
+    })
+    .catch(next);
+});
+
+router.get('/:id/dislike', (req, res, next) => {
+  const { id } = req.params;
+
+  Articles.findByIdAndUpdate(id, { $inc: { likes: -1 } })
+    .then(() => {
+      res.redirect('/user/home');
+    })
+    .catch(next);
+});
 
 module.exports = router;
