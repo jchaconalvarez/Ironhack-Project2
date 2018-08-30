@@ -36,15 +36,16 @@
             </form>
           </li>
           <li>
-            <form name="like" action="#" method="get">
+            <form name="like" action="/articles/<%= article._id %>/like" method="get">
               <button type="submit" class="border-0 bg-transparent m-0 p-0">
                 <i class="fas fa-angle-up"></i>
                 <!-- <i class="fas fa-thumbs-up invisible"></i> -->
               </button>
+              <span><%= article.likes %></span>
             </form>
           </li>
           <li>
-            <form name="dislike" action="#" method="post">
+            <form name="dislike" action="/articles/<%= article._id %>/dislike" method="get">
               <button type="submit" class="border-0 bg-transparent m-0 p-0">
                 <i class="fas fa-angle-down"></i>
                 <!-- <i class="fas fa-thumbs-down invisible"></i> -->
