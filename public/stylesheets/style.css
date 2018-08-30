@@ -80,7 +80,7 @@ a {
 }
 
 .article-container {
-  height: 100%;
+  margin-bottom: 5em;
 }
 .article-container .row {
   max-width: 100%;
