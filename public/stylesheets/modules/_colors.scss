@@ -4,7 +4,8 @@ $colors: (
   highlight: lighten(#FF3A3A, 10%),
   muted: #AAA,
   whiteish: #DDD,
-  blackish: #222
+  blackish: #222,
+  navbar-background: #FFFFFFF0
 );
 
 @function color($color-name) {
