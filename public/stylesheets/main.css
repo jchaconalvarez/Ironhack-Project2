@@ -31,6 +31,21 @@ h1 span {
   color: #FF3A3A;
 }
 
+.btn {
+  justify-self: center;
+  margin-top: 1em;
+  font-size: inherit;
+  padding: 0.4em 1.5em;
+  background-color: transparent;
+  border: 1px solid #222;
+  border-radius: 3px;
+}
+.btn:hover {
+  background-color: #FF3A3A;
+  border: 1px solid #DDD;
+  color: #FFF;
+}
+
 .auth-wrapper {
   height: 100%;
   display: grid;
@@ -71,20 +86,6 @@ h1 span {
   border: 1px solid #AAA;
   border-radius: 3px;
   padding: 0.2em;
-}
-.auth-container form .btn {
-  justify-self: center;
-  margin-top: 1em;
-  font-size: inherit;
-  padding: 0.4em 1.5em;
-  background-color: transparent;
-  border: 1px solid #222;
-  border-radius: 3px;
-}
-.auth-container form .btn:hover {
-  background-color: #FF3A3A;
-  border: 1px solid #DDD;
-  color: #FFF;
 }
 
 /*# sourceMappingURL=main.css.map */
