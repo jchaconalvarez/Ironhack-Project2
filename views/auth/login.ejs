@@ -1,13 +1,13 @@
-<div class="index-container">
-
-  <h1>L<span>o</span>g in</h1>
-
-  <form action="/auth/login" method="POST" class="form-group">
-    <label for="email">Email:</label>
-    <input name="email" type="email" placeholder="Email" class="form-control" required>
-    <label for="password">Password:</label>
-    <input name="password" type="password" placeholder="Password" class="form-control" required>
-    <input type="submit" class="form-control btn">
-    <small class="form-text text-muted">Don't have an account? <a href="/auth/signup">Sign Up</a></small>
-  </form>
+<div class="auth-wrapper">
+  <div class="auth-container">
+    <h1>L<span>o</span>g in</h1>
+    <form action="/auth/login" method="POST">
+      <label for="email">Email:</label>
+      <input name="email" type="email" placeholder="Email" required>
+      <label for="password">Password:</label>
+      <input name="password" type="password" placeholder="Password" required>
+      <button type="submit" class="btn">Log in</button>
+    </form>
+    <p class="form-text text-muted">Don't have an account? <a href="/auth/signup">Sign Up</a></p>
+  </div>
 </div>

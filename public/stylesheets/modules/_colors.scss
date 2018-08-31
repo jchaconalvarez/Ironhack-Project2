@@ -1,0 +1,12 @@
+$colors: (
+  background: #FDFAF7,
+  primary: #FF3A3A,
+  highlight: lighten(#FF3A3A, 10%),
+  muted: #AAA,
+  whiteish: #DDD,
+  blackish: #222
+);
+
+@function color($color-name) {
+  @return map-get($colors, $color-name);
+}

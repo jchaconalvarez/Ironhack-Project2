@@ -1,0 +1,90 @@
+@import url("https://fonts.googleapis.com/css?family=Rajdhani");
+.background {
+  clip-path: polygon(50% 0%, 100% 0, 100% 65%, 50% 100%, 0 100%, 0 35%);
+  background: #FDFAF7;
+  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #FFFFFF, #FDFAF7);
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #FFFFFF, #FDFAF7);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: -1;
+}
+
+body, html {
+  margin: 0;
+  height: 100%;
+  font-size: 20px;
+  font-family: "Verdana", Verdana, Geneva, Tahoma, sans-serif;
+}
+
+img {
+  max-width: 100%;
+}
+
+h1 {
+  font-family: "Rajdhani", sans-serif;
+}
+h1 span {
+  color: #FF3A3A;
+}
+
+.auth-wrapper {
+  height: 100%;
+  display: grid;
+  grid-template-rows: auto;
+  justify-items: center;
+  align-items: center;
+}
+
+.auth-container {
+  grid-column-start: 1;
+  display: grid;
+  justify-items: center;
+  align-items: center;
+}
+.auth-container h1 {
+  font-size: 3em;
+  font-weight: 300;
+  margin: 0 0 0.8em 0;
+}
+.auth-container p {
+  font-size: 0.8em;
+  color: #AAA;
+}
+.auth-container a {
+  text-decoration: none;
+  color: #ff6d6d;
+}
+.auth-container form {
+  display: grid;
+  grid-gap: 0.4em;
+  justify-content: center;
+}
+.auth-container form label {
+  font-size: 0.8em;
+}
+.auth-container form input {
+  font-size: inherit;
+  border: 1px solid #AAA;
+  border-radius: 3px;
+  padding: 0.2em;
+}
+.auth-container form .btn {
+  justify-self: center;
+  margin-top: 1em;
+  font-size: inherit;
+  padding: 0.4em 1.5em;
+  background-color: transparent;
+  border: 1px solid #222;
+  border-radius: 3px;
+}
+.auth-container form .btn:hover {
+  background-color: #FF3A3A;
+  border: 1px solid #DDD;
+  color: #FFF;
+}
+
+/*# sourceMappingURL=main.css.map */
