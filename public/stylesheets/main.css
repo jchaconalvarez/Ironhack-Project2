@@ -54,7 +54,6 @@ a {
 .auth-wrapper {
   height: 100%;
   display: grid;
-  grid-template-rows: auto;
   justify-items: center;
   align-items: center;
 }
@@ -107,7 +106,7 @@ a {
 .navbar .navbar-item {
   margin: 0.2em 0 1em 0;
   text-align: center;
-  color: #888;
+  color: #555;
 }
 .navbar .navbar-item p {
   margin-top: 0.2em;
@@ -160,6 +159,25 @@ a {
 .article-social button {
   background: none;
   border: none;
+}
+
+.profile-wrapper {
+  height: 100%;
+  display: grid;
+  justify-items: center;
+  align-items: center;
+}
+
+.profile-container {
+  display: grid;
+  justify-items: center;
+}
+.profile-container i {
+  display: inline;
+}
+.profile-container .btn {
+  width: 12em;
+  border-radius: 5px;
 }
 
 /*# sourceMappingURL=main.css.map */

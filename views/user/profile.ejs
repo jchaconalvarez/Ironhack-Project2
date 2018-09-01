@@ -1,19 +1,12 @@
-<div class="profile-container">
-    <h1>Pr<span>o</span>file</h1>
-  <div class="row">
-    <div class="col">
-      <p>Name: <%- user.name %></p>
-      <p>Email: <%- user.email %></p>
-    </div>
-    <div class="col">
-      <a href="/user/edit"><button class="btn">Edit</button></a>
-    </div>
+<div class="profile-wrapper">
+  <div class="profile-container">
+    <h1>H<span>e</span>llo, <%- user.name %></h1>
+    <p>
+      <i class="far fa-newspaper fa-lg"></i><%- articles.length %>
+      <i class="far fa-star fa-lg"></i><%- user.favorites.length %>
+    </p>
+    <a href="/user/published"><button class="btn">Published articles</button></a>
+    <a href="/user/favorites"><button class="btn">Favorite articles</button></a>
+    <a href="/user/edit"><button class="btn">Edit profile</button></a>
   </div>
-  <div class="row">
-  </div>
-  <h1>Favorite articles</h1>
-</div>
-
-<div class="article-container">
-  <%- include('../partials/showArticles', articles) %>
 </div>

@@ -1,0 +1,18 @@
+.profile-wrapper {
+  height: 100%;
+  display: grid;
+  justify-items: center;
+  align-items: center;
+}
+
+.profile-container {
+  display: grid;
+  justify-items: center;
+  i {
+    display: inline;
+  }
+  .btn {
+    width: 12em;
+    border-radius: 5px;
+  }
+}

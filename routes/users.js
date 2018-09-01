@@ -9,7 +9,7 @@ const newsapi = new NewsAPI('da5125e659e04c93929fa448a270da80');
 const router = express.Router();
 const saltRounds = 10;
 
-/* GET users listing. */
+// USER HOME
 router.get('/', (req, res, next) => {
   res.redirect('/user/home');
 });
@@ -21,11 +21,12 @@ router.get('/home', (req, res, next) => {
     .then((topHeadlines) => {
       const articlesCarousel = topHeadlines;// const { articles: articlesCarousel } = topHeadlines;
       const articles = topHeadlines; // req.session.usr;
-      res.render('user/home', { articlesCarousel, articles, user });
+      res.render('user/home', { articles, user });
     })
     .catch(next);
 });
 
+// USER PROFILE
 router.get('/profile', (req, res, next) => {
   const { usr: user } = req.session;
   const { favorites: articles } = req.session.usr;
@@ -33,6 +34,7 @@ router.get('/profile', (req, res, next) => {
   res.render('user/profile', { user, articles });
 });
 
+// EDIT PROFILE
 router.get('/edit', (req, res, next) => {
   const { usr: user } = req.session;
   const { favorites: articles } = req.session.usr;
@@ -47,8 +49,6 @@ router.post('/save', (req, res, next) => {
   const newDataOfUserPassword = { name, email, password : hashedPassword };
   const newDataOfUser = { name, email };
 
-  console.log(newDataOfUser);
-
   Users.findByIdAndUpdate(req.session.usr.id, password ? newDataOfUserPassword : newDataOfUser)
     .then(() => {
       Users.findOne({ email })
@@ -60,12 +60,28 @@ router.post('/save', (req, res, next) => {
           req.session.usr = updatedUser;
 
           const { usr: user } = req.session;
-          const { articles: articles } = req.session.usr;
+          const { articles } = req.session.usr;
           res.render('user/profile', { user, articles });
         })
         .catch(next);
     })
     .catch(next);
+});
+
+// PUBLISHED ARTICLES
+router.get('/published', (req, res, next) => {
+  const { user } = req.session;
+  const { articles } = req.session.usr;
+
+  res.render('user/home', { user, articles });
+});
+
+// FAVORITES
+router.get('/favorites', (req, res, next) => {
+  const { user } = req.session;
+  const { favorites: articles } = req.session.usr;
+
+  res.render('user/home', { user, articles });
 });
 
 module.exports = router;
