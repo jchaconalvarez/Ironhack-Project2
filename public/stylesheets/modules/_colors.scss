@@ -5,7 +5,8 @@ $colors: (
   muted: #AAA,
   whiteish: #DDD,
   blackish: #222,
-  navbar-background: #FFFFFFF0
+  navbar-background: #FFFFFFF0,
+  navbar-item: #333
 );
 
 @function color($color-name) {

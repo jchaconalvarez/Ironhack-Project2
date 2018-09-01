@@ -107,13 +107,59 @@ a {
 .navbar .navbar-item {
   margin: 0.2em 0 1em 0;
   text-align: center;
-}
-.navbar .navbar-item i {
-  font-size: 0.2em;
+  color: #888;
 }
 .navbar .navbar-item p {
   margin-top: 0.2em;
   font-size: 0.6em;
+}
+
+.article-card {
+  display: grid;
+  grid-template-areas: "source" "headline" "image" "description" "social";
+  grid-gap: 1em;
+  margin-top: 2em;
+  box-shadow: 0 2px 5px 1px #DDD;
+}
+
+.article-source {
+  grid-area: source;
+  font-size: 0.8em;
+  margin: 1em 0 0 1em;
+}
+
+.article-headline {
+  grid-area: headline;
+  margin: 0 2em;
+}
+
+.article-img {
+  grid-area: image;
+}
+
+.article-description {
+  grid-area: description;
+  margin: 0 1.5em;
+  font-size: 0.8em;
+}
+
+.article-social {
+  grid-area: social;
+}
+.article-social li, .article-social form {
+  margin: 0;
+  padding: 0;
+}
+.article-social ul {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  justify-items: center;
+  padding: 0;
+  list-style: none;
+}
+.article-social button {
+  background: none;
+  border: none;
 }
 
 /*# sourceMappingURL=main.css.map */
