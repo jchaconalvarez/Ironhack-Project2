@@ -1,23 +1,19 @@
-<div class="container">
-  <h1>Edit profile</h1>
-  <form action="/user/save" method="POST" class="form-group">
-    <label for="name">Name:</label>
-    <input name="name" type="text" value="<%- user.name %>" class="form-control">
-    <label for="email">Email:</label>
-    <input name="email" type="email" value="<%- user.email %>" class="form-control">
-    <label for="password">Password:</label>
-    <input name="password" type="password" placeholder="Will only be saved if you change it"  class="form-control">
+<div class="profile-wrapper">
+  <div class="profile-container">
+    <h1>E<span>d</span>it profile</h1>
+    <form action="/user/save" method="POST" class="form">
+      <label for="name">Name:</label>
+      <input name="name" type="text" value="<%- user.name %>">
+      <label for="email">Email:</label>
+      <input name="email" type="email" value="<%- user.email %>">
+      <label for="password">Password:</label>
+      <input name="password" type="password">
 
-    <h3>Languages</h3>
-    <p>Languages of your interest</p>
+      <h3>Languages</h3>
 
-    <input type="checkbox" name = "de" value="de">
-    <input type="checkbox" name = "en" value="en">
-    <input type="checkbox" name = "es" value="es">
-    <input type="checkbox" name = "fr" value="fr">
-    <input type="checkbox" name = "it" value="it">
-    <input type="checkbox" name = "pt" value="pt">
+      <%- include('../partials/languagesPartial') %>
 
-    <input type="submit" class="form-contol btn">
-  </form>
+      <button type="submit" class="btn">Edit</button>
+    </form>
+  </div>
 </div>

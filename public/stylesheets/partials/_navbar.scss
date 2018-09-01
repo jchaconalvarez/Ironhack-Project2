@@ -9,7 +9,7 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   .navbar-item {
-    margin: 0.2em 0 1em 0;
+    margin: 0.2em 0 1rem 0;
     text-align: center;
     color: color(navbar-item);
     p {

@@ -51,6 +51,21 @@ a {
   color: #FFF;
 }
 
+.form {
+  display: grid;
+  grid-gap: 0.4em;
+  justify-content: center;
+}
+.form label {
+  font-size: 0.8em;
+}
+.form input {
+  font-size: inherit;
+  border: 1px solid #AAA;
+  border-radius: 3px;
+  padding: 0.2em;
+}
+
 .auth-wrapper {
   height: 100%;
   display: grid;
@@ -77,20 +92,6 @@ a {
   text-decoration: none;
   color: #ff6d6d;
 }
-.auth-container form {
-  display: grid;
-  grid-gap: 0.4em;
-  justify-content: center;
-}
-.auth-container form label {
-  font-size: 0.8em;
-}
-.auth-container form input {
-  font-size: inherit;
-  border: 1px solid #AAA;
-  border-radius: 3px;
-  padding: 0.2em;
-}
 
 .navbar {
   position: fixed;
@@ -104,7 +105,7 @@ a {
   grid-template-columns: repeat(4, 1fr);
 }
 .navbar .navbar-item {
-  margin: 0.2em 0 1em 0;
+  margin: 0.2em 0 1rem 0;
   text-align: center;
   color: #555;
 }
@@ -162,7 +163,7 @@ a {
 }
 
 .profile-wrapper {
-  height: 100%;
+  height: 80%;
   display: grid;
   justify-items: center;
   align-items: center;
@@ -178,6 +179,17 @@ a {
 .profile-container .btn {
   width: 12em;
   border-radius: 5px;
+}
+
+.languages {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-gap: 1em;
+}
+.languages .checkbox {
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-items: center;
 }
 
 /*# sourceMappingURL=main.css.map */

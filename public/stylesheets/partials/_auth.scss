@@ -24,18 +24,4 @@
     text-decoration: none;
     color: color(highlight);
   }
-  form {
-    display: grid;
-    grid-gap: 0.4em;
-    justify-content: center;
-    label {
-      font-size: 0.8em;
-    }
-    input {
-      font-size: inherit;
-      border: 1px solid color(muted);
-      border-radius: 3px;
-      padding: 0.2em;
-    }
-  }
 }

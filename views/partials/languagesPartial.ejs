@@ -1,0 +1,9 @@
+<div class="languages">
+  <% const languages = ['en', 'es', 'de', 'fr', 'it', 'pt'];
+    languages.forEach((lang) => { %>
+    <div class="checkbox">
+      <label for="<%- lang %>"><img src="../../images/<%- lang %>.jpg"></label>
+      <input type="checkbox" name="<%- lang %>" value="<%- lang %>">
+    </div>
+  <% }); %>
+</div>
