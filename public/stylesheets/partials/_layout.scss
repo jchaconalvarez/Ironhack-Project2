@@ -31,3 +31,10 @@ a {
   text-decoration: none;
   color: color(blackish);
 }
+
+.wrapper {
+  height: 80%;
+  display: grid;
+  justify-items: center;
+  align-items: center;
+}

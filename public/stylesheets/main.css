@@ -36,6 +36,13 @@ a {
   color: #222;
 }
 
+.wrapper {
+  height: 80%;
+  display: grid;
+  justify-items: center;
+  align-items: center;
+}
+
 .btn {
   justify-self: center;
   margin-top: 1em;
@@ -54,7 +61,7 @@ a {
 .form {
   display: grid;
   grid-gap: 0.4em;
-  justify-content: center;
+  justify-items: center;
 }
 .form label {
   font-size: 0.8em;
@@ -64,6 +71,10 @@ a {
   border: 1px solid #AAA;
   border-radius: 3px;
   padding: 0.2em;
+}
+.form p {
+  font-size: 0.8em;
+  color: #AAA;
 }
 
 .auth-wrapper {

@@ -1,20 +1,20 @@
-<div class="container">
+<div class="wrapper">
   <h1>Subm<span>i</span>t article</h1>
 
-  <form  action="/articles/new" method="POST" class="form-group" >
-    <label  for="url">URL:</label>
-    <input class="form-control"  placeholder="URL to article"  type="text" id="url" name="url" required>
-    <label  for="title">Headline:</label>
-    <input class="form-control"  placeholder="Article headline"  type="text" id="title" name="title" required>
-    <label  for="origin">Source name:</label>
-    <input class="form-control"  placeholder="Source name"  type="text" id="origin" name="origin" >
-    <label  for="author">Author:</label>
-    <input class="form-control"  placeholder="Article author"  type="text" id="author" name="author">
-    <label  for="description">Description:</label>
-    <input class="form-control"  placeholder="Descritption"  type="text" id="description" name="description" required>
-    <label  for="urlToImage">Image:</label>
-    <input class="form-control"  placeholder="Image URL"  type="text" id="urlToImage" name="urlToImage">
-    <input type="submit" class="form-control btn">
-    <small class="form-text text-muted">All fields are required.</small>
+  <form class="form" action="/articles/new" method="POST">
+    <label for="url">URL:</label>
+    <input placeholder="URL to article"  type="text" id="url" name="url" required>
+    <label for="title">Headline:</label>
+    <input placeholder="Article headline"  type="text" id="title" name="title" required>
+    <label for="origin">Source name:</label>
+    <input placeholder="Source name"  type="text" id="origin" name="origin" >
+    <label for="author">Author:</label>
+    <input placeholder="Article author"  type="text" id="author" name="author">
+    <label for="description">Description:</label>
+    <input placeholder="Descritption"  type="text" id="description" name="description" required>
+    <label for="urlToImage">Image:</label>
+    <input placeholder="Image URL"  type="text" id="urlToImage" name="urlToImage">
+    <p>All fields are required</p>
+    <button type="submit" class="btn">Submit article</button>
   </form>
 </div>
