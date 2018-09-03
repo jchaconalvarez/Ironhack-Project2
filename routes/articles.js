@@ -14,7 +14,7 @@ router.get('/new', (req, res, next) => {
 });
 
 // CRUD
-// Create
+// CREATE
 router.post('/new', (req, res, next) => {
   const { body: articleToCreate } = req;
 
@@ -34,7 +34,7 @@ router.post('/new', (req, res, next) => {
     .catch(next);
 });
 
-// Update
+// UPDATE
 router.post('/:id/save', (req, res, next) => {
   const { articleToUpdate } = req.body;
   const { _id } = req.body;
@@ -47,7 +47,7 @@ router.post('/:id/save', (req, res, next) => {
     .catch(next);
 });
 
-// Delete ok
+// DELETE
 router.post('/:id/delete', (req, res, next) => {
   const { id } = req.params;
   Articles.findByIdAndRemove(id)
@@ -82,7 +82,7 @@ router.post('/:id/addfav', (req, res, next) => {
     .catch(next);
 });
 
-// Read OK
+// READ
 router.get('/:id', (req, res, next) => {
   const { id } = req.params;
   const { usr : user } = req.session;
