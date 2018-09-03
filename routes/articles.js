@@ -87,13 +87,10 @@ router.get('/:id', (req, res, next) => {
   const { id } = req.params;
   const { usr : user } = req.session;
 
-  console.log(req.params);
-
   Articles.findById(id)
     .then((article) => {
-      console.log(article);
-
-      res.render('articles/view', { article, user });
+      const articles = [article]; // showArticles.ejs requires an array of articles.
+      res.render('articles/view', { articles, user });
     })
     .catch(next);
 });

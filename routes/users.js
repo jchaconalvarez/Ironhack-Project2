@@ -44,7 +44,6 @@ router.get('/edit', (req, res, next) => {
 
 router.post('/save', (req, res, next) => {
   const { name, email, password } = req.body;
-
   hashedPassword = bcrypt.hashSync(password, bcrypt.genSaltSync(saltRounds));
   const newDataOfUserPassword = { name, email, password : hashedPassword };
   const newDataOfUser = { name, email };
