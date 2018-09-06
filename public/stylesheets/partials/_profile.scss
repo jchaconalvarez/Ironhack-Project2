@@ -1,0 +1,29 @@
+.profile-wrapper {
+  height: 80%;
+  display: grid;
+  justify-items: center;
+  align-items: center;
+}
+
+.profile-container {
+  display: grid;
+  justify-items: center;
+  i {
+    display: inline;
+  }
+  .btn {
+    width: 12em;
+    border-radius: 5px;
+  }
+}
+
+.languages {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-gap: 1em;
+  .checkbox {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+}

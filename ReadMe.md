@@ -1,4 +1,4 @@
-# *AVI (name not final)
+# Gazette
 
 ## Description
 

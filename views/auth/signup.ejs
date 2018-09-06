@@ -1,16 +1,17 @@
+<div class="auth-wrapper">
+  <div class="auth-container">
+    <h1>J<span>o</span>in</h1>
 
-<div class="container">
-  <h1>J<span>o</span>in</h1>
-
-  <form action="/auth/signup" method="POST" class="form-group">
-    <label for="name">Name:</label>
-    <input name="name" type="text" placeholder="Name" class="form-control" required>
-    <label for="email">Email:</label>
-    <input name="email" type="email" placeholder="Email" class="form-control" required>
-    <label for="password">Password:</label>
-    <input name="password" type="password" placeholder="Password" class="form-control" required>
-    <input type="submit" class="form-control btn">
-    <small class="form-text text-muted">All fields are required.</small>
-    <small class="form-text text-muted">Have an account? <a href="/auth/login">Log In</a></small>
-  </form>
+    <form action="/auth/signup" method="POST" class="form">
+      <label for="name">Name:</label>
+      <input name="name" type="text" placeholder="Name" required>
+      <label for="email">Email:</label>
+      <input name="email" type="email" placeholder="Email" required>
+      <label for="password">Password:</label>
+      <input name="password" type="password" placeholder="Password" required>
+      <p>All fields are required.</p>
+      <button type="submit" class="btn">Sign up</button>
+    </form>
+    <p>Have an account? <a href="/auth/login">Log In</a></p>
+</div>
 </div>

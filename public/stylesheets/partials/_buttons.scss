@@ -1,0 +1,14 @@
+.btn {
+  justify-self: center;
+  margin-top: 1em;
+  font-size: inherit;
+  padding: 0.4em 1.5em;
+  background-color: transparent;
+  border: 1px solid color(blackish);
+  border-radius: 3px;
+  &:hover {
+    background-color: color(primary);
+    border: 1px solid color(whiteish);
+    color: #FFF;
+  }
+}

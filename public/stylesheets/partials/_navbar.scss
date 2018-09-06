@@ -1,0 +1,20 @@
+.navbar {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background: color(navbar-background);
+  border-top: 1px solid color(whiteish);
+  box-shadow: 0px 4px 5px 1px color(blackish);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  .navbar-item {
+    margin: 0.2em 0 1rem 0;
+    text-align: center;
+    color: color(navbar-item);
+    p {
+      margin-top: 0.2em;
+      font-size: 0.6em;
+    }
+  }
+}

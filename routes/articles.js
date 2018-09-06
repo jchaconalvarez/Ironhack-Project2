@@ -12,55 +12,46 @@ router.get('/new', (req, res, next) => {
   const { usr: user } = req.session;
   res.render('articles/new', { user });
 });
-// CRUD
-// Create
-router.post('/new', (req, res, next) => {
-  console.log('post /new');
 
-  const { body : articleToCreate } = req;
-  // const articleToCreate= {source: { id: origin, name: origin }}
-  console.log('query----------------------------------');
-  console.log(articleToCreate);
+// CRUD
+// CREATE
+router.post('/new', (req, res, next) => {
+  const { body: articleToCreate } = req;
 
   Articles.create(articleToCreate)
-    .then((newArticle) => {
-      console.log('newarticle---de create------------------------------');
-      console.log(newArticle);
-      console.log(req.session.usr);
-
-      // const { _id  } = newArticle;
-      return Users.findByIdAndUpdate({ _id:req.session.usr._id },
-        { $push:  { articles: { _id:newArticle._id } } })
-        .populate('articles')
-        .populate('users');
-    })
     .then((article) => {
-      console.log('newarticle---de find and update------------------------------');
-      console.log(article);
-      res.render('articles/profile', article);
+      const { _id: userId } = req.session.usr;
+      const { _id: articleId } = article;
+      Users.findByIdAndUpdate(userId, { $push: { articles: articleId } }, { new: true })
+        .then((user) => {
+          const artId = user.articles[user.articles.length - 1];
+          Articles.findById(artId)
+            .then((article) => {
+              res.redirect(`/articles/${article._id}`);
+            });
+        });
     })
     .catch(next);
 });
 
-
-// Update
+// UPDATE
 router.post('/:id/save', (req, res, next) => {
   const { articleToUpdate } = req.body;
   const { _id } = req.body;
 
   Articles.findByIdAndUpdate(_id, articleToUpdate)
-    .then((article) => {
+    .then(() => {
       req.flash('success', 'Article updated');
       res.redirect(`/article/${id}`);
     })
     .catch(next);
 });
 
-// Delete ok
+// DELETE
 router.post('/:id/delete', (req, res, next) => {
   const { id } = req.params;
   Articles.findByIdAndRemove(id)
-    .then((article) => {
+    .then(() => {
       req.flash('success', 'Article removed');
       res.redirect('/user/profile');
     })
@@ -70,38 +61,59 @@ router.post('/:id/delete', (req, res, next) => {
 // FAVORITES
 router.post('/:id/addfav', (req, res, next) => {
   const { id } = req.params;
-  const { usr : user } = req.session;
+  const user = req.session.usr;
 
-  // TODO: addFav
-  console.log(req.body);
-  console.log(req.params);
-  console.log(id);
+  const checkIfFavorite = (article) => {
+    return article._id === id;
+  };
 
-  res.redirect(`/articles/${id}`);
-});
+  const updateFavorites = new Promise((resolve, reject) => {
+    if (user.favorites.some(checkIfFavorite)) {
+      resolve(Users.findByIdAndUpdate(user._id, { $pull: { favorites: id } }));
+    } else {
+      resolve(Users.findByIdAndUpdate(user._id, { $push: { favorites: id } }));
+    }
+  });
 
-router.post('/:id/removefav', (req, res, next) => {
-  const { id } = req.params;
-  const { usr : user } = req.session;
-  // TODO: deleteFav
-  res.redirect(`/articles/${id}`);
-});
-
-// Read OK
-router.get('/:id', (req, res, next) => {
-  const { id } = req.params;
-  const { usr : user } = req.session;
-
-  console.log(req.params);
-
-  Articles.findById(id)
-    .then((article) => {
-      console.log(article);
-
-      res.render('articles/view', { article, user });
+  updateFavorites
+    .then(() => {
+      res.redirect('/user/home');
     })
     .catch(next);
 });
 
+// READ
+router.get('/:id', (req, res, next) => {
+  const { id } = req.params;
+  const { usr : user } = req.session;
+
+  Articles.findById(id)
+    .then((article) => {
+      const articles = [article]; // showArticles.ejs requires an array of articles.
+      res.render('articles/view', { articles, user });
+    })
+    .catch(next);
+});
+
+// LIKES
+router.get('/:id/like', (req, res, next) => {
+  const { id } = req.params;
+
+  Articles.findByIdAndUpdate(id, { $inc: { likes: 1 } })
+    .then(() => {
+      res.redirect('/user/home');
+    })
+    .catch(next);
+});
+
+router.get('/:id/dislike', (req, res, next) => {
+  const { id } = req.params;
+
+  Articles.findByIdAndUpdate(id, { $inc: { likes: -1 } })
+    .then(() => {
+      res.redirect('/user/home');
+    })
+    .catch(next);
+});
 
 module.exports = router;

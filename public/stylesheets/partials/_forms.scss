@@ -1,0 +1,18 @@
+.form {
+  display: grid;
+  grid-gap: 0.4em;
+  justify-items: center;
+  label {
+    font-size: 0.8em;
+  }
+  input {
+    font-size: inherit;
+    border: 1px solid color(muted);
+    border-radius: 3px;
+    padding: 0.2em;
+  }
+  p {
+    font-size: 0.8em;
+    color: color(muted);
+  }
+}

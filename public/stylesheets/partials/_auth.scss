@@ -1,0 +1,27 @@
+.auth-wrapper {
+  height: 100%;
+  display: grid;
+  // grid-template-rows: auto;
+  justify-items: center;
+  align-items: center;
+}
+
+.auth-container {
+  grid-column-start: 1;
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  h1 {
+    font-size: 3em;
+    font-weight: 300;
+    margin: 0 0 0.8em 0;
+  }
+  p {
+    font-size: 0.8em;
+    color: color(muted);
+  }
+  a {
+    text-decoration: none;
+    color: color(highlight);
+  }
+}

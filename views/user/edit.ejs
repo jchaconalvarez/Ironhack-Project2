@@ -1,37 +1,19 @@
-<div class="container">
-  <div class="row">
-    <div class="col">
-      <h1>Edit profile</h1>
-      <form action="/user/save" method="POST" class="form-group">
-        <label for="name">Name:</label>
-        <input name="name" type="text" value="<%- user.name %>" class="form-control">
-        <label for="email">Email:</label>
-        <input name="email" type="email" value="<%- user.email %>" class="form-control">
-        <label for="password">Password:</label>
-        <input name="password" type="password" placeholder="only be saved if you change it"  class="form-control">
-        <h3>Languages</h3>
-        <p>Languages of your interest</p>
+<div class="profile-wrapper">
+  <div class="profile-container">
+    <h1>E<span>d</span>it profile</h1>
+    <form action="/user/save" method="POST" class="form">
+      <label for="name">Name:</label>
+      <input name="name" type="text" value="<%- user.name %>">
+      <label for="email">Email:</label>
+      <input name="email" type="email" value="<%- user.email %>">
+      <label for="password">Password:</label>
+      <input name="password" type="password">
 
-        <input type="checkbox" name = "de" value="de" id="de">
-        <label for="de"><img src="https://0.0-02.net/flag/de.jpg"></label>
-        <input type="checkbox" name = "en" value="en">
-        <label for="de"><img src="https://0.0-02.net/flag/gb.jpg"></label>
-        <input type="checkbox" name = "es" value="es">
-        <label for="de"><img src="https://0.0-02.net/flag/es.jpg"></label>
-        <input type="checkbox" name = "fr" value="fr">
-        <label for="de"><img src="https://0.0-02.net/flag/fr.jpg"></label>
-        <input type="checkbox" name = "it" value="it">
-        <label for="de"><img src="https://0.0-02.net/flag/it.jpg"></label>
-        <input type="checkbox" name = "pt" value="pt">
-        <label for="de"><img src="https://0.0-02.net/flag/pt.jpg"></label>
+      <h3>Languages</h3>
 
-        <input type="submit" class="form-contol btn">
-      </div>
-        </form>
-    </div>
+      <%- include('../partials/languagesPartial') %>
+
+      <button type="submit" class="btn">Edit</button>
+    </form>
   </div>
-</div>
-<h1>Favorite articles</h1>
-<div class="article-container">
-  <%- include('../partials/showArticles', articlesUser) %>
 </div>
