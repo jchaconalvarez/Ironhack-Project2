@@ -66,7 +66,8 @@ app.use((req, res, next) => {
   // next(createError(404));
   res.status(404).sendfile('public/error/HTTP404.html');
 });
-app.use((req, res, next) => {
+// catch 500 and go to error page
+app.use((err, req, res, next) => {
   // next(createError(500));
   res.status(500).sendFile('public/error/HTTP500.html');
 });
@@ -78,7 +79,7 @@ app.use((err, req, res, next) => {
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
   // render the error page
-  res.status(err.status );//|| 500);
+  res.status(err.status); // || 500);
   res.render('error');
 });
 
