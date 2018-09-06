@@ -8,6 +8,7 @@ const mongoose = require('mongoose');
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 const flash = require('express-flash');
+const axios = require('axios');
 require('dotenv').config();
 
 // db connection
@@ -66,11 +67,6 @@ app.use((req, res, next) => {
   // next(createError(404));
   res.status(404).sendfile('public/error/HTTP404.html');
 });
-// catch 500 and go to error page
-app.use((err, req, res, next) => {
-  // next(createError(500));
-  res.status(500).sendFile('public/error/HTTP500.html');
-});
 
 // error handler
 app.use((err, req, res, next) => {
@@ -79,8 +75,12 @@ app.use((err, req, res, next) => {
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
   // render the error page
-  res.status(err.status);// || 500);
-  res.render('error');
+  console.log(req.app.get('env'));
+
+  if (req.app.get('env') === 'development') {
+    res.status(err.status || 500);
+    res.render('error');
+  } else  res.status(500).sendfile('public/error/HTTP500.html');
 });
 
 module.exports = app;
