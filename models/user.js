@@ -25,10 +25,7 @@ const userSchema = new mongoose.Schema({
   }],
   languages: [{
     type: String,
-    enum: [
-      'ar', 'de', 'en', 'es', 'fr', 'he', 'it',
-      'nl', 'no', 'pt', 'ru', 'se', 'ud', 'zh',
-    ],
+    enum: ['de', 'en', 'es', 'fr', 'he', 'it', 'pt'],
     default: 'en',
   }],
   articles: [{ type : ObjectId, ref: 'Article' }],

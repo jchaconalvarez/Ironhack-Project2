@@ -14,7 +14,7 @@ const articleSchema = new mongoose.Schema({
   publishedAt: { type:Date, default: Date.now },
   starred: Number,
   likes: Number,
-  unlikes: Number,
+  dislikes: Number,
   shared: Number,
   comments: [{
     timeStamp:{ type:Date, default:Date.now },
@@ -29,8 +29,5 @@ const articleSchema = new mongoose.Schema({
 });
 
 const Article = mongoose.model('Article', articleSchema);
-const ArticleMSRV = mongoose.model('ArticleMSRV', articleSchema);
-
 
 module.exports = Article;
-// module.exports = ArticleMSRV;
