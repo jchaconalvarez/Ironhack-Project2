@@ -1,3 +1,8 @@
-<% article.comments.forEach((comment) => { %>
-
-<% }); %>
+<%  if (articles[0].comments) {
+      articles[0].comments.forEach((comment) => {
+%>
+        <p><%= comment.text %></p>
+<%
+      });
+    }
+%>

@@ -18,15 +18,7 @@ const articleSchema = new mongoose.Schema({
   likes: Number,
   dislikes: Number,
   shared: Number,
-  comments: [{
-    timeStamp: { type:Date, default:Date.now },
-    user: { type : ObjectId, ref: 'User' },
-    text: String,
-    rating: { type: Number, default: 0 },
-    likes: { type: Number, default: 0 },
-    dislikes: { type: Number, default: 0 },
-    shared: { type: Number, default: 0 },
-  }],
+  comments: [{ type: ObjectId, ref: 'Comment' }],
 });
 
 const Article = mongoose.model('Article', articleSchema);
