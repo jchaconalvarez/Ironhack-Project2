@@ -22,7 +22,7 @@ router.post('/new', (req, res, next) => {
     .then((article) => {
       const { _id: userId } = req.session.usr;
       const { _id: articleId } = article;
-      Users.findByIdAndUpdate(userId, { $push: { articles: articleId } }, { new: true })
+      Users.findByIdAndUpdate(userId, { $push: { articles: articleId } })
         .then((user) => {
           const artId = user.articles[user.articles.length - 1];
           Articles.findById(artId)
@@ -85,7 +85,7 @@ router.get('/:id', (req, res, next) => {
   const { id } = req.params;
   const { usr : user } = req.session;
 
-  Articles.findById(id)
+  Articles.findById(id).populate('comments')
     .then((article) => {
       const articles = [article]; // showArticles.ejs requires an array of articles.
       res.render('articles/view', { articles, user });

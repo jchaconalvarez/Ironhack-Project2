@@ -15,6 +15,7 @@
     <%= article._id %>
     <div class="article-social">
       <ul>
+<<<<<<< HEAD
         <li class="favorite" value=<%= article._id %>> <i class="far fa-star fa-lg"></i></li>
 
         <li class="like" value=<%= article._id %>>
@@ -25,7 +26,33 @@
         <li class="dislike" value=<%= article._id %>>
           <i class="fas fa-angle-down fa-lg"></i>
           <span><%= article.dislikes %></span>
+        /li>
+        
+<!--
+          =======
+        <li>
+          <form name="favorite" action="/articles/<%= article._id %>/addfav" method="POST">
+            <button type="submit">
+              <i class="far fa-star fa-lg"></i>
+            </button>
+          </form>
         </li>
+        <li>
+          <form name="like" action="/articles/<%= article._id %>/like" method="POST">
+            <button type="submit">
+              <i class="fas fa-angle-up fa-lg"></i>
+            </button>
+          </form>
+        </li>
+        <li><span><%= article.likes %></span></li>
+        <li>
+          <form name="dislike" action="/articles/<%= article._id %>/dislike" method="GET">
+            <button type="submit">
+              <i class="fas fa-angle-down fa-lg"></i>
+            </button>
+            </form>
+            >>>>>>> globaldev
+-->
 
         <li>
         <form name="share" action="#" method="post">
@@ -35,27 +62,14 @@
           </form>
         </li>
         <li>
-          <form name="trash" action="/articles/<%= article._id %>/delete" method="post">
+          <form name="trash" action="/articles/<%= article._id %>/delete" method="POST">
             <button type="submit">
               <i class="fas fa-trash-alt fa-lg"></i>
             </button>
           </form>
         </li>
 
-<!--
-        <form name="like" action="/articles/<%= article._id %>/like" method="get">
-        <button type="submit"></button></form>
-        <form name="dislike" action="/articles/<%= article._id %>/dislike" method="get">
-        <button type="submit"></button></form>
-        <button class="favorites">Open up <i class="fas fa-angle-right fa-lg"></i></button></li>
 
-
-        </li>
--->
-
-<!--
-        <li>
--->
       </ul>
     </div>
   </div>
