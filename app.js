@@ -19,6 +19,7 @@ const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const authRouter = require('./routes/auth');
 const articlesRouter = require('./routes/articles');
+const commentsRouter = require('./routes/comments');
 
 // middlewares
 const authMiddlewares = require('./middleware/auth');
@@ -61,6 +62,8 @@ app.use('/user', authMiddlewares.checkSession,
   usersRouter);
 app.use('/articles', authMiddlewares.checkSession,
   articlesRouter);
+app.use('/comments', authMiddlewares.checkSession,
+  commentsRouter);
 
 // catch 404 and go to error page
 app.use((req, res, next) => {

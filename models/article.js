@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 
-
-const  { ObjectId } = mongoose.SchemaTypes;
+const { ObjectId } = mongoose.SchemaTypes;
 
 const articleSchema = new mongoose.Schema({
   // idArticle: { type: ObjectId, index: true, required: true, auto: true, },
@@ -16,16 +15,7 @@ const articleSchema = new mongoose.Schema({
   likes: Number,
   dislikes: Number,
   shared: Number,
-  comments: [{
-    timeStamp:{ type:Date, default:Date.now },
-    user:{ type : ObjectId, ref: 'User' },
-    text: String,
-    rating: Number,
-    likes: Number,
-    dislikes: Number,
-    shared: Number,
-  }],
-
+  comments: [{ type: ObjectId, ref: 'Comment' }],
 });
 
 const Article = mongoose.model('Article', articleSchema);

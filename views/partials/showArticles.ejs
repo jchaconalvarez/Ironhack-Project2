@@ -14,27 +14,24 @@
     <div class="article-social">
       <ul>
         <li>
-          <form name="favorite" action="/articles/<%= article._id %>/addfav" method="post">
+          <form name="favorite" action="/articles/<%= article._id %>/addfav" method="POST">
             <button type="submit">
               <i class="far fa-star fa-lg"></i>
-              <!-- <i class="far fa-star invisible"></i> -->
             </button>
           </form>
         </li>
         <li>
-          <form name="like" action="/articles/<%= article._id %>/like" method="get">
+          <form name="like" action="/articles/<%= article._id %>/like" method="POST">
             <button type="submit">
               <i class="fas fa-angle-up fa-lg"></i>
-              <!-- <i class="fas fa-thumbs-up invisible"></i> -->
             </button>
           </form>
         </li>
         <li><span><%= article.likes %></span></li>
         <li>
-          <form name="dislike" action="/articles/<%= article._id %>/dislike" method="get">
+          <form name="dislike" action="/articles/<%= article._id %>/dislike" method="GET">
             <button type="submit">
               <i class="fas fa-angle-down fa-lg"></i>
-              <!-- <i class="fas fa-thumbs-down invisible"></i> -->
             </button>
           </form>
         </li>
@@ -46,7 +43,7 @@
           </form>
         </li>
         <li>
-          <form name="trash" action="/articles/<%= article._id %>/delete" method="post">
+          <form name="trash" action="/articles/<%= article._id %>/delete" method="POST">
             <button type="submit">
               <i class="fas fa-trash-alt fa-lg"></i>
             </button>
