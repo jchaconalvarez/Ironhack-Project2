@@ -1,0 +1,24 @@
+.comment-wrapper {
+  @extend %wrapper;
+  height: auto;
+}
+
+.comment-card {
+  display: grid;
+  grid-template-areas:
+    'user'
+    'text'
+    'info'
+}
+
+.comment-user {
+  grid-area: user;
+  font-size: 0.8em;
+}
+
+.comment-info {
+  grid-area: info;
+  display: grid;
+  justify-items: start;
+  grid-template-columns: 0.1fr 0.1fr 1fr;
+}

@@ -1,8 +1,5 @@
 .profile-wrapper {
-  height: 80%;
-  display: grid;
-  justify-items: center;
-  align-items: center;
+  @extend %wrapper;
 }
 
 .profile-container {

@@ -15,7 +15,7 @@
 
 body, html {
   margin: 0;
-  height: 100%;
+  height: 100vh;
   font-size: 20px;
   font-family: "Verdana", Verdana, Geneva, Tahoma, sans-serif;
 }
@@ -36,7 +36,7 @@ a {
   color: #222;
 }
 
-.wrapper {
+.comment-wrapper, .profile-wrapper, .auth-wrapper {
   height: 80%;
   display: grid;
   justify-items: center;
@@ -79,9 +79,6 @@ a {
 
 .auth-wrapper {
   height: 100%;
-  display: grid;
-  justify-items: center;
-  align-items: center;
 }
 
 .auth-container {
@@ -109,6 +106,7 @@ a {
   left: 0;
   bottom: 0;
   width: 100%;
+  max-height: 3em;
   background: #FFFFFFF0;
   border-top: 1px solid #DDD;
   box-shadow: 0px 4px 5px 1px #222;
@@ -131,6 +129,9 @@ a {
   grid-gap: 1em;
   margin-top: 2em;
   box-shadow: 0 2px 5px 1px #DDD;
+}
+.article-card:last-of-type {
+  margin-bottom: 4em;
 }
 
 .article-source {
@@ -173,13 +174,6 @@ a {
   border: none;
 }
 
-.profile-wrapper {
-  height: 80%;
-  display: grid;
-  justify-items: center;
-  align-items: center;
-}
-
 .profile-container {
   display: grid;
   justify-items: center;
@@ -201,6 +195,27 @@ a {
   display: grid;
   grid-template-columns: 1fr;
   justify-items: center;
+}
+
+.comment-wrapper {
+  height: auto;
+}
+
+.comment-card {
+  display: grid;
+  grid-template-areas: "user" "text" "info";
+}
+
+.comment-user {
+  grid-area: user;
+  font-size: 0.8em;
+}
+
+.comment-info {
+  grid-area: info;
+  display: grid;
+  justify-items: start;
+  grid-template-columns: 0.1fr 0.1fr 1fr;
 }
 
 /*# sourceMappingURL=main.css.map */

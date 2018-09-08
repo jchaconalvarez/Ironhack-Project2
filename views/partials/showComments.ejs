@@ -1,12 +1,20 @@
-<%  if (articles[0].comments) {
+<%
+    if (articles[0].comments) {
       articles[0].comments.forEach((comment) => {
 %>
-        <p><%= comment.text %></p>
-        <form name="delete" action="/comments/<%=comment._id %>/delete" method=POST>
-          <button type=submit>
-            <i class="fas fa-trash-alt fa-lg"></i>
-          </button>
-        </form>
+        <div class="comment-card">
+          <a href="#" class="comment-user"><p><%= %></p></a>
+          <div class="comment-info">
+            <i class="fas fa-angle-up fa-lg"></i>
+            <i class="fas fa-angle-down fa-lg"></i>
+          </div>
+          <p class="comment-text"><%= comment.text %></p>
+          <form name="delete" action="/comments/<%=comment._id %>/delete" method=POST>
+            <button type=submit>
+              <i class="fas fa-trash-alt fa-lg"></i>
+            </button>
+          </form>
+        </div>
 <%
       });
     }

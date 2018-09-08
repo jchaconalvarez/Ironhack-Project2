@@ -15,7 +15,7 @@ const users = [
     email: 'test@test',
     password: bcrypt.hashSync('test', 10),
     countries: ['ve', 'za'],
-    languages: ['en', 'ru', 'fr', 'it', 'es'],
+    languages: ['en', 'fr', 'it', 'es'],
   },
 ];
 

@@ -8,7 +8,6 @@ const Comments = require('../models/comment');
 // CREATE
 router.post('/:id/new', (req, res, next) => {
   const { id: articleId } = req.params;
-  const newComment = req.body;
 
   Comments.create({ text: req.body.text, article: articleId, user: req.session.usr._id })
     .then((comment) => {
@@ -27,14 +26,20 @@ router.post('/:id/new', (req, res, next) => {
 router.post('/:id/delete', (req, res, next) => {
   const { id: commentId } = req.params;
 
-  Comments.findById(commentId)
+  Comments.findByIdAndRemove(commentId).populate('user')
     .then((comment) => {
-      const { _id: articleId } = comment.article;
-      Comments.deleteOne({ _id: commentId })
-        .then(() => {
-          res.redirect(`/articles/${articleId}`);
+      console.log('Before Articles -----');
+      console.log(comment.user.comments);
+      Articles.findByIdAndUpdate(comment.article, { $pull: { comments: commentId } })
+        .then((article) => {
+          console.log('Before Users -----');
+          console.log(comment.user.comments, comments.user._id);
+          Users.findByIdAndUpdate(comment.user._id, { $pull: { comments: commentId } });
+          console.log('After Users -----');
+          console.log(comment.user.comments, commentId);
+          res.redirect(`/articles/${article._id}`);
         })
-        .catch(error);
+        .catch(next);
     });
 });
 
