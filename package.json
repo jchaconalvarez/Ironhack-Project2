@@ -5,8 +5,8 @@
   "scripts": {
     "start": "cross-env NODE_ENV=production node ./bin/www",
     "dev": "cross-env NODE_ENV=development nodemon ./bin/www",
-    "services:dev": "cross-env NODE_ENV=development nodemon ./bin/microservice.js",
-    "services": "cross-env NODE_ENV=production nodemon ./bin/microservice.js"
+    "services:dev": "nodemon ./bin/microservice.js",
+    "services": "node ./bin/microservice.js"
   },
   "dependencies": {
     "axios": "^0.18.0",

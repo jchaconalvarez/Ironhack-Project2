@@ -1,78 +1,88 @@
 const express = require('express');
-const path = require('path');
 const mongoose = require('mongoose');
 const NewsAPI = require('newsapi');
 
-const ArticlesMSRV = require('../models/article');
-
-const newsapi1 = new NewsAPI('da5125e659e04c93929fa448a270da80');
-const newsapi2 = new NewsAPI('546fcf53233c4a85a6447c9f27c5d391');
-
-const app = express();
 require('dotenv').config();
+const Articles = require('../models/articleMSRV');
 
-const languages = ['de', 'en', 'es', 'fr', 'it', 'pt'];
+const newsapi1 = new NewsAPI(process.env.NEWS_API1);// 'da5125e659e04c93929fa448a270da80');
+const newsapi2 = new NewsAPI(process.env.NEWS_API2);// '546fcf53233c4a85a6447c9f27c5d391');
+const app = express();
+
+
 let switchAPIKey = true;
-let serverStatus = String;
+let serverStatus = 'idle';
+let queriesCounter = 0;
+let articlesCounter = 0;
+let queriesInterval;
 
-mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true });
+const queryToAPI = () => {
+  const languages = ['de', 'en', 'es', 'fr', 'it', 'pt'];
+  const arrayOfPromises = [];
 
-const wait = ms => new Promise(timer => setTimeout(timer, ms));
+  languages.forEach((language, index) => {
+    arrayOfPromises.push(switchAPIKey
+      ? newsapi1.v2.topHeadlines({ language })
+      : newsapi2.v2.topHeadlines({ language }));
+    console.log(`${switchAPIKey ? 'API1' : 'API2'} HeadLines->${index}`);
+  });
 
-const queriesService = (ms, arrayOfLanguages) => new Promise((resolve, reject) => {
-  setInterval(() => {
-    const promises = [];
-    arrayOfLanguages.forEach((language, index) => {
-      promises.push(switchAPIKey
-        ? newsapi1.v2.topHeadlines({ language })
-        : newsapi2.v2.topHeadlines({ language }));
-      console.log(`${switchAPIKey ? 'API1' : 'API2'} HeadLines->${index}`);
+  switchAPIKey = !switchAPIKey;
+  console.log('------------------------');
+  Promise.all(arrayOfPromises)
+    .then((topHeadlinesArray) => {
+      topHeadlinesArray.forEach((topHeadlines, index) => {
+        console.log(`source ->${index}`);
+
+        topHeadlines.articles.forEach((article, index) => {
+          console.log(`article ->${index}`);
+
+          Articles.findOne(article, (error, match) => {
+            if (error) return handleError(error);
+            if (!match) {
+              Articles.create(article, (error) => {
+                if (error) return handleError(error);
+                articlesCounter++;
+                // console.log('updated');
+              });
+            }
+          });
+        });
+      });
+    })
+    .catch((e) => {
+      serverStatus = 'error';
+      console.log(e);
+
+      clearInterval(queriesInterval);
     });
-    switchAPIKey = !switchAPIKey;
-    Promise.all(promises)
-      .then(queryResult => resolve(queryResult))
-      .catch(error => reject(error));
-  }, ms);
-});
+};
 
-app.get('/start', (req, res, next) => {
-  queryService('start');
-  // next();
-  // res.redirect('/status');
+mongoose.connect('mongodb://127.0.0.1:27017/ironhack_prj2', { useNewUrlParser: true });
+
+app.get('/', (req, res, next) => {
+  res.redirect('status');
+}).get('/run', (req, res, next) => {
+  console.log(`processing queries every: ${process.env.TIME_MICROSERVICE / 60000} minutes`);
+
+  queriesInterval = setInterval(() => {
+    queriesCounter++;
+    console.log(`query nº: ${queriesCounter}`);
+    queryToAPI();
+  }, process.env.TIME_MICROSERVICE);
+  serverStatus = 'running';
+  res.redirect('status');
 }).get('/stop', (req, res, next) => {
-  queryService('stop');
-  res.redirect('/status');
+  queriesCounter = 0;
+  serverStatus = 'stopped';
+
+  clearInterval(queriesInterval);
+  res.redirect('status');
 }).get('/status', (req, res, next) => {
-  res.send(serverStatus);
+  res.send(`<h2>GAZETTE microservice ${serverStatus}.<h2>
+            <h3>Articles collected: ${articlesCounter}<h3>`);
 });
 
 app.listen(process.env.PORT_MICROSERVICE_APINEWS, () => {
-  console.log('server listening at localhost port 3003');
+  console.log('GAZETTE microservice is listening at port 3003');
 });
-
-const queryService = (status) => {
-  switch (status) {
-    case 'start':
-      queriesService(process.env.TIME_MICROSERVICE, languages)
-        .then((topHeadlinesArray) => {
-          topHeadlinesArray.forEach((topHeadlines, index) => {
-            console.log(`article ->${index}`);
-            const { articles  } = topHeadlines;
-            articles.forEach((article) => {
-              ArticlesMSRV.findOne(article)
-                .then((match) => {
-                  if (!match) ArticlesMSRV.create(article);
-                });
-            });
-          });
-        })
-        .catch(next);
-      serverStatus = 'queries service started';
-      break;
-    case 'stop':
-      clearInterval(queriesService);
-      serverStatus = 'queries service stopped';
-      break;
-    default:
-  }
-};
