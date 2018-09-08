@@ -63,9 +63,7 @@ router.post('/:id/addfav', (req, res, next) => {
   const { id } = req.params;
   const user = req.session.usr;
 
-  const checkIfFavorite = (article) => {
-    return article._id === id;
-  };
+  const checkIfFavorite = article => article._id === id;
 
   const updateFavorites = new Promise((resolve, reject) => {
     if (user.favorites.some(checkIfFavorite)) {

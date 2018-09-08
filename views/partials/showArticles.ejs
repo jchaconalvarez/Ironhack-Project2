@@ -1,45 +1,34 @@
 <% articles.forEach((article) => { %>
   <div class="article-card">
-    <p class="article-source"><%= article.source.name %></p>
-    <h5 class="article-headline"><a href="/articles/<%= article._id %>"><%= article.title %></a></h5>
+    <p class="article-source"></p>
+    <h5 class="article-headline">
+      <a href="/articles/<%= article._id %>"> <%= article.title %></a>
+    </h5>
 
     <div class="article-img">
-      <a target="_blank" href=<%= article.url %>>
-        <img src=<%=article.urlToImage %>>
+      <a target="_blank" href=<%=article.url %> >
+        <img class='article-image' src=<%= article.urlToImage %> >
       </a>
     </div>
 
-    <p class="article-description"><%= article.description %></p>
-
+    <p class="article-description"> <%= article.description %> </p>
+    <%= article._id %>
     <div class="article-social">
       <ul>
-        <li>
-          <form name="favorite" action="/articles/<%= article._id %>/addfav" method="post">
-            <button type="submit">
-              <i class="far fa-star fa-lg"></i>
-              <!-- <i class="far fa-star invisible"></i> -->
-            </button>
-          </form>
+        <li class="favorite" value=<%= article._id %>> <i class="far fa-star fa-lg"></i></li>
+
+        <li class="like" value=<%= article._id %>>
+          <i class="far fa-heart fa-lg"></i>
+          <span> <%= article.likes %> </span>
         </li>
-        <li>
-          <form name="like" action="/articles/<%= article._id %>/like" method="get">
-            <button type="submit">
-              <i class="fas fa-angle-up fa-lg"></i>
-              <!-- <i class="fas fa-thumbs-up invisible"></i> -->
-            </button>
-          </form>
+
+        <li class="dislike" value=<%= article._id %>>
+          <i class="fas fa-angle-down fa-lg"></i>
+          <span><%= article.dislikes %></span>
         </li>
-        <li><span><%= article.likes %></span></li>
+
         <li>
-          <form name="dislike" action="/articles/<%= article._id %>/dislike" method="get">
-            <button type="submit">
-              <i class="fas fa-angle-down fa-lg"></i>
-              <!-- <i class="fas fa-thumbs-down invisible"></i> -->
-            </button>
-          </form>
-        </li>
-        <li>
-          <form name="share" action="#" method="post">
+        <form name="share" action="#" method="post">
             <button type="submit">
               <i class="fas fa-share-alt fa-lg"></i>
             </button>
@@ -52,7 +41,22 @@
             </button>
           </form>
         </li>
+
+<!--
+        <form name="like" action="/articles/<%= article._id %>/like" method="get">
+        <button type="submit"></button></form>
+        <form name="dislike" action="/articles/<%= article._id %>/dislike" method="get">
+        <button type="submit"></button></form>
+        <button class="favorites">Open up <i class="fas fa-angle-right fa-lg"></i></button></li>
+
+
+        </li>
+-->
+
+<!--
+        <li>
+-->
       </ul>
     </div>
   </div>
-  <% }); %>
+<% }); %>
