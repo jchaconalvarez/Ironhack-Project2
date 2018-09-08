@@ -3,13 +3,13 @@
       articles[0].comments.forEach((comment) => {
 %>
         <div class="comment-card">
-          <a href="#" class="comment-user"><p><%= %></p></a>
+          <a href="#" class="comment-user"><p><%= comment.postedBy[0].name %></p></a>
           <div class="comment-info">
             <i class="fas fa-angle-up fa-lg"></i>
             <i class="fas fa-angle-down fa-lg"></i>
           </div>
           <p class="comment-text"><%= comment.text %></p>
-          <form name="delete" action="/comments/<%=comment._id %>/delete" method=POST>
+          <form name="delete" action="/comments/<%= articles[0].id %>/<%= comment._id %>/delete" method=POST>
             <button type=submit>
               <i class="fas fa-trash-alt fa-lg"></i>
             </button>

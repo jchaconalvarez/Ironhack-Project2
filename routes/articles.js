@@ -39,7 +39,7 @@ router.post('/:id/save', (req, res, next) => {
   const { articleToUpdate } = req.body;
   const { _id } = req.body;
 
-  Articles.findByIdAndUpdate(_id, articleToUpdate)
+  Articles.findByIdAndUpdate(_id, articleToUpdate, { postedby: req.session.usr._id })
     .then(() => {
       req.flash('success', 'Article updated');
       res.redirect(`/article/${id}`);
@@ -50,10 +50,15 @@ router.post('/:id/save', (req, res, next) => {
 // DELETE
 router.post('/:id/delete', (req, res, next) => {
   const { id } = req.params;
-  Articles.findByIdAndRemove(id)
-    .then(() => {
-      req.flash('success', 'Article removed');
-      res.redirect('/user/profile');
+  Articles.findById(id)
+    .then((article) => {
+      if (article.postedby === req.session.usr._id) {
+        Articles.remove(id)
+          .then(() => {
+            req.flash('success', 'Article removed');
+            res.redirect('/user/home');
+          });
+      }
     })
     .catch(next);
 });

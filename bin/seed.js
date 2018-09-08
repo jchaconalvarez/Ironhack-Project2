@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const User = require('../models/user');
 const Article = require('../models/article');
+const Comment = require('../models/comment');
 
 
 mongoose.connect('mongodb://admin:admin2018@ds115442.mlab.com:15442/ironhack_prj2', { useNewUrlParser: true });

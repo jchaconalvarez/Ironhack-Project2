@@ -9,38 +9,44 @@ const Comments = require('../models/comment');
 router.post('/:id/new', (req, res, next) => {
   const { id: articleId } = req.params;
 
-  Comments.create({ text: req.body.text, article: articleId, user: req.session.usr._id })
-    .then((comment) => {
-      Users.findByIdAndUpdate(req.session.usr._id, { $push: { comments: comment._id } })
-        .then(() => {
-          Articles.findByIdAndUpdate(articleId, { $push: { comments: comment._id } })
+  Articles.findById(articleId)
+    .then((article) => {
+      Comments.create({ text: req.body.text, article, postedBy: req.session.usr })
+        .then((comment) => {
+          Users.findByIdAndUpdate(req.session.usr._id, { $push: { comments: comment._id } })
             .then(() => {
-              res.redirect(`/articles/${articleId}`);
-            })
-            .catch(next);
+              Articles.findByIdAndUpdate(articleId, { $push: { comments: comment._id } })
+                .then(() => {
+                  res.redirect(`/articles/${articleId}`);
+                });
+            });
         });
-    });
+    })
+    .catch(next);
 });
 
 // DELETE
-router.post('/:id/delete', (req, res, next) => {
-  const { id: commentId } = req.params;
+router.post('/:articleId/:commentId/delete', (req, res, next) => {
+  const { commentId } = req.params;
+  const { articleId } = req.params;
 
-  Comments.findByIdAndRemove(commentId).populate('user')
+  Comments.findById(commentId)
     .then((comment) => {
-      console.log('Before Articles -----');
-      console.log(comment.user.comments);
-      Articles.findByIdAndUpdate(comment.article, { $pull: { comments: commentId } })
-        .then((article) => {
-          console.log('Before Users -----');
-          console.log(comment.user.comments, comments.user._id);
-          Users.findByIdAndUpdate(comment.user._id, { $pull: { comments: commentId } });
-          console.log('After Users -----');
-          console.log(comment.user.comments, commentId);
-          res.redirect(`/articles/${article._id}`);
-        })
-        .catch(next);
-    });
+      const { _id: postedById } = comment.postedBy[0];
+      if (postedById == req.session.usr._id) {
+        Comments.findByIdAndRemove(commentId)
+          .then(() => {
+            Articles.findByIdAndUpdate(articleId, { $pull: { comments: commentId } })
+              .then(() => {
+                Users.findByIdAndUpdate(postedById, { $pull: { comments: commentId } })
+                  .then((user) => {
+                    res.redirect(`/articles/${articleId}`);
+                  });
+              });
+          });
+      }
+    })
+    .catch(next);
 });
 
 module.exports = router;
