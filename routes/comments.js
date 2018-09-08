@@ -10,7 +10,6 @@ router.post('/:id/new', (req, res, next) => {
   const { id: articleId } = req.params;
   const newComment = req.body;
 
-  console.log(newComment);
   Comments.create({ text: req.body.text, article: articleId, user: req.session.usr._id })
     .then((comment) => {
       Users.findByIdAndUpdate(req.session.usr._id, { $push: { comments: comment._id } })
@@ -21,6 +20,21 @@ router.post('/:id/new', (req, res, next) => {
             })
             .catch(next);
         });
+    });
+});
+
+// DELETE
+router.post('/:id/delete', (req, res, next) => {
+  const { id: commentId } = req.params;
+
+  Comments.findById(commentId)
+    .then((comment) => {
+      const { _id: articleId } = comment.article;
+      Comments.deleteOne({ _id: commentId })
+        .then(() => {
+          res.redirect(`/articles/${articleId}`);
+        })
+        .catch(error);
     });
 });
 

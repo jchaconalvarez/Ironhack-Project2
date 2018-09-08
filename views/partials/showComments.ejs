@@ -2,6 +2,11 @@
       articles[0].comments.forEach((comment) => {
 %>
         <p><%= comment.text %></p>
+        <form name="delete" action="/comments/<%=comment._id %>/delete" method=POST>
+          <button type=submit>
+            <i class="fas fa-trash-alt fa-lg"></i>
+          </button>
+        </form>
 <%
       });
     }
