@@ -15,7 +15,7 @@ const articleSchema = new mongoose.Schema({
   likes: Number,
   dislikes: Number,
   shared: Number,
-  postedBy: [UserSchema],
+  postedBy: UserSchema,
   comments: [{ type: ObjectId, ref: 'Comment' }],
 });
 

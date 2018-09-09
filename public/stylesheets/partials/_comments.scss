@@ -1,6 +1,17 @@
 .comment-wrapper {
   @extend %wrapper;
   height: auto;
+  margin: 1em 0 4em 0;
+  grid-gap: 0.4em;
+  textarea {
+    resize: none;
+  }
+  .btn {
+    margin-top: 0;
+  }
+  form {
+    margin-bottom: 1em;
+  }
 }
 
 .comment-card {
@@ -8,11 +19,25 @@
   grid-template-areas:
     'user'
     'text'
-    'info'
+    'info';
+  width: 80%;
+  padding: 0 1em 0 1em;
+  border: 1px solid color(whiteish);
+  &:nth-child(even) {
+    background: color(background);
+  }
 }
 
 .comment-user {
   grid-area: user;
+  font-size: 0.8em;
+  font-weight: bold;
+  p {
+    margin: 0.5em 0 0.5em 0;
+  }
+}
+
+.comment-text {
   font-size: 0.8em;
 }
 
@@ -21,4 +46,11 @@
   display: grid;
   justify-items: start;
   grid-template-columns: 0.1fr 0.1fr 1fr;
+  form {
+    margin-bottom: 0.5em;
+  }
+  button {
+    border: none;
+    background: none;
+  }
 }

@@ -9,6 +9,7 @@ const Comments = require('../models/comment');
 router.post('/:id/new', (req, res, next) => {
   const { id: articleId } = req.params;
 
+  console.log(req.session.usr);
   Articles.findById(articleId)
     .then((article) => {
       Comments.create({ text: req.body.text, article, postedBy: req.session.usr })
@@ -20,7 +21,7 @@ router.post('/:id/new', (req, res, next) => {
                   res.redirect(`/articles/${articleId}`);
                 });
             });
-        });
+        })
     })
     .catch(next);
 });
@@ -32,7 +33,7 @@ router.post('/:articleId/:commentId/delete', (req, res, next) => {
 
   Comments.findById(commentId)
     .then((comment) => {
-      const { _id: postedById } = comment.postedBy[0];
+      const { _id: postedById } = comment.postedBy;
       if (postedById == req.session.usr._id) {
         Comments.findByIdAndRemove(commentId)
           .then(() => {

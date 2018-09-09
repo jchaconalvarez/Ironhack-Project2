@@ -199,15 +199,40 @@ a {
 
 .comment-wrapper {
   height: auto;
+  margin: 1em 0 4em 0;
+  grid-gap: 0.4em;
+}
+.comment-wrapper textarea {
+  resize: none;
+}
+.comment-wrapper .btn {
+  margin-top: 0;
+}
+.comment-wrapper form {
+  margin-bottom: 1em;
 }
 
 .comment-card {
   display: grid;
   grid-template-areas: "user" "text" "info";
+  width: 80%;
+  padding: 0 1em 0 1em;
+  border: 1px solid #DDD;
+}
+.comment-card:nth-child(even) {
+  background: #FDFAF7;
 }
 
 .comment-user {
   grid-area: user;
+  font-size: 0.8em;
+  font-weight: bold;
+}
+.comment-user p {
+  margin: 0.5em 0 0.5em 0;
+}
+
+.comment-text {
   font-size: 0.8em;
 }
 
@@ -216,6 +241,13 @@ a {
   display: grid;
   justify-items: start;
   grid-template-columns: 0.1fr 0.1fr 1fr;
+}
+.comment-info form {
+  margin-bottom: 0.5em;
+}
+.comment-info button {
+  border: none;
+  background: none;
 }
 
 /*# sourceMappingURL=main.css.map */

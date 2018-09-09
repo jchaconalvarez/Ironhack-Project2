@@ -9,6 +9,7 @@ mongoose.connect('mongodb://admin:admin2018@ds115442.mlab.com:15442/ironhack_prj
 
 User.collection.drop();
 Article.collection.drop();
+Comment.collection.drop();
 
 const users = [
   {
@@ -33,6 +34,13 @@ const articles = [
     likes: 0,
     dislikes: 0,
     shared: 3,
+    postedBy: {
+      name: 'test',
+      email: 'test@test',
+      password: bcrypt.hashSync('test', 10),
+      countries: ['ve', 'za'],
+      languages: ['en', 'fr', 'it', 'es'],
+    },
     comments: [],
   },
   {
@@ -47,6 +55,13 @@ const articles = [
     likes: 0,
     dislikes: 0,
     shared: 3,
+    postedBy: {
+      name: 'test',
+      email: 'test@test',
+      password: bcrypt.hashSync('test', 10),
+      countries: ['ve', 'za'],
+      languages: ['en', 'fr', 'it', 'es'],
+    },
     comments: [],
   },
   {
@@ -61,6 +76,13 @@ const articles = [
     likes: 0,
     dislikes: 0,
     shared: 3,
+    postedBy: {
+      name: 'test',
+      email: 'test@test',
+      password: bcrypt.hashSync('test', 10),
+      countries: ['ve', 'za'],
+      languages: ['en', 'fr', 'it', 'es'],
+    },
     comments: [],
   },
   {
@@ -75,6 +97,13 @@ const articles = [
     likes: 0,
     dislikes: 0,
     shared: 3,
+    postedBy: {
+      name: 'test',
+      email: 'test@test',
+      password: bcrypt.hashSync('test', 10),
+      countries: ['ve', 'za'],
+      languages: ['en', 'fr', 'it', 'es'],
+    },
     comments: [],
   },
   {
@@ -89,6 +118,13 @@ const articles = [
     likes: 0,
     dislikes: 0,
     shared: 3,
+    postedBy: {
+      name: 'test',
+      email: 'test@test',
+      password: bcrypt.hashSync('test', 10),
+      countries: ['ve', 'za'],
+      languages: ['en', 'fr', 'it', 'es'],
+    },
     comments: [],
   },
   {
@@ -103,6 +139,13 @@ const articles = [
     likes: 0,
     dislikes: 0,
     shared: 3,
+    postedBy: {
+      name: 'test',
+      email: 'test@test',
+      password: bcrypt.hashSync('test', 10),
+      countries: ['ve', 'za'],
+      languages: ['en', 'fr', 'it', 'es'],
+    },
     comments: [],
   },
   {
@@ -117,6 +160,13 @@ const articles = [
     likes: 0,
     dislikes: 0,
     shared: 3,
+    postedBy: {
+      name: 'test',
+      email: 'test@test',
+      password: bcrypt.hashSync('test', 10),
+      countries: ['ve', 'za'],
+      languages: ['en', 'fr', 'it', 'es'],
+    },
     comments: [],
   },
   {
@@ -131,6 +181,13 @@ const articles = [
     likes: 0,
     dislikes: 0,
     shared: 3,
+    postedBy: {
+      name: 'test',
+      email: 'test@test',
+      password: bcrypt.hashSync('test', 10),
+      countries: ['ve', 'za'],
+      languages: ['en', 'fr', 'it', 'es'],
+    },
     comments: [],
   },
   {
@@ -145,6 +202,13 @@ const articles = [
     likes: 0,
     dislikes: 0,
     shared: 3,
+    postedBy: {
+      name: 'test',
+      email: 'test@test',
+      password: bcrypt.hashSync('test', 10),
+      countries: ['ve', 'za'],
+      languages: ['en', 'fr', 'it', 'es'],
+    },
     comments: [],
   },
   {
@@ -159,6 +223,13 @@ const articles = [
     likes: 0,
     dislikes: 0,
     shared: 3,
+    postedBy: {
+      name: 'test',
+      email: 'test@test',
+      password: bcrypt.hashSync('test', 10),
+      countries: ['ve', 'za'],
+      languages: ['en', 'fr', 'it', 'es'],
+    },
     comments: [],
   },
   {
@@ -173,6 +244,13 @@ const articles = [
     likes: 0,
     dislikes: 0,
     shared: 3,
+    postedBy: {
+      name: 'test',
+      email: 'test@test',
+      password: bcrypt.hashSync('test', 10),
+      countries: ['ve', 'za'],
+      languages: ['en', 'fr', 'it', 'es'],
+    },
     comments: [],
   },
   {
@@ -187,6 +265,13 @@ const articles = [
     likes: 0,
     dislikes: 0,
     shared: 3,
+    postedBy: {
+      name: 'test',
+      email: 'test@test',
+      password: bcrypt.hashSync('test', 10),
+      countries: ['ve', 'za'],
+      languages: ['en', 'fr', 'it', 'es'],
+    },
     comments: [],
   },
   {
@@ -201,6 +286,13 @@ const articles = [
     likes: 0,
     dislikes: 0,
     shared: 3,
+    postedBy: {
+      name: 'test',
+      email: 'test@test',
+      password: bcrypt.hashSync('test', 10),
+      countries: ['ve', 'za'],
+      languages: ['en', 'fr', 'it', 'es'],
+    },
     comments: [],
   },
   {
@@ -215,6 +307,13 @@ const articles = [
     likes: 0,
     dislikes: 0,
     shared: 3,
+    postedBy: {
+      name: 'test',
+      email: 'test@test',
+      password: bcrypt.hashSync('test', 10),
+      countries: ['ve', 'za'],
+      languages: ['en', 'fr', 'it', 'es'],
+    },
     comments: [],
   },
   {
@@ -229,6 +328,13 @@ const articles = [
     likes: 0,
     dislikes: 0,
     shared: 3,
+    postedBy: {
+      name: 'test',
+      email: 'test@test',
+      password: bcrypt.hashSync('test', 10),
+      countries: ['ve', 'za'],
+      languages: ['en', 'fr', 'it', 'es'],
+    },
     comments: [],
   },
   {
@@ -243,6 +349,13 @@ const articles = [
     likes: 0,
     dislikes: 0,
     shared: 3,
+    postedBy: {
+      name: 'test',
+      email: 'test@test',
+      password: bcrypt.hashSync('test', 10),
+      countries: ['ve', 'za'],
+      languages: ['en', 'fr', 'it', 'es'],
+    },
     comments: [],
   },
   {
@@ -257,6 +370,13 @@ const articles = [
     likes: 0,
     dislikes: 0,
     shared: 3,
+    postedBy: {
+      name: 'test',
+      email: 'test@test',
+      password: bcrypt.hashSync('test', 10),
+      countries: ['ve', 'za'],
+      languages: ['en', 'fr', 'it', 'es'],
+    },
     comments: [],
   },
   {
@@ -271,6 +391,13 @@ const articles = [
     likes: 0,
     dislikes: 0,
     shared: 3,
+    postedBy: {
+      name: 'test',
+      email: 'test@test',
+      password: bcrypt.hashSync('test', 10),
+      countries: ['ve', 'za'],
+      languages: ['en', 'fr', 'it', 'es'],
+    },
     comments: [],
   },
   {
@@ -285,6 +412,13 @@ const articles = [
     likes: 0,
     dislikes: 0,
     shared: 3,
+    postedBy: {
+      name: 'test',
+      email: 'test@test',
+      password: bcrypt.hashSync('test', 10),
+      countries: ['ve', 'za'],
+      languages: ['en', 'fr', 'it', 'es'],
+    },
     comments: [],
   },
   {
@@ -299,6 +433,13 @@ const articles = [
     likes: 0,
     dislikes: 0,
     shared: 3,
+    postedBy: {
+      name: 'test',
+      email: 'test@test',
+      password: bcrypt.hashSync('test', 10),
+      countries: ['ve', 'za'],
+      languages: ['en', 'fr', 'it', 'es'],
+    },
     comments: [],
   },
 ];

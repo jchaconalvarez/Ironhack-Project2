@@ -4,8 +4,8 @@ const ArticleSchema = require('mongoose').model('Article').schema;
 
 const commentSchema = new mongoose.Schema({
   timeStamp: { type: Date, default: Date.now },
-  article: [ArticleSchema],
-  postedBy: [UserSchema],
+  article: ArticleSchema,
+  postedBy: UserSchema,
   text: String,
   rating: { type: Number, default: 0 },
   likes: { type: Number, default: 0 },
