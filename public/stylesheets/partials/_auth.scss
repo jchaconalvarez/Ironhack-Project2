@@ -1,10 +1,18 @@
 .auth-wrapper {
   @extend %wrapper;
   height: 100%;
+  .auth-carousel {
+    display: none;
+  }
+  @include lg {
+    grid-template-columns: 1fr 1fr;
+    .auth-carousel {
+      display: block;
+    }
+  }
 }
 
 .auth-container {
-  grid-column-start: 1;
   display: grid;
   justify-items: center;
   align-items: center;

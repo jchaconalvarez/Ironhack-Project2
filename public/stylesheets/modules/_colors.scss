@@ -1,12 +1,13 @@
 $colors: (
   background: #FDFAF7,
-  primary: #FF3A3A,
-  highlight: lighten(#FF3A3A, 10%),
+  primary: #FFCC00,
+  highlight: #FFAA00,
   muted: #AAA,
+  white: #FFFFFD,
   whiteish: #DDD,
   blackish: #222,
   navbar-background: #FFFFFFF0,
-  navbar-item: #555
+  navbar-item: #555,
 );
 
 @function color($color-name) {

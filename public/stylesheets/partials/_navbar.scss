@@ -8,7 +8,7 @@
   border-top: 1px solid color(whiteish);
   box-shadow: 0px 4px 5px 1px color(blackish);
   display: grid;
-  grid-template-rows: repeat(4, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   .navbar-item {
     margin: 0.2em 0 1rem 0;
     text-align: center;
@@ -22,5 +22,8 @@
     top: 0;
     min-height: 100%;
     width: 6em;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(4, 1fr);
+    align-items: center;
   }
 }

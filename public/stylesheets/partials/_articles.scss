@@ -14,6 +14,7 @@
   grid-gap: 1em;
   margin-top: 1.75em;
   box-shadow: 0 2px 5px 1px color(whiteish);
+  background-color: color(white);
   &:last-of-type {
     margin-bottom: 4em;
   }
@@ -40,7 +41,6 @@
 
 .article-img {
   grid-area: image;
-  // align-self: center;
   @include lg {
     width: 500px;
     height: auto;
