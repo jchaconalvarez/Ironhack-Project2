@@ -1,3 +1,8 @@
+.article-wrapper {
+  @extend %wrapper;
+  justify-content: center;
+}
+
 .article-card {
   display: grid;
   grid-template-areas:
@@ -7,10 +12,18 @@
     "description"
     "social";
   grid-gap: 1em;
-  margin-top: 2em;
+  margin-top: 1.75em;
   box-shadow: 0 2px 5px 1px color(whiteish);
   &:last-of-type {
     margin-bottom: 4em;
+  }
+  @include lg {
+    width: 1000px;
+    grid-template-areas:
+      "image source"
+      "image headline"
+      "image description"
+      "image social"
   }
 }
 
@@ -27,12 +40,22 @@
 
 .article-img {
   grid-area: image;
+  // align-self: center;
+  @include lg {
+    width: 500px;
+    height: auto;
+    overflow: hidden;
+  }
 }
 
 .article-description {
   grid-area: description;
   margin: 0 1.5em;
   font-size: 0.8em;
+  @include lg {
+    max-height: 6em;
+    overflow: hidden;
+  }
 }
 
 .article-social {

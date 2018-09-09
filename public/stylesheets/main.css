@@ -36,7 +36,7 @@ a {
   color: #222;
 }
 
-.comment-wrapper, .profile-wrapper, .auth-wrapper {
+.comment-wrapper, .profile-wrapper, .article-wrapper, .auth-wrapper {
   height: 80%;
   display: grid;
   justify-items: center;
@@ -111,7 +111,7 @@ a {
   border-top: 1px solid #DDD;
   box-shadow: 0px 4px 5px 1px #222;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
 }
 .navbar .navbar-item {
   margin: 0.2em 0 1rem 0;
@@ -122,16 +122,33 @@ a {
   margin-top: 0.2em;
   font-size: 0.6em;
 }
+@media (min-width: 1024px) {
+  .navbar {
+    top: 0;
+    min-height: 100%;
+    width: 6em;
+  }
+}
+
+.article-wrapper {
+  justify-content: center;
+}
 
 .article-card {
   display: grid;
   grid-template-areas: "source" "headline" "image" "description" "social";
   grid-gap: 1em;
-  margin-top: 2em;
+  margin-top: 1.75em;
   box-shadow: 0 2px 5px 1px #DDD;
 }
 .article-card:last-of-type {
   margin-bottom: 4em;
+}
+@media (min-width: 1024px) {
+  .article-card {
+    width: 1000px;
+    grid-template-areas: "image source" "image headline" "image description" "image social";
+  }
 }
 
 .article-source {
@@ -148,11 +165,24 @@ a {
 .article-img {
   grid-area: image;
 }
+@media (min-width: 1024px) {
+  .article-img {
+    width: 500px;
+    height: auto;
+    overflow: hidden;
+  }
+}
 
 .article-description {
   grid-area: description;
   margin: 0 1.5em;
   font-size: 0.8em;
+}
+@media (min-width: 1024px) {
+  .article-description {
+    max-height: 6em;
+    overflow: hidden;
+  }
 }
 
 .article-social {
