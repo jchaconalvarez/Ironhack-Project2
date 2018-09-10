@@ -12,6 +12,7 @@
     "description"
     "social";
   grid-gap: 1em;
+  width: 100%;
   margin-top: 1.75em;
   box-shadow: 0 2px 5px 1px color(whiteish);
   background-color: color(white);
@@ -19,12 +20,13 @@
     margin-bottom: 4em;
   }
   @include lg {
-    width: 1000px;
     grid-template-areas:
       "image source"
       "image headline"
       "image description"
-      "image social"
+      "image social";
+    width: 1000px;
+    margin-left: 6em;
   }
 }
 
@@ -41,9 +43,12 @@
 
 .article-img {
   grid-area: image;
+  img {
+    width: 100%;
+  }
   @include lg {
     width: 500px;
-    height: auto;
+    max-height: 300px;
     overflow: hidden;
   }
 }

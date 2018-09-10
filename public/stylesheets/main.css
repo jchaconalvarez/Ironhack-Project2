@@ -1,27 +1,51 @@
 @import url("https://fonts.googleapis.com/css?family=Lobster");
-.background {
-  clip-path: polygon(0 0, 0 100%, 6% 100%, 69% 0);
+.background-lg, body {
   background: #F2994A;
   /* fallback for old browsers */
   background: -webkit-linear-gradient(to right, #F2C94C, #F2994A);
   /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to right, #F2C94C, #F2994A);
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  z-index: -1;
 }
 
-body, html {
+body {
   margin: 0;
   height: 100vh;
   font-size: 20px;
   font-family: "Verdana", Verdana, Geneva, Tahoma, sans-serif;
 }
+@media (min-width: 1025px) {
+  body {
+    background: none;
+  }
+}
 
-img {
-  max-width: 100%;
+.background {
+  clip-path: polygon(50% 0%, 100% 0, 100% 65%, 50% 100%, 0 100%, 0 35%);
+  background: #FFFFFD;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: -1;
+}
+@media (min-width: 1025px) {
+  .background {
+    display: none;
+  }
+}
+
+.background-lg {
+  clip-path: polygon(0 0, 0 100%, 6% 100%, 69% 0);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: -1;
+  display: none;
+}
+@media (min-width: 1025px) {
+  .background-lg {
+    display: block;
+  }
 }
 
 h1 {
@@ -85,11 +109,12 @@ a {
 
 .auth-wrapper {
   height: 100%;
+  z-index: -1;
 }
 .auth-wrapper .auth-carousel {
   display: none;
 }
-@media (min-width: 1024px) {
+@media (min-width: 1025px) {
   .auth-wrapper {
     grid-template-columns: 1fr 1fr;
   }
@@ -138,7 +163,7 @@ a {
   margin-top: 0.2em;
   font-size: 0.6em;
 }
-@media (min-width: 1024px) {
+@media (min-width: 1025px) {
   .navbar {
     top: 0;
     min-height: 100%;
@@ -157,6 +182,7 @@ a {
   display: grid;
   grid-template-areas: "source" "headline" "image" "description" "social";
   grid-gap: 1em;
+  width: 100%;
   margin-top: 1.75em;
   box-shadow: 0 2px 5px 1px #DDD;
   background-color: #FFFFFD;
@@ -164,10 +190,11 @@ a {
 .article-card:last-of-type {
   margin-bottom: 4em;
 }
-@media (min-width: 1024px) {
+@media (min-width: 1025px) {
   .article-card {
-    width: 1000px;
     grid-template-areas: "image source" "image headline" "image description" "image social";
+    width: 1000px;
+    margin-left: 6em;
   }
 }
 
@@ -185,10 +212,13 @@ a {
 .article-img {
   grid-area: image;
 }
-@media (min-width: 1024px) {
+.article-img img {
+  width: 100%;
+}
+@media (min-width: 1025px) {
   .article-img {
     width: 500px;
-    height: auto;
+    max-height: 300px;
     overflow: hidden;
   }
 }
@@ -198,7 +228,7 @@ a {
   margin: 0 1.5em;
   font-size: 0.8em;
 }
-@media (min-width: 1024px) {
+@media (min-width: 1025px) {
   .article-description {
     max-height: 6em;
     overflow: hidden;

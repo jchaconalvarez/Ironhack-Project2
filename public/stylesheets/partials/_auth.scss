@@ -1,6 +1,7 @@
 .auth-wrapper {
   @extend %wrapper;
   height: 100%;
+  z-index: -1;
   .auth-carousel {
     display: none;
   }
