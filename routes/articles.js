@@ -93,23 +93,29 @@ router.get('/:id', (req, res, next) => {
     .catch(next);
 });
 
-// LIKES
-router.get('/:id/like', (req, res, next) => {
-  const { id } = req.params;
+// AXIOS-------
 
-  Articles.findByIdAndUpdate(id, { $inc: { likes: 1 } })
+// LIKES
+router.get('/:id/like/:action', (req, res, next) => {
+  const { id, action } = req.params;
+
+  Articles.findByIdAndUpdate(id, { $inc: { likes: action } })
     .then(() => {
-      res.redirect('/user/home');
+      Articles.findById(id)
+        .then(article =>  res.send(article))
+        .catch(next);
     })
     .catch(next);
 });
 
-router.get('/:id/dislike', (req, res, next) => {
-  const { id } = req.params;
+router.get('/:id/dislike/:action', (req, res, next) => {
+  const { id, action } = req.params;
 
-  Articles.findByIdAndUpdate(id, { $inc: { likes: -1 } })
+  Articles.findByIdAndUpdate(id, { $inc: { dislikes: action } })
     .then(() => {
-      res.redirect('/user/home');
+      Articles.findById(id)
+        .then(article =>  res.send(article))
+        .catch(next);
     })
     .catch(next);
 });

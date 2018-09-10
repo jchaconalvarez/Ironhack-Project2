@@ -1,14 +1,15 @@
 // social.js
 
 $(document).ready(() => {
-  // console.log(locals);
   console.log('loaded');
 
-  $('.article-image').on('onError', function () {
-    console.log('error al cargar!');
-    console.log(this);
-
-    // $(this).
+  $('.article-image').on('error', function () {
+    console.log('error al cargar imagen!');
+    $(this).attr({
+      src: '/images/600px-No_image_available.png',
+      alt: 'Sorry, image not available.',
+      // style: 'border: 1px solid #000000;',
+    });
   });
 
   // Icon favorite
@@ -16,7 +17,6 @@ $(document).ready(() => {
   $('li.favorite').on('click', function () {
     const id = $(this).attr('value');
     const icon = $(this).find('[data-fa-i2svg]').attr('data-prefix');
-    console.log(id);
 
     // axios.put()
     if (icon === 'fas') {
@@ -27,28 +27,46 @@ $(document).ready(() => {
   });
 
   $('li.like').on('click', function () {
-    const id = $(this).attr('value');
+    const idArticle = $(this).attr('value');
     const icon = $(this).find('[data-fa-i2svg]').attr('data-prefix');
-    console.log(id);
+    const flagLike = icon === 'far';
+    const action = flagLike ? 1 : -1;
 
-    // axios.put()
-    if (icon === 'fas') {
-      $(this).find('[data-fa-i2svg]').attr('data-prefix', 'far');
-    } else {
-      $(this).find('[data-fa-i2svg]').attr('data-prefix', 'fas');
-    }
+    axios.get(`/articles/${idArticle}/like/${action}`)
+      .then((article) => {
+        if (flagLike) {
+          $(this).find('[data-fa-i2svg]').attr('data-prefix', 'fas');
+        } else {
+          $(this).find('[data-fa-i2svg]').attr('data-prefix', 'far');
+        }
+        $(this).find('span#likes').text(article.data.likes);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   });
 
   $('li.dislike').on('click', function () {
+    const idArticle = $(this).attr('value');
     const id = $(this).attr('value');
     const icon = $(this).find('[data-fa-i2svg]').attr('data-prefix');
-    console.log(id);
+    const flagLike = icon === 'fas';
+    const action = flagLike ? 1 : -1;
 
-    $(this)
-      .find('[data-fa-i2svg]')
-      .toggleClass('fa-angle-down')
-      .toggleClass('fas fa-poop');
+    axios.get(`/articles/${idArticle}/dislike/${action}`)
+      .then((article) => {
+        $(this)
+          .find('[data-fa-i2svg]')
+          .toggleClass('fa-angle-down')
+          .toggleClass('fas fa-poop');
+
+        $(this).find('span#dislikes').text(article.data.dislikes);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   });
+
 
   $('button.favorites').on('click', function () {
     console.log(this);
