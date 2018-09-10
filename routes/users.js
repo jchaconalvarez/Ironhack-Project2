@@ -16,10 +16,13 @@ router.get('/', (req, res, next) => {
 
 router.get('/home', (req, res, next) => {
   const user = req.session.usr;
+  const { languages } = req.session.usr;
 
+  console.log(user);
+  console.log(languages);
   Articles.find()
     .then((topHeadlines) => {
-      const articlesCarousel = topHeadlines;// const { articles: articlesCarousel } = topHeadlines;
+      // const articlesCarousel = topHeadlines;// const { articles: articlesCarousel } = topHeadlines;
       const articles = topHeadlines; // req.session.usr;
       res.render('user/home', { articles, user });
     })
@@ -43,7 +46,7 @@ router.get('/edit', (req, res, next) => {
 });
 
 router.post('/save', (req, res, next) => {
-  const { name, email, password } = req.body;
+  const { name, email, password, languages } = req.body;
   hashedPassword = bcrypt.hashSync(password, bcrypt.genSaltSync(saltRounds));
   const newDataOfUserPassword = { name, email, password : hashedPassword };
   const newDataOfUser = { name, email };
