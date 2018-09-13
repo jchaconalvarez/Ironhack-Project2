@@ -23,7 +23,7 @@ router.post('/login', (req, res, next) => {
     User.findOne({ email })
       .then((user) => {
         if (user && bcrypt.compareSync(password, user.password)) {
-          req.session.currentUser = user.name ? user.name : user.email; // TODO: update if change profile
+          req.session.currentUser = user.name ? user.name : user.email;
           req.session.usr = user;
           res.redirect('/user/home');
         } else {
