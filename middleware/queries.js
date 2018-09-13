@@ -11,6 +11,8 @@ module.exports = {
         .populate('following')
         .then((user) => {
           req.session.usr = user;
+          req.session.currentUser = user.name;
+          console.log('.');
           next();
         });
     } else {

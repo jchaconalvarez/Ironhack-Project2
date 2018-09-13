@@ -1,4 +1,7 @@
+
+
 <% articles.forEach((article) => { %>
+
   <div class="article-card">
     <p class="article-source"></p>
     <h5 class="article-headline">
@@ -11,41 +14,48 @@
       </a>
     </div>
 
-    <p class="article-description"> <%= article.description %> </p>
+    <!--
+    <p>user:<%= currentUser._id %></p>
+    <p>article:<%= article._id %></p>
+    -->
 
+    <p class="article-description"> <%= article.description %> </p>
 
     <div class="article-social">
       <ul>
-
         <li class="favorite" value=<%= article._id %>>
-          <i class="far fa-star fa-lg"></i>
+          <% if( currentUser.articles.find(result => result._id.toString()===article._id.toString())) {%>
+            <i class="fas fa-star fa-lg"></i>
+          <% }else{ %>
+            <i class="far fa-star fa-lg"></i>
+          <% } %>
         </li>
 
-        <li class="like" value=<%= article._id %>>
-          <i class="far fa-heart fa-lg"></i>
-          <span id="likes"> <%= article.likes %> </span>
+        <li class="like" value=<%= article._id %> >
+          <% if( currentUser.favorites.find(result => result._id.toString()===article._id.toString())) {%>
+            <i class="fas fa-thumbs-up fa-lg"></i>
+          <% }else{ %>
+            <i class="far fa-thumbs-up fa-lg"></i>
+          <% } %>
+          <span id="likes"> <%= article.favorites %> </span>
         </li>
 
         <li class="dislike" value=<%= article._id %>>
-          <i class="fas fa-angle-down fa-lg"></i>
+          <% if( currentUser.dislikes.find(result => result._id.toString()===article._id.toString())) {%>
+            <i class="fas fa-thumbs-down fa-lg"></i>
+          <% }else{ %>
+            <i class="far fa-thumbs-down fa-lg"></i>
+          <% } %>
           <span id="dislikes"><%= article.dislikes %></span>
         </li>
 
-        <li>
-        <form name="share" action="#" method="post">
-            <button type="submit">
-              <i class="fas fa-share-alt fa-lg"></i>
-            </button>
-          </form>
-        </li>
-        <li>
-          <form name="trash" action="/articles/<%= article._id %>/delete" method="POST">
-            <button type="submit">
-              <i class="fas fa-trash-alt fa-lg"></i>
-            </button>
-          </form>
+        <li class="share" value=<%= article._id %>>
+          <i class="fas fa-share-alt fa-lg"></i>
         </li>
 
+        <li class="trash" value=<%= article._id %>>
+          <i class="fas fa-trash-alt fa-lg"></i>
+        </li>
 
       </ul>
     </div>

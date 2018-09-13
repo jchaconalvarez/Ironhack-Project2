@@ -4,17 +4,17 @@ const UserSchema = require('mongoose').model('User').schema;
 const { ObjectId } = mongoose.SchemaTypes;
 
 const articleSchema = new mongoose.Schema({
-  source: { id: String, name: String },
-  author: String,
-  title: String,
-  description: String,
-  url: String,
-  urlToImage: String,
+  source: { id:String, name: { type:String, default: '' } },
+  author: { type:String, default: '' },
+  title: { type:String, default: '' },
+  description: { type:String, default: '' },
+  url: { type:String, default: '' },
+  urlToImage: { type:String, default: '' },
   publishedAt: { type:Date, default: Date.now },
-  starred: Number,
-  likes: Number,
-  dislikes: Number,
-  shared: Number,
+  articles: { type:Number, default: 0 },
+  favorites: { type:Number, default: 0 },
+  dislikes: { type:Number, default: 0 },
+  shared: { type:Number, default: 0 },
   postedBy: UserSchema,
   comments: [{ type: ObjectId, ref: 'Comment' }],
 });
