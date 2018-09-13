@@ -14,8 +14,12 @@
   grid-gap: 1em;
   width: 100%;
   margin-top: 1.75em;
-  box-shadow: 0 2px 5px 1px color(whiteish);
+  // box-shadow: 0 2px 10px 4px color(muted);
+  border: 1px solid color(whiteish);
+  border-radius: 3px;
   background-color: color(white);
+  box-shadow: 1px 2px 10px rgba(50,50,93,.1),
+  0px 1px 10px rgba(0,0,0,.08);
   &:last-of-type {
     margin-bottom: 4em;
   }
@@ -48,7 +52,7 @@
   }
   @include lg {
     width: 500px;
-    max-height: 300px;
+    max-height: 250px;
     overflow: hidden;
   }
 }

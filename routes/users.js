@@ -18,8 +18,6 @@ router.get('/home', (req, res, next) => {
   const user = req.session.usr;
   const { languages } = req.session.usr;
 
-  console.log(user);
-  console.log(languages);
   Articles.find()
     .then((topHeadlines) => {
       // const articlesCarousel = topHeadlines;// const { articles: articlesCarousel } = topHeadlines;
