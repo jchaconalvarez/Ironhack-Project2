@@ -8,7 +8,7 @@ const mongoose = require('mongoose');
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 const flash = require('express-flash');
-const axios = require('axios');
+//const axios = require('axios');
 require('dotenv').config();
 
 // db connection
@@ -57,12 +57,13 @@ app.use(msgMiddlewares.notifications);
 
 app.use('/', indexRouter);
 app.use('/auth', authRouter);
-app.use('/user', authMiddlewares.checkSession,
-  queriesMiddlewares.queryCurrentUserRelations,
-  usersRouter);
-app.use('/articles', authMiddlewares.checkSession,
+app.use('/user', queriesMiddlewares.queryCurrentUserRelations,
+  authMiddlewares.checkSession, usersRouter);
+app.use('/articles', queriesMiddlewares.queryCurrentUserRelations,
+  authMiddlewares.checkSession,
   articlesRouter);
-app.use('/comments', authMiddlewares.checkSession,
+app.use('/comments', queriesMiddlewares.queryCurrentUserRelations,
+  authMiddlewares.checkSession,
   commentsRouter);
 
 // catch 404 and go to error page
@@ -77,9 +78,10 @@ app.use((err, req, res, next) => {
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-  // render the error page
-  console.log(req.app.get('env'));
+  //view env, development or production
+  //console.log(req.app.get('env'));
 
+  // render the error page
   if (req.app.get('env') === 'development') {
     res.status(err.status || 500);
     res.render('error');

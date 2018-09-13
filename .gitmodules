@@ -1,0 +1,3 @@
+[submodule "gazetteMicroservice"]
+	path = gazetteMicroservice
+	url = https://github.com/xavifserra/GazetteMicroservice.git

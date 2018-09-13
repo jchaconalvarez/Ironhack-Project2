@@ -18,6 +18,14 @@ router.get('/home', (req, res, next) => {
   const user = req.session.usr;
   const { languages } = req.session.usr;
 
+  // console.log(user);
+  // console.log(languages);
+  //  console.log('res.locals.currentUser----------------------');
+  //  console.log(res.locals.currentUser);
+  //  console.log('req.session.usr----------------');
+  //  console.log(req.session.usr);
+
+
   Articles.find()
     .then((topHeadlines) => {
       // const articlesCarousel = topHeadlines;// const { articles: articlesCarousel } = topHeadlines;
@@ -51,16 +59,15 @@ router.post('/save', (req, res, next) => {
 
   Users.findByIdAndUpdate(req.session.usr.id, password ? newDataOfUserPassword : newDataOfUser)
     .then(() => {
-      Users.findOne({ email })
-        .populate('articles')
-        .populate('users')
+      //console.log(req.session)
+      Users.findById({ _id:req.session.usr.id })
         .then((updatedUser) => {
-          console.log(updatedUser);
-          req.session.currentUser = updatedUser.user;
+          req.session.currentUser = updatedUser.name;
           req.session.usr = updatedUser;
 
           const { usr: user } = req.session;
-          const { articles } = req.session.usr;
+          const { articles } = req.session.usr.articles;
+
           res.render('user/profile', { user, articles });
         })
         .catch(next);
