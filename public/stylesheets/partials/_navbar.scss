@@ -17,6 +17,9 @@
       margin-top: 0.2em;
       font-size: 0.6em;
     }
+    .fa-2x {
+      display: none;
+    }
   }
   @include lg {
     top: 0;
@@ -26,5 +29,13 @@
     grid-template-rows: repeat(4, 1fr);
     align-items: center;
     // background: color(primary);
+    .navbar-item {
+      .fa-sm {
+        display: none;
+      }
+      .fa-2x {
+        display: inline;
+      }
+    }
   }
 }

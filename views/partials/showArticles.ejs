@@ -14,47 +14,42 @@
       </a>
     </div>
 
-    <!--
-    <p>user:<%= currentUser._id %></p>
-    <p>article:<%= article._id %></p>
-    -->
-
     <p class="article-description"> <%= article.description %> </p>
 
     <div class="article-social">
       <ul>
         <li class="favorite" value=<%= article._id %>>
-          <% if( currentUser.articles.find(result => result._id.toString()===article._id.toString())) {%>
-            <i class="fas fa-star fa-lg"></i>
+          <% if(currentUser.articles.find(result => result._id.toString() === article._id.toString())) { %>
+            <i class="fas fa-star fa-sm"></i>
           <% }else{ %>
-            <i class="far fa-star fa-lg"></i>
+            <i class="far fa-star fa-sm"></i>
           <% } %>
         </li>
 
         <li class="like" value=<%= article._id %> >
           <% if( currentUser.favorites.find(result => result._id.toString()===article._id.toString())) {%>
-            <i class="fas fa-thumbs-up fa-lg"></i>
+            <i class="fas fa-thumbs-up fa-sm"></i>
           <% }else{ %>
-            <i class="far fa-thumbs-up fa-lg"></i>
+            <i class="far fa-thumbs-up fa-sm"></i>
           <% } %>
           <span id="likes"> <%= article.favorites %> </span>
         </li>
 
         <li class="dislike" value=<%= article._id %>>
           <% if( currentUser.dislikes.find(result => result._id.toString()===article._id.toString())) {%>
-            <i class="fas fa-thumbs-down fa-lg"></i>
+            <i class="fas fa-thumbs-down fa-sm"></i>
           <% }else{ %>
-            <i class="far fa-thumbs-down fa-lg"></i>
+            <i class="far fa-thumbs-down fa-sm"></i>
           <% } %>
           <span id="dislikes"><%= article.dislikes %></span>
         </li>
 
         <li class="share" value=<%= article._id %>>
-          <i class="fas fa-share-alt fa-lg"></i>
+          <i class="fas fa-share-alt fa-sm"></i>
         </li>
 
         <li class="trash" value=<%= article._id %>>
-          <i class="fas fa-trash-alt fa-lg"></i>
+          <i class="fas fa-trash-alt fa-sm"></i>
         </li>
 
       </ul>
