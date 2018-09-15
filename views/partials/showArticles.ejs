@@ -48,8 +48,10 @@
           <i class="fas fa-share-alt fa-sm"></i>
         </li>
 
+        <% if( article.postedBy._id.toString()===currentUser._id.toString()) {%>
         <li class="trash" value=<%= article._id %>> <i class="fas fa-trash-alt fa-lg"></i>
         </li>
+        <% } %>
 
       </ul>
     </div>
