@@ -1,4 +1,6 @@
 const express = require('express');
+const mongodb = require('mongoose');
+
 const Articles = require('../models/article');
 const Users = require('../models/user');
 
@@ -18,15 +20,17 @@ router.get('/new', (req, res, next) => {
 router.post('/new', (req, res, next) => {
   const { body: articleToCreate } = req;
 
-  Articles.create(articleToCreate)
+  Articles.create({ articleToCreate, postedBy: req.session.usr })
     .then((article) => {
+      console.log(article.postedBy);
+
       const { _id: userId } = req.session.usr;
       const { _id: articleId } = article;
       Users.findByIdAndUpdate(userId, { $push: { articles: articleId } })
         .then((user) => {
-          console.log(user);
-          const artId = user.articles[user.articles.length - 1];
-          console.log(artId);
+
+          const artId = article._id;
+
           Articles.findById(artId)
             .then((article) => {
               console.log(article);
@@ -53,14 +57,9 @@ router.post('/:id/save', (req, res, next) => {
 
 // DELETE
 router.delete('/:id/delete', (req, res, next) => {
-// TODO: DELETE
   const { id } = req.params;
-  console.log(req.params);
-  // console.log(req.body);
 
-  console.log(id);
-
-  Articles.findById(id).remove()
+  Articles.findByIdAndRemove(id)
     .then((obj) => {
       console.log(obj);
       req.flash('success', 'Article removed');
@@ -85,7 +84,7 @@ router.get('/:id', (req, res, next) => {
 
 // AXIOS-------
 // FAVORITES
-router.get('/:id/addfav', (req, res, next) => {
+router.put('/:id/addfav', (req, res, next) => {
   const { id } = req.params;
   const user = req.session.usr;
 
@@ -122,7 +121,7 @@ router.get('/:id/addfav', (req, res, next) => {
 });
 
 // LIKES
-router.get('/:id/like', (req, res, next) => {
+router.put('/:id/like', (req, res, next) => {
   const { id } = req.params;
   const user = req.session.usr;
 
@@ -147,31 +146,57 @@ router.get('/:id/like', (req, res, next) => {
 });
 
 // DISLIKE
-router.get('/:id/dislike', (req, res, next) => {
+router.put('/:id/dislike', (req, res, next) => {
   const { id } = req.params;
   const user = req.session.usr;
+  let userAlreadyHasDisLike = false;
+  let userAlreadyHasLike = false;
 
-  Users.find({ _id:{ $eq: user._id } }, { dislikes: { $elemMatch: { $eq: id } } })
-    .then((match) => {
-      const data = JSON.parse(JSON.stringify(match));
-      console.log(data);
+  Users.find({ _id:{ $eq: user._id } }, { dislikes: { $elemMatch: { $eq: id } } }).exec()
+    .then((data) => {
+      // console.log(data);
 
-      const action = data[0].dislikes.length > 0;
-      const sum = action ? -1 : 1;
-      const articles = Articles.findByIdAndUpdate({ _id: id }, { $inc: { dislikes: sum } });
-      const users = action
-        ? Users.findByIdAndUpdate({ _id:user._id }, { $pull: { dislikes: id } })
-        : Users.findByIdAndUpdate({ _id:user._id }, { $push: { dislikes: id } });
+      const usrDisLikes = JSON.parse(JSON.stringify(data));
+      userAlreadyHasDisLike = usrDisLikes[0].dislikes[0] == id;
+      const operation = userAlreadyHasDisLike ? -1 : 1;
 
-      Promise.all([articles, users])
-        .then((_result) => {
-          Articles.findById(id)
-            .then(article =>  res.send({ unlikes: article.dislikes, unliked: !action }))
-            .catch(next);
-        })
-        .catch(next);
-    });
+      Users.find({ _id:{ $eq: user._id } }, { favorites:{ $elemMatch: { $eq: id } } }).exec()
+        .then((data) => {
+          // console.log(data);
+          const usrLikes = JSON.parse(JSON.stringify(data));
+          userAlreadyHasLike =  usrLikes[0].favorites[0] == id;
+
+          const articlesUpdate = Articles.findByIdAndUpdate({ _id: id }, { $inc: { dislikes: operation } });
+
+          console.log(operation);
+          console.log(userAlreadyHasDisLike);
+          console.log(userAlreadyHasLike);
+
+          if (userAlreadyHasDisLike && !userAlreadyHasLike) {
+            const usersUpdate = Users.findByIdAndUpdate({ _id:user._id }, { $pull: { dislikes: id } });
+          } else if (!userAlreadyHasDisLike && !userAlreadyHasLike) {
+            const usersUpdate =  Users.findByIdAndUpdate({ _id:user._id }, { $push: { dislikes: id } });
+          } else if (!userAlreadyHasDisLike && userAlreadyHasLike) {
+            const usersUpdate =  Users.findByIdAndUpdate({ _id:user._id }, { $push: { dislikes: id }, $pull: { favorites: id } });
+          }
+
+          Promise.all([articlesUpdate, usersUpdate])
+            .then((_result) => {
+              console.log(_result);
+
+              Articles.findById(id)
+                .then(article => res.send({
+
+                  unlikes: article.dislikes,
+                  unliked: !userAlreadyHasDislike,
+                  likes: article.likes,
+                  liked,
+                }));
+            }).catch(next);
+        }).catch(next);
+    }).catch(next);
 });
+// });
 
 router.post('/share', (req, res, next) => {
   console.log(req.body);

@@ -12,8 +12,11 @@ const flash = require('express-flash');
 require('dotenv').config();
 
 // db connection
-mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true });
-
+// if (req.app.get('env') === 'development') {
+  //mongoose.connect(process.env.MONGODB_URI_DEV, { useNewUrlParser: true });
+// } else {
+   mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true });
+// }
 // routers
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');

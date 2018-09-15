@@ -1,5 +1,6 @@
 // social.js
 
+
 $(document).ready(() => {
   console.log('loaded');
 
@@ -18,7 +19,7 @@ $(document).ready(() => {
     const idArticle = $(this).attr('value');
     // const icon = $(this).find('[data-fa-i2svg]').attr('data-prefix');
 
-    axios.get(`/articles/${idArticle}/addfav`)
+    axios.put(`/articles/${idArticle}/addfav`)
       .then((response) => {
         if (response.data) {
           $(this).find('[data-fa-i2svg]').attr('data-prefix', 'fas');
@@ -33,7 +34,7 @@ $(document).ready(() => {
   $('li.like').on('click', function () {
     const idArticle = $(this).attr('value');
 
-    axios.get(`/articles/${idArticle}/like`)
+    axios.put(`/articles/${idArticle}/like`, { idArticle })
       .then((response) => {
         if (response.data.liked) {
           $(this).find('[data-fa-i2svg]').attr('data-prefix', 'fas');
@@ -50,19 +51,25 @@ $(document).ready(() => {
   $('li.dislike').on('click', function () {
     const idArticle = $(this).attr('value');
 
-    axios.get(`/articles/${idArticle}/dislike`)
+    axios.put(`/articles/${idArticle}/dislike`, { idArticle })
       .then((response) => {
         if (response.data.unliked) {
           $(this).find('[data-fa-i2svg]').attr('data-prefix', 'fas');
+          if (response.data.liked) {
+            setTimeout(() => {
+              $(this).closest('ul').children('li.like').find('[data-fa-i2svg]')
+                .attr('data-prefix', 'far');
+              $(this).closest('ul').find('span#likes').text(response.data.likes);
+            }, 1000);
+          }
         } else {
           $(this).find('[data-fa-i2svg]').attr('data-prefix', 'far');
         }
         $(this).find('span#dislikes').text(response.data.unlikes);
       })
-      .catch((error) => {
-        console.log(error);
-      });
+      .catch((error) => { console.log(error); });
   });
+
   // TODO: terminar share
   $('li.share').on('click', function () {
     const idArticle = $(this).attr('value');
@@ -78,14 +85,14 @@ $(document).ready(() => {
 
   $('li.trash').on('click', function () {
     const idArticle = $(this).attr('value');
-    // TODO: terminar delete
     axios.delete(`/articles/${idArticle}/delete`)
       .then((response) => {
-        console.log($(this));
-        $(this).closest('article-card');
+        $(this).closest('div.article-card').hide('slow');
       })
       .catch((error) => {
         console.log(error);
       });
   });
 });
+
+// _____
