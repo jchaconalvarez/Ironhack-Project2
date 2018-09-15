@@ -4,6 +4,7 @@
   </div>
   <div class="auth-container">
     <h1>L<span>o</span>g in</h1>
+    <%- include('../partials/notificationsPartial') %>
     <form action="/auth/login" method="POST" class="form">
       <label for="email">Email:</label>
       <input name="email" type="email" placeholder="Email" required>

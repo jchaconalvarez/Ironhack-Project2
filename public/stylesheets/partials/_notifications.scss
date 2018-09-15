@@ -1,0 +1,20 @@
+.notification-bar {
+  // position: fixed;
+  // left: 0;
+  // bottom: 3em;
+  width: 100%;
+  .message {
+    padding: 0.5em;
+    text-align: center;
+    border-radius: 5px;
+    color: color(blackish);
+  }
+  .error {
+    background: color(error);
+    border: 1px solid color(error-border);
+  }
+  .success {
+    background: color(success);
+    border: 1px solid color(success-border);
+  }
+}

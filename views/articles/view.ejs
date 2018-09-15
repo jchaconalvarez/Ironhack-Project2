@@ -1,10 +1,12 @@
-<%- include('../partials/showArticles') %>
+<div class="article-wrapper">
+  <%- include('../partials/showArticles') %>
+</div>
 
 <div class="comment-wrapper">
   <form class="form" action="/comments/<%= articles[0]._id %>/new" method="POST">
     <label for="text">New comment</label>
     <textarea name="text" rows="5" cols="45" maxlenght="500" wrap="soft"></textarea>
-    <button type="submit" class="btn">Submit comment</button>
+    <button type="submit" class="btn">Submit</button>
   </form>
 
   <%- include('../partials/showComments') %>

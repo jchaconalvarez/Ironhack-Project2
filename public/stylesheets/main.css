@@ -142,6 +142,24 @@ a {
   color: #FFAA00;
 }
 
+.notification-bar {
+  width: 100%;
+}
+.notification-bar .message {
+  padding: 0.5em;
+  text-align: center;
+  border-radius: 5px;
+  color: #222;
+}
+.notification-bar .error {
+  background: #F88;
+  border: 1px solid #ff5555;
+}
+.notification-bar .success {
+  background: #696;
+  border: 1px solid #527a52;
+}
+
 .navbar {
   position: fixed;
   left: 0;
@@ -180,6 +198,9 @@ a {
   }
   .navbar .navbar-item .fa-2x {
     display: inline;
+  }
+  .navbar .navbar-item p {
+    font-size: 0.8em;
   }
 }
 
@@ -295,12 +316,19 @@ a {
 }
 .comment-wrapper textarea {
   resize: none;
+  border: 1px solid #DDD;
 }
 .comment-wrapper .btn {
   margin-top: 0;
 }
 .comment-wrapper form {
   margin-bottom: 1em;
+  width: 50%;
+}
+@media (min-width: 1025px) {
+  .comment-wrapper textarea {
+    width: 100%;
+  }
 }
 
 .comment-card {
@@ -308,10 +336,11 @@ a {
   grid-template-areas: "user" "text" "info";
   width: 80%;
   padding: 0 1em 0 1em;
+  background: #FDFAF7;
   border: 1px solid #DDD;
 }
 .comment-card:nth-child(even) {
-  background: #FDFAF7;
+  background: #FFFFFD;
 }
 
 .comment-user {

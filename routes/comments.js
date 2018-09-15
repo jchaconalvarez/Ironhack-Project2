@@ -21,7 +21,7 @@ router.post('/:id/new', (req, res, next) => {
                   res.redirect(`/articles/${articleId}`);
                 });
             });
-        })
+        });
     })
     .catch(next);
 });
@@ -34,7 +34,7 @@ router.post('/:articleId/:commentId/delete', (req, res, next) => {
   Comments.findById(commentId)
     .then((comment) => {
       const { _id: postedById } = comment.postedBy;
-      if (postedById == req.session.usr._id) {
+      if (postedById.equals(req.session.usr._id)) {
         Comments.findByIdAndRemove(commentId)
           .then(() => {
             Articles.findByIdAndUpdate(articleId, { $pull: { comments: commentId } })

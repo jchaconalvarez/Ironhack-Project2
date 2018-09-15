@@ -24,9 +24,13 @@ router.post('/new', (req, res, next) => {
       const { _id: articleId } = article;
       Users.findByIdAndUpdate(userId, { $push: { articles: articleId } })
         .then((user) => {
+          console.log(user);
           const artId = user.articles[user.articles.length - 1];
+          console.log(artId);
           Articles.findById(artId)
             .then((article) => {
+              console.log(article);
+              console.log(article._id);
               res.redirect(`/articles/${article._id}`);
             });
         });
@@ -59,8 +63,8 @@ router.delete('/:id/delete', (req, res, next) => {
   Articles.findById(id).remove()
     .then((obj) => {
       console.log(obj);
-        req.flash('success', 'Article removed');
-        res.send(200);
+      req.flash('success', 'Article removed');
+      res.send(200);
       //     res.redirect('/user/home');
     })
     .catch(next);

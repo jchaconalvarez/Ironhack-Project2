@@ -5,12 +5,19 @@
   grid-gap: 0.4em;
   textarea {
     resize: none;
+    border: 1px solid color(whiteish);
   }
   .btn {
     margin-top: 0;
   }
   form {
     margin-bottom: 1em;
+    width: 50%;
+  }
+  @include lg {
+    textarea {
+      width: 100%;
+    }
   }
 }
 
@@ -22,9 +29,10 @@
     'info';
   width: 80%;
   padding: 0 1em 0 1em;
+  background: color(background);
   border: 1px solid color(whiteish);
   &:nth-child(even) {
-    background: color(background);
+    background: color(white);
   }
 }
 
