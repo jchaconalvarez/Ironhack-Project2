@@ -60,7 +60,7 @@ router.post('/save', (req, res, next) => {
 
   Users.findByIdAndUpdate(req.session.usr.id, password ? newDataOfUserPassword : newDataOfUser)
     .then(() => {
-      //console.log(req.session)
+      // console.log(req.session)
       Users.findById({ _id:req.session.usr.id })
         .then((updatedUser) => {
           req.session.currentUser = updatedUser.name;

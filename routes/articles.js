@@ -18,23 +18,19 @@ router.get('/new', (req, res, next) => {
 // CRUD
 // CREATE
 router.post('/new', (req, res, next) => {
-  const { body: articleToCreate } = req;
+  const { title } = req.body;
+  const { description } = req.body;
+  const { url } = req.body;
+  const { urlToImage } = req.body;
 
-  Articles.create({ articleToCreate, postedBy: req.session.usr })
+  Articles.create({ title, description, url, urlToImage, postedBy: req.session.usr })
     .then((article) => {
-      console.log(article.postedBy);
-
       const { _id: userId } = req.session.usr;
       const { _id: articleId } = article;
       Users.findByIdAndUpdate(userId, { $push: { articles: articleId } })
-        .then((user) => {
-
-          const artId = article._id;
-
-          Articles.findById(artId)
+        .then(() => {
+          Articles.findById(article._id)
             .then((article) => {
-              console.log(article);
-              console.log(article._id);
               res.redirect(`/articles/${article._id}`);
             });
         });
