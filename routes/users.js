@@ -26,7 +26,7 @@ router.get('/home', (req, res, next) => {
   //  console.log(req.session.usr);
 
 
-  Articles.find().sort({ publishedAt : 1.0 })
+  Articles.find().sort({ publishedAt : -1.0 })
 
     .then((topHeadlines) => {
       // const articlesCarousel = topHeadlines;// const { articles: articlesCarousel } = topHeadlines;

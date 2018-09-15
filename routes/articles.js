@@ -18,12 +18,11 @@ router.get('/new', (req, res, next) => {
 // CRUD
 // CREATE
 router.post('/new', (req, res, next) => {
-  const { title } = req.body;
-  const { description } = req.body;
-  const { url } = req.body;
-  const { urlToImage } = req.body;
+  const { body: articleToCreate } = req;
+  articleToCreate.postedBy = req.session.usr;
 
-  Articles.create({ title, description, url, urlToImage, postedBy: req.session.usr })
+//console.log(articleToCreate)
+  Articles.create( articleToCreate)
     .then((article) => {
       const { _id: userId } = req.session.usr;
       const { _id: articleId } = article;
