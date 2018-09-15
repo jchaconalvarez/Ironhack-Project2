@@ -6,6 +6,7 @@ const Users = require('../models/user');
 const Comments = require('../models/comment');
 
 // CREATE
+// TODO: change to AXIOS response
 router.post('/:id/new', (req, res, next) => {
   const { id: articleId } = req.params;
 
@@ -27,6 +28,7 @@ router.post('/:id/new', (req, res, next) => {
 });
 
 // DELETE
+// TODO: change to AXIOS response
 router.post('/:articleId/:commentId/delete', (req, res, next) => {
   const { commentId } = req.params;
   const { articleId } = req.params;
@@ -51,3 +53,5 @@ router.post('/:articleId/:commentId/delete', (req, res, next) => {
 });
 
 module.exports = router;
+
+// TODO: Create social for comments and response with AXIOS

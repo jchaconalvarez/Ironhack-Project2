@@ -6,6 +6,13 @@ const { ObjectId } = mongoose.SchemaTypes;
 const articleSchema = new mongoose.Schema({
   source: { id:String, name: { type:String, default: '' } },
   author: { type:String, default: '' },
+  language: {
+    type: String,
+    enum: [
+      'en', 'es', 'de', 'fr', 'it', 'pt',
+    ],
+    default: ['en'],
+  },
   title: { type:String, default: '' },
   description: { type:String, default: '' },
   url: { type:String, default: '' },
