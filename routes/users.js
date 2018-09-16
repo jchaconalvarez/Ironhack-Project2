@@ -17,6 +17,7 @@ router.get('/', (req, res, next) => {
 router.get('/home', (req, res, next) => {
   const user = req.session.usr;
   const { languages } = req.session.usr;
+  const title = '';
 
   // console.log(user);
   // console.log(languages);
@@ -31,7 +32,7 @@ router.get('/home', (req, res, next) => {
     .then((topHeadlines) => {
       // const articlesCarousel = topHeadlines;// const { articles: articlesCarousel } = topHeadlines;
       const articles = topHeadlines; // req.session.usr;
-      res.render('user/home', { articles, user });
+      res.render('user/home', { articles, user, title });
     })
     .catch(next);
 });

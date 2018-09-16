@@ -1,10 +1,9 @@
-<% console.log(articles.length) %>
 <% articles.forEach((article) => { %>
 
   <div class="article-card">
     <p class="article-source"></p>
     <h5 class="article-headline">
-      <a href="/articles/<%= article._id %>"> <%= article.title %></a>
+      <a href="/articles/<%= article._id %>"><%= article.title %></a>
     </h5>
 
     <div class="article-img">
@@ -13,7 +12,7 @@
       </a>
     </div>
 
-    <p class="article-description"> <%= article.description %> </p>
+    <p class="article-description"><%= article.description %></p>
 
     <div class="article-social">
       <ul>
