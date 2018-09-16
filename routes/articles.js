@@ -21,8 +21,7 @@ router.post('/new', (req, res, next) => {
   const { body: articleToCreate } = req;
   articleToCreate.postedBy = req.session.usr;
 
-//console.log(articleToCreate)
-  Articles.create( articleToCreate)
+  Articles.create(articleToCreate)
     .then((article) => {
       const { _id: userId } = req.session.usr;
       const { _id: articleId } = article;
