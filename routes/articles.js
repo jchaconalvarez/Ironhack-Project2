@@ -90,22 +90,46 @@ router.put('/:id/addfav', (req, res, next) => {
 router.put('/:id/like', (req, res, next) => {
   const { id } = req.params;
   const user = req.session.usr;
+  const arrayOfQueries = [];
+  let like = false;
+  let unlike = false;
 
-  Users.find({ _id: user._id, favorites: { $elemMatch: { $eq: id } } })
-    .then((match) => {
-      const action = match.length > 0;
-      const sum = action ? -1 : 1;
+  Users.find({ _id: user._id,  favorites: { $elemMatch: { $eq: id }  } })
+    .then((data) => {
+      const userAlreadyHasLike = data.length > 0;
+      const operationLike = userAlreadyHasLike ? -1 : 1;
+      like = !userAlreadyHasLike;
 
-      const articles = Articles.findByIdAndUpdate({ _id: id }, { $inc: { favorites: sum } });
-      const users = action
-        ? Users.findByIdAndUpdate({ _id:user._id }, { $pull: { favorites: id } })
-        : Users.findByIdAndUpdate({ _id:user._id }, { $push: { favorites: id } });
+      Users.find({ _id:user._id }, { dislikes:{ $elemMatch: { $eq: id } } }).exec()
+        .then((data) => {
 
-      Promise.all([articles, users])
-        .then((_result) => {
-          Articles.findById(id)
-            .then(article =>  res.send({ likes: article.favorites, liked: !action }))
-            .catch(next);
+          const userAlreadyHasDisLike =  data[0].dislikes.length > 0;
+          const operationDisLike = userAlreadyHasDisLike ? -1 : 0;
+          unlike = !userAlreadyHasDisLike;
+
+          const articlesUpdate = Articles.findByIdAndUpdate({ _id: id }, { $inc: { favorites: operationLike, dislikes: operationDisLike } });
+          const usersUpdateLike = (userAlreadyHasLike && !userAlreadyHasDisLike)
+            ? Users.findByIdAndUpdate({ _id:user._id }, { $pull: { favorites: id } })
+            : Users.findByIdAndUpdate({ _id:user._id }, { $push: { favorites: id } });
+          const usersUpdateLikeAndDisLike = (!userAlreadyHasLike && userAlreadyHasDisLike)
+            ? Users.findByIdAndUpdate({ _id:user._id }, { $push: { favorites: id }, $pull: { dislikes: id } })
+            : usersUpdateLike;
+
+          arrayOfQueries.push(articlesUpdate);
+          arrayOfQueries.push(usersUpdateLikeAndDisLike);
+
+          Promise.all([articlesUpdate, usersUpdateLikeAndDisLike])
+            .then((_result) => {
+              Articles.findById({ _id:id })
+                .then((article) => {
+                  res.send({
+                    unlikes: article.dislikes,
+                    disliked: !userAlreadyHasDisLike,
+                    likes: article.favorites,
+                    liked: !userAlreadyHasLike,
+                  });
+                }).catch(next);
+            }).catch(next);
         }).catch(next);
     }).catch(next);
 });
@@ -115,22 +139,17 @@ router.put('/:id/dislike', (req, res, next) => {
   const { id } = req.params;
   const user = req.session.usr;
   const arrayOfQueries = [];
-  let like = false;
-  let unlike = false;
 
   Users.find({ _id: user._id,  dislikes: { $elemMatch: { $eq: id }  } })
     .then((data) => {
       const userAlreadyHasDisLike = data.length > 0;
-      unlike = !userAlreadyHasDisLike;
-      const operationDislike = userAlreadyHasDisLike ? -1 : 1;
+      const operationDisLike = userAlreadyHasDisLike ? -1 : 1;
 
       Users.find({ _id:user._id }, { favorites:{ $elemMatch: { $eq: id } } }).exec()
         .then((data) => {
           const userAlreadyHasLike =  data[0].favorites.length > 0;
-          like = !userAlreadyHasLike;
-          const articlesUpdate = (userAlreadyHasDisLike && !userAlreadyHasLike)
-            ? Articles.findByIdAndUpdate({ _id: id }, { $inc: { dislikes: operationDislike } })
-            : Articles.findByIdAndUpdate({ _id: id }, { $inc: { dislikes: operationDislike, favorites: -1 } });
+          const operationLike = userAlreadyHasLike ? -1 : 0;
+          const articlesUpdate = Articles.findByIdAndUpdate({ _id: id }, { $inc: { dislikes: operationDisLike, favorites: operationLike } });
           const usersUpdateDisLike = (userAlreadyHasDisLike && !userAlreadyHasLike)
             ? Users.findByIdAndUpdate({ _id:user._id }, { $pull: { dislikes: id } })
             : Users.findByIdAndUpdate({ _id:user._id }, { $push: { dislikes: id } });
@@ -147,9 +166,9 @@ router.put('/:id/dislike', (req, res, next) => {
                 .then((article) => {
                   res.send({
                     unlikes: article.dislikes,
-                    disliked: unlike,
+                    disliked: !userAlreadyHasDisLike,
                     likes: article.favorites,
-                    liked: like,
+                    liked: !userAlreadyHasLike,
                   });
                 }).catch(next);
             }).catch(next);

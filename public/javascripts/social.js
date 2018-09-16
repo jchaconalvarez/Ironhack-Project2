@@ -38,15 +38,21 @@ $(document).ready(() => {
       .then((response) => {
         if (response.data.liked) {
           $(this).find('[data-fa-i2svg]').attr('data-prefix', 'fas');
+          if (!response.data.unliked) {
+            setTimeout(() => {
+              $(this).closest('ul').children('li.dislike').find('[data-fa-i2svg]')
+                .attr('data-prefix', 'far');
+              $(this).closest('ul').find('span#dislikes').text(response.data.unlikes);
+            }, 1000);
+          }
         } else {
           $(this).find('[data-fa-i2svg]').attr('data-prefix', 'far');
         }
         $(this).find('span#likes').text(response.data.likes);
       })
-      .catch((error) => {
-        console.log(error);
-      });
+      .catch((error) => { console.log(error); });
   });
+
 
   $('li.dislike').on('click', function () {
     const idArticle = $(this).attr('value');
