@@ -80,16 +80,18 @@ router.post('/save', (req, res, next) => {
 router.get('/published', (req, res, next) => {
   const { user } = req.session;
   const { articles } = req.session.usr;
+  const title = 'Published articles';
 
-  res.render('user/home', { user, articles });
+  res.render('user/home', { user, articles, title });
 });
 
 // FAVORITES
 router.get('/favorites', (req, res, next) => {
   const { user } = req.session;
   const { favorites: articles } = req.session.usr;
+  const title = 'Favorite articles';
 
-  res.render('user/home', { user, articles });
+  res.render('user/home', { user, articles, title });
 });
 
 module.exports = router;
