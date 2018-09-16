@@ -15,6 +15,19 @@ router.get('/new', (req, res, next) => {
   res.render('articles/new', { user });
 });
 
+// READ
+router.get('/:id', (req, res, next) => {
+  const { id } = req.params;
+  const { usr : user } = req.session;
+
+  Articles.findById(id).populate('comments')
+    .then((article) => {
+      const articles = [article]; // showArticles.ejs requires an array of articles.
+      res.render('articles/view', { articles, user });
+    })
+    .catch(next);
+});
+
 // CRUD
 // CREATE
 router.post('/new', (req, res, next) => {

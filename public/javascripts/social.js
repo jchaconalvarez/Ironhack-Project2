@@ -2,7 +2,7 @@
 
 
 $(document).ready(() => {
-  console.log('loaded');
+  //console.log('loaded');
 
   $('.article-image').on('error', function () {
     console.log('Error loading image!');
