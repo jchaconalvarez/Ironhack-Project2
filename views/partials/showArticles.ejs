@@ -5,38 +5,50 @@
     <h5 class="article-headline">
       <a href="/articles/<%= article._id %>"><%= article.title %></a>
     </h5>
-
+    <p class="article-source"><%= article.source.name %></p>
     <div class="article-img">
-      <a target="_blank" href=<%=article.url %> >
-        <img class='article-image' src=<%= article.urlToImage %> >
+      <a target="_blank" href=<%= article.url %>>
+        <img class="article-image" src=<%= article.urlToImage %>>
       </a>
     </div>
 
     <p class="article-description"><%= article.description %></p>
-
+  <% if (!carouselActive) { %>
     <div class="article-social">
       <ul>
         <li class="favorite" value=<%= article._id %>>
+<<<<<<< HEAD
           <% if(currentUser.articles.find(result => result._id.equals(article._id))) { %>
+=======
+          <% if (currentUser.articles.find((result) => result._id.equals(article._id))) { %>
+>>>>>>> javidev
             <i class="fas fa-star fa-sm"></i>
-          <% }else{ %>
+          <% } else { %>
             <i class="far fa-star fa-sm"></i>
           <% } %>
         </li>
 
         <li class="like" value=<%= article._id %> >
+<<<<<<< HEAD
           <% if( currentUser.favorites.find(result => result._id.equals(article._id))) {%>
+=======
+          <% if (currentUser.favorites.find((result) => result._id.equals(article._id))) { %>
+>>>>>>> javidev
             <i class="fas fa-thumbs-up fa-sm"></i>
-          <% }else{ %>
+          <% } else { %>
             <i class="far fa-thumbs-up fa-sm"></i>
           <% } %>
           <span id="likes"> <%= article.favorites %> </span>
         </li>
 
         <li class="dislike" value=<%= article._id %>>
+<<<<<<< HEAD
           <% if( currentUser.dislikes.find(result => result._id.equals(article._id))) {%>
+=======
+          <% if (currentUser.dislikes.find((result) => result._id.equals(article._id))) { %>
+>>>>>>> javidev
             <i class="fas fa-thumbs-down fa-sm"></i>
-          <% }else{ %>
+          <% } else { %>
             <i class="far fa-thumbs-down fa-sm"></i>
           <% } %>
           <span id="dislikes"><%= article.dislikes %></span>
@@ -46,12 +58,17 @@
           <i class="fas fa-share-alt fa-sm"></i>
         </li>
 
-        <% if( article.postedBy._id.toString()===currentUser._id.toString()) {%>
-        <li class="trash" value=<%= article._id %>> <i class="fas fa-trash-alt fa-lg"></i>
+        <% if (article.postedBy._id.equals(currentUser._id)) { %>
+        <li class="trash" value=<%= article._id %>> <i class="fas fa-trash-alt fa-sm"></i>
         </li>
         <% } %>
 
       </ul>
     </div>
+    <form class="article-share">
+      <input type="email" placeholder="E-mail" required>
+      <button class="btn">Share</button>
+    </form>
+    <% } %>
   </div>
 <% }); %>

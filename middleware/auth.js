@@ -8,7 +8,7 @@ module.exports = {
       console.log('-');
       next();
     } else {
-      req.flash('info', 'You must be logged in to view this page');
+      req.flash('error', 'You must be logged in to view this page');
       res.redirect('/auth/login');
     }
   },
