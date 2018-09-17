@@ -17,11 +17,7 @@
     <div class="article-social">
       <ul>
         <li class="favorite" value=<%= article._id %>>
-<<<<<<< HEAD
-          <% if(currentUser.articles.find(result => result._id.equals(article._id))) { %>
-=======
           <% if (currentUser.articles.find((result) => result._id.equals(article._id))) { %>
->>>>>>> javidev
             <i class="fas fa-star fa-sm"></i>
           <% } else { %>
             <i class="far fa-star fa-sm"></i>
@@ -29,11 +25,7 @@
         </li>
 
         <li class="like" value=<%= article._id %> >
-<<<<<<< HEAD
-          <% if( currentUser.favorites.find(result => result._id.equals(article._id))) {%>
-=======
           <% if (currentUser.favorites.find((result) => result._id.equals(article._id))) { %>
->>>>>>> javidev
             <i class="fas fa-thumbs-up fa-sm"></i>
           <% } else { %>
             <i class="far fa-thumbs-up fa-sm"></i>
@@ -42,11 +34,7 @@
         </li>
 
         <li class="dislike" value=<%= article._id %>>
-<<<<<<< HEAD
-          <% if( currentUser.dislikes.find(result => result._id.equals(article._id))) {%>
-=======
           <% if (currentUser.dislikes.find((result) => result._id.equals(article._id))) { %>
->>>>>>> javidev
             <i class="fas fa-thumbs-down fa-sm"></i>
           <% } else { %>
             <i class="far fa-thumbs-down fa-sm"></i>

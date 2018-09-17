@@ -23,7 +23,7 @@ router.get('/:id', (req, res, next) => {
   Articles.findById(id).populate('comments')
     .then((article) => {
       const articles = [article]; // showArticles.ejs requires an array of articles.
-      res.render('articles/view', { articles, user });
+      res.render('articles/view', { articles, user, carouselActive: false });
     })
     .catch(next);
 });
@@ -76,8 +76,6 @@ router.delete('/:id/delete', (req, res, next) => {
     .catch(next);
 });
 
-<<<<<<< HEAD
-=======
 // READ
 router.get('/:id', (req, res, next) => {
   const { id } = req.params;
@@ -91,7 +89,6 @@ router.get('/:id', (req, res, next) => {
     .catch(next);
 });
 
->>>>>>> javidev
 // AXIOS-------
 // FAVORITES
 router.put('/:id/addfav', (req, res, next) => {
