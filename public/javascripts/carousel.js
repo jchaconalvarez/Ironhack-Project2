@@ -2,21 +2,22 @@ const cards = Array.from(document.getElementsByClassName('article-card'));
 let currentCard = 0;
 
 const carousel = () => {
+  document.getElementsByClassName('carousel-wrapper')[0].style.visibility = 'visible';
   cards.forEach((card) => {
     card.style.display = 'none';
   });
 
-  console.log(currentCard, cards.length);
   if (currentCard === cards.length) {
     currentCard = 0;
-    console.log(currentCard, cards.length);
   }
   cards[currentCard].style.display = 'grid';
+  cards[currentCard].classList.add('carousel-card');
   currentCard++;
 };
 
 window.onload = () => {
   if (window.location.href === 'http://localhost:3000/') {
-    setInterval(carousel, 2000);
+    carousel();
+    setInterval(carousel, 6000);
   }
 };

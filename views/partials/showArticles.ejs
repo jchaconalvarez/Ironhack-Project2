@@ -5,15 +5,15 @@
     <h5 class="article-headline">
       <a href="/articles/<%= article._id %>"><%= article.title %></a>
     </h5>
-
+    <p class="article-source"><%= article.source.name %></p>
     <div class="article-img">
-      <a target="_blank" href=<%=article.url %> >
-        <img class='article-image' src=<%= article.urlToImage %> >
+      <a target="_blank" href=<%= article.url %>>
+        <img class="article-image" src=<%= article.urlToImage %>>
       </a>
     </div>
 
     <p class="article-description"><%= article.description %></p>
-
+  <% if (!carouselActive) { %>
     <div class="article-social">
       <ul>
         <li class="favorite" value=<%= article._id %>>
@@ -47,11 +47,16 @@
         </li>
 
         <% if (article.postedBy._id.equals(currentUser._id)) { %>
-        <li class="trash" value=<%= article._id %>> <i class="fas fa-trash-alt fa-lg"></i>
+        <li class="trash" value=<%= article._id %>> <i class="fas fa-trash-alt fa-sm"></i>
         </li>
         <% } %>
 
       </ul>
     </div>
+    <form class="article-share">
+      <input type="email" placeholder="E-mail" required>
+      <button class="btn">Share</button>
+    </form>
+    <% } %>
   </div>
 <% }); %>

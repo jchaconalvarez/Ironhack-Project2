@@ -2,14 +2,8 @@
   @extend %wrapper;
   height: 100%;
   z-index: -1;
-  .auth-carousel {
-    display: none;
-  }
   @include lg {
     grid-template-columns: 1fr 1fr;
-    .auth-carousel {
-      display: block;
-    }
   }
 }
 
@@ -29,5 +23,11 @@
   a {
     text-decoration: none;
     color: color(highlight);
+  }
+  @include lg {
+    grid-row-start: 1;
+  }
+  @include xl {
+    grid-column-start: 2;
   }
 }

@@ -6,6 +6,7 @@
   textarea {
     resize: none;
     border: 1px solid color(whiteish);
+    font-size: 1em;
   }
   .btn {
     margin-top: 0;
@@ -33,6 +34,13 @@
   border: 1px solid color(whiteish);
   &:nth-child(even) {
     background: color(white);
+  }
+  &:last-of-type {
+    margin-bottom: 4em;
+  }
+  @include lg {
+    width: 40%;
+    margin-left: 2em;
   }
 }
 

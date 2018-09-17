@@ -71,7 +71,7 @@ router.get('/:id', (req, res, next) => {
   Articles.findById(id).populate('comments')
     .then((article) => {
       const articles = [article]; // showArticles.ejs requires an array of articles.
-      res.render('articles/view', { articles, user });
+      res.render('articles/view', { articles, user, carouselActive: false });
     })
     .catch(next);
 });
