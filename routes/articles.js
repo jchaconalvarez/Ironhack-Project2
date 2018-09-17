@@ -78,22 +78,6 @@ router.delete('/:id/delete', (req, res, next) => {
     .catch(next);
 });
 
-<<<<<<< HEAD
-=======
-// READ
-router.get('/:id', (req, res, next) => {
-  const { id } = req.params;
-  const { usr : user } = req.session;
-
-  Articles.findById(id).populate('comments')
-    .then((article) => {
-      const articles = [article]; // showArticles.ejs requires an array of articles.
-      res.render('articles/view', { articles, user, carouselActive: false });
-    })
-    .catch(next);
-});
-
->>>>>>> javidev
 // AXIOS-------
 // FAVORITES
 router.put('/:id/addfav', (req, res, next) => {
@@ -107,7 +91,6 @@ router.put('/:id/addfav', (req, res, next) => {
           .then(() => res.send(false))
           .catch(next);
       } else {
-        console.log('meter');
         Users.findByIdAndUpdate({ _id: user._id }, { $push: { articles: id } })
           .then(() => res.send(true))
           .catch(next);
@@ -121,8 +104,6 @@ router.put('/:id/like', (req, res, next) => {
   const { id } = req.params;
   const user = req.session.usr;
   const arrayOfQueries = [];
-  let like = false;
-  let unlike = false;
 
   Users.find({ _id: user._id,  favorites: { $elemMatch: { $eq: id }  } })
     .then((data) => {

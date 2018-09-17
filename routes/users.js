@@ -19,7 +19,7 @@ router.get('/home', (req, res, next) => {
   const { languages } = req.session.usr;
   const title = '';
 
-  Articles.find().sort({ publishedAt : -1.0 })
+  Articles.find().sort({ publishedAt : -1.0 }).limit(50)
     .then((topHeadlines) => {
       const articles = topHeadlines; // req.session.usr;
       res.render('user/home', { articles, user, title, carouselActive: false });

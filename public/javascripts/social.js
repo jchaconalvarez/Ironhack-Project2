@@ -88,30 +88,31 @@ $(document).ready(() => {
   });
 
   // TODO: terminar share
+  // $('li.share').on('click', function () {
+  //   const idArticle = $(this).attr('value');
+
+  //   console.log($(this).closest('div.article-social').find('ul.container-sendmail:li.sendmail').attr());
+  // if ($(this).closest(article-social).find('ul.container-sendmail').('li.sendmail').attr('visible')) {
+  //   $('li.sendmail').hide('slow');
+  // }else{
+  //   $('li.sendmail').show('slow');
+  // };
+  // });
+
+
   $('li.share').on('click', function () {
     const idArticle = $(this).attr('value');
-
-    console.log($(this).closest('div.article-social').find('ul.container-sendmail:li.sendmail').attr());
-    // if ($(this).closest(article-social).find('ul.container-sendmail').('li.sendmail').attr('visible')) {
-    //   $('li.sendmail').hide('slow');
-    // }else{
-    //   $('li.sendmail').show('slow');
-    // };
-  });
-
-
-  $('li.sendmail').on('click', function () {
-    const idArticle = $(this).attr('value');
     console.log(idArticle);
-    axios.put('/articles/share', { email:'xavifserra@gmail.com', host: window.location.hostname, link:idArticle })
-      .then((response) => {
-        console.log(response);
-        $('#container-messages').load(' #container-messages');
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    $(this).closest('.article-social').find('.article-share').toggle('slow');
+
+  //   axios.put('/articles/share', { email:'xavifserra@gmail.com', host: window.location.hostname, link:idArticle })
+  //     .then((response) => {
+  //       console.log(response);
+  //       //$('#container-messages').load(' #container-messages');
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  // });
   });
 });
-
-// _____
