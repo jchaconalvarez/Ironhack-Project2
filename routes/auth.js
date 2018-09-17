@@ -55,6 +55,7 @@ router.post('/signup', (req, res, next) => {
           hashedPassword = bcrypt.hashSync(password, bcrypt.genSaltSync(saltRounds));
           User.create({ email, password: hashedPassword, name })
             .then((newUser) => {
+              req.flash('success', 'Login correct');
               req.session.currentUser = newUser.name ? newUser.name : newUser.email; // TODO: update if change profile
               req.session.usr = newUser;
               res.redirect('/user/home');

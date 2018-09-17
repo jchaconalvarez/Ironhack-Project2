@@ -2,7 +2,7 @@
 
 
 $(document).ready(() => {
-  //console.log('loaded');
+  // console.log('loaded');
 
   $('.article-image').on('error', function () {
     console.log('Error loading image!');
@@ -43,7 +43,7 @@ $(document).ready(() => {
               $(this).closest('ul').children('li.dislike').find('[data-fa-i2svg]')
                 .attr('data-prefix', 'far');
               $(this).closest('ul').find('span#dislikes').text(response.data.unlikes);
-            }, 1000);
+            }, 500);
           }
         } else {
           $(this).find('[data-fa-i2svg]').attr('data-prefix', 'far');
@@ -66,7 +66,7 @@ $(document).ready(() => {
               $(this).closest('ul').children('li.like').find('[data-fa-i2svg]')
                 .attr('data-prefix', 'far');
               $(this).closest('ul').find('span#likes').text(response.data.likes);
-            }, 1000);
+            }, 500);
           }
         } else {
           $(this).find('[data-fa-i2svg]').attr('data-prefix', 'far');
@@ -76,24 +76,37 @@ $(document).ready(() => {
       .catch((error) => { console.log(error); });
   });
 
-  // TODO: terminar share
-  $('li.share').on('click', function () {
+  $('li.trash').on('click', function () {
     const idArticle = $(this).attr('value');
-    console.log(idArticle);
-    axios.post('/articles/share')
+    axios.delete(`/articles/${idArticle}/delete`)
       .then((response) => {
-        console.log(response);
+        $(this).closest('div.article-card').slideUp();// .hide('slow');
       })
       .catch((error) => {
         console.log(error);
       });
   });
 
-  $('li.trash').on('click', function () {
+  // TODO: terminar share
+  $('li.share').on('click', function () {
     const idArticle = $(this).attr('value');
-    axios.delete(`/articles/${idArticle}/delete`)
+
+    console.log($(this).closest('div.article-social').find('ul.container-sendmail:li.sendmail').attr());
+    // if ($(this).closest(article-social).find('ul.container-sendmail').('li.sendmail').attr('visible')) {
+    //   $('li.sendmail').hide('slow');
+    // }else{
+    //   $('li.sendmail').show('slow');
+    // };
+  });
+
+
+  $('li.sendmail').on('click', function () {
+    const idArticle = $(this).attr('value');
+    console.log(idArticle);
+    axios.put('/articles/share', { email:'xavifserra@gmail.com', host: window.location.hostname, link:idArticle })
       .then((response) => {
-        $(this).closest('div.article-card').hide('slow');
+        console.log(response);
+        $('#container-messages').load(' #container-messages');
       })
       .catch((error) => {
         console.log(error);

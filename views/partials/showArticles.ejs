@@ -47,11 +47,22 @@
         </li>
 
         <% if( article.postedBy._id.toString()===currentUser._id.toString()) {%>
-        <li class="trash" value=<%= article._id %>> <i class="fas fa-trash-alt fa-lg"></i>
-        </li>
-        <% } %>
+          <li class="trash" value=<%= article._id %>> <i class="fas fa-trash-alt fa-lg"></i>
+          </li>
+          <% } %>
 
-      </ul>
+        </ul>
+        <!-- <div class="container-sendmail">
+           <li class="sendmail" value=<%= article._id %></li>
+           <div id="container-messages">
+                <%- include('../partials/notificationsPartial') %>
+            </div>
+             <div class="container-data">
+              <input class="sendmail" placeholder="email"  type="email" id="email" name="email" required>
+              <i class="fas fa-envelope-square" id=<%= article._id %></i>
+            </div> 
+          </li> -->
+        </div>
     </div>
   </div>
-<% }); %>
+  <% }); %>

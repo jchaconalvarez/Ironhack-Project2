@@ -1,5 +1,6 @@
 const express = require('express');
 const mongodb = require('mongoose');
+const nodemailer = require('nodemailer');
 
 const Articles = require('../models/article');
 const Users = require('../models/user');
@@ -15,18 +16,6 @@ router.get('/new', (req, res, next) => {
   res.render('articles/new', { user });
 });
 
-// READ
-router.get('/:id', (req, res, next) => {
-  const { id } = req.params;
-  const { usr : user } = req.session;
-
-  Articles.findById(id).populate('comments')
-    .then((article) => {
-      const articles = [article]; // showArticles.ejs requires an array of articles.
-      res.render('articles/view', { articles, user });
-    })
-    .catch(next);
-});
 
 // CRUD
 // CREATE
@@ -49,6 +38,19 @@ router.post('/new', (req, res, next) => {
     .catch(next);
 });
 
+// READ
+router.get('/:id', (req, res, next) => {
+  const { id } = req.params;
+  const { usr : user } = req.session;
+
+  Articles.findById(id).populate('comments')
+    .then((article) => {
+      const articles = [article]; // showArticles.ejs requires an array of articles.
+      res.render('articles/view', { articles, user });
+    })
+    .catch(next);
+});
+
 // UPDATE
 router.post('/:id/save', (req, res, next) => {
   const { articleToUpdate } = req.body;
@@ -62,7 +64,7 @@ router.post('/:id/save', (req, res, next) => {
     .catch(next);
 });
 
-// DELETE
+// DELETE (ONLY FOR CREATOR OF ARTICLE)
 router.delete('/:id/delete', (req, res, next) => {
   const { id } = req.params;
 
@@ -187,8 +189,37 @@ router.put('/:id/dislike', (req, res, next) => {
     }).catch(next);
 });
 
-router.post('/share', (req, res, next) => {
+router.put('/share', (req, res, next) => {
   console.log(req.body);
+
+  const { email, host, link } = req.body;
+  console.log(email);
+  console.log(link);
+
+  const transporter = nodemailer.createTransport({
+    service: 'Gmail',
+    auth: {
+      user: 'appgazette@gmail.com',
+      pass: 'gazette.app.2018',
+    },
+  });
+
+  transporter.sendMail({
+    from: 'APP Gazette. The news aggregator <appgazette@gmail.com>',
+    to: email,
+    subject: `${req.session.usr.name} has sent you a news with APP Gazette.`,
+    html: `
+    <b>${req.session.usr.name} - <${req.session.usr.email}> thinks you may be interested in this article.</b>
+    <br><b>http://${host}/articles/${link}</b><br><b>Register in Gazette to see this and more news.</b><br>
+    <b>A cordial greeting</b> <b>The Gazette team</b>`,
+  })
+    .then((info) => {
+      req.flash('success', 'email send correctly');
+      res.send(info);
+    }).catch((error) => {
+      req.flash('error', 'email not delivered');
+      console.log(error);
+    });
 });
 
 module.exports = router;
