@@ -104,15 +104,9 @@ $(document).ready(() => {
     const idArticle = $(this).attr('value');
     console.log(idArticle);
     $(this).closest('.article-social').find('.article-share').toggle('slow');
+  });
 
-  //   axios.put('/articles/share', { email:'xavifserra@gmail.com', host: window.location.hostname, link:idArticle })
-  //     .then((response) => {
-  //       console.log(response);
-  //       //$('#container-messages').load(' #container-messages');
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  // });
+  $('button.btn').on('click', () => {
+    alert('button');
   });
 });
