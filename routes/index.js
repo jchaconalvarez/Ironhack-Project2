@@ -6,10 +6,12 @@ const router = express.Router();
 
 /* GET  page. */
 
-router.get('/', (req, res, next) => {
+router.get('/', (req, res, next) => {;
+
   Articles.find()
     .then((articles) => {
-      res.render('index', { articles });
+      articles = articles.slice(0, 20);
+      res.render('index', { articles, carouselActive: true });
     })
     .catch(next);
 });

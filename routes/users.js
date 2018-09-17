@@ -19,20 +19,10 @@ router.get('/home', (req, res, next) => {
   const { languages } = req.session.usr;
   const title = '';
 
-  // console.log(user);
-  // console.log(languages);
-  //  console.log('res.locals.currentUser----------------------');
-  //  console.log(res.locals.currentUser);
-  //  console.log('req.session.usr----------------');
-  //  console.log(req.session.usr);
-
-
   Articles.find().sort({ publishedAt : -1.0 })
-
     .then((topHeadlines) => {
-      // const articlesCarousel = topHeadlines;// const { articles: articlesCarousel } = topHeadlines;
       const articles = topHeadlines; // req.session.usr;
-      res.render('user/home', { articles, user, title });
+      res.render('user/home', { articles, user, title, carouselActive: false });
     })
     .catch(next);
 });
@@ -83,7 +73,7 @@ router.get('/published', (req, res, next) => {
   const { articles } = req.session.usr;
   const title = 'Published articles';
 
-  res.render('user/home', { user, articles, title });
+  res.render('user/home', { user, articles, title, carouselActive: false });
 });
 
 // FAVORITES
@@ -92,7 +82,7 @@ router.get('/favorites', (req, res, next) => {
   const { favorites: articles } = req.session.usr;
   const title = 'Favorite articles';
 
-  res.render('user/home', { user, articles, title });
+  res.render('user/home', { user, articles, title, carouselActive: false });
 });
 
 module.exports = router;

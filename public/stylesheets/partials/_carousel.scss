@@ -1,0 +1,39 @@
+.carousel-wrapper {
+  display: none;
+  @include lg {
+    display: grid;
+    visibility: hidden;
+  }
+}
+.carousel-card {
+  max-width: 80%;
+  animation-name: fade-in;
+  animation-duration: 6000ms;
+  animation-timing-function: linear;
+  width: 50em;
+  position: relative;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    left: -10px;
+  }
+  2% {
+    left: 0px;
+  }
+  10% {
+    opacity: 1;
+    left: 0px;
+  }
+  70% {
+    opacity: 1;
+  }
+  98% {
+    left: 0px;
+  }
+  100% {
+    opacity: 0;
+    left: 10px;
+  }
+}
