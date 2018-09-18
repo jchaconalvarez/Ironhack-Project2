@@ -2,7 +2,7 @@
 
 
 $(document).ready(() => {
-  //console.log('loaded');
+  // console.log('loaded');
 
   $('.article-image').on('error', function () {
     console.log('Error loading image!');
@@ -16,7 +16,7 @@ $(document).ready(() => {
   // Icon favorite
 
   $('li.favorite').on('click', function () {
-    const idArticle = $(this).attr('value');
+    const idArticle = $(this).closest('.article-card').attr('article');
     // const icon = $(this).find('[data-fa-i2svg]').attr('data-prefix');
 
     axios.put(`/articles/${idArticle}/addfav`)
@@ -32,7 +32,7 @@ $(document).ready(() => {
 
   // Icon like
   $('li.like').on('click', function () {
-    const idArticle = $(this).attr('value');
+    const idArticle = $(this).closest('.article-card').attr('article');
 
     axios.put(`/articles/${idArticle}/like`)
       .then((response) => {
@@ -43,7 +43,7 @@ $(document).ready(() => {
               $(this).closest('ul').children('li.dislike').find('[data-fa-i2svg]')
                 .attr('data-prefix', 'far');
               $(this).closest('ul').find('span#dislikes').text(response.data.unlikes);
-            }, 1000);
+            }, 500);
           }
         } else {
           $(this).find('[data-fa-i2svg]').attr('data-prefix', 'far');
@@ -55,7 +55,7 @@ $(document).ready(() => {
 
 
   $('li.dislike').on('click', function () {
-    const idArticle = $(this).attr('value');
+    const idArticle = $(this).closest('.article-card').attr('article');
 
     axios.put(`/articles/${idArticle}/dislike`)
       .then((response) => {
@@ -66,7 +66,7 @@ $(document).ready(() => {
               $(this).closest('ul').children('li.like').find('[data-fa-i2svg]')
                 .attr('data-prefix', 'far');
               $(this).closest('ul').find('span#likes').text(response.data.likes);
-            }, 1000);
+            }, 500);
           }
         } else {
           $(this).find('[data-fa-i2svg]').attr('data-prefix', 'far');
@@ -76,29 +76,39 @@ $(document).ready(() => {
       .catch((error) => { console.log(error); });
   });
 
-  // TODO: terminar share
-  $('li.share').on('click', function () {
-    const idArticle = $(this).attr('value');
-    console.log(idArticle);
-    axios.post('/articles/share')
+  $('li.trash').on('click', function () {
+    const idArticle = $(this).closest('.article-card').attr('article');
+
+    axios.delete(`/articles/${idArticle}/delete`)
       .then((response) => {
-        console.log(response);
+        $(this).closest('div.article-card').slideUp();// .hide('slow');
       })
       .catch((error) => {
         console.log(error);
       });
   });
 
-  $('li.trash').on('click', function () {
-    const idArticle = $(this).attr('value');
-    axios.delete(`/articles/${idArticle}/delete`)
+  $('li.share').on('click', function () {
+    const idArticle = $(this).closest('.article-card').attr('article');
+    console.log(idArticle);
+    $(this).closest('.article-social').find('.article-share').toggle('slow');
+  });
+
+  $('button#sendmail').on('click', function (event) {
+    const idArticle = $(this).closest('.article-card').attr('article');
+    const email = $(this).prev('input').val();
+
+    event.preventDefault();
+
+    // TODO: verify correct email
+
+    axios.put('/articles/share', { email, host: window.location.hostname, link:idArticle })
       .then((response) => {
-        $(this).closest('div.article-card').hide('slow');
+        console.log(response);
+        $('#container-messages').load(' #container-messages');
       })
       .catch((error) => {
         console.log(error);
       });
   });
 });
-
-// _____

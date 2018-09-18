@@ -1,6 +1,6 @@
 <% articles.forEach((article) => { %>
 
-  <div class="article-card">
+  <div class="article-card" article=<%= article._id %>>
     <p class="article-source"></p>
     <h5 class="article-headline">
       <a href="/articles/<%= article._id %>"><%= article.title %></a>
@@ -13,50 +13,56 @@
     </div>
 
     <p class="article-description"><%= article.description %></p>
-  <% if (!carouselActive) { %>
-    <div class="article-social">
-      <ul>
-        <li class="favorite" value=<%= article._id %>>
-          <% if (currentUser.articles.find((result) => result._id.equals(article._id))) { %>
-            <i class="fas fa-star fa-sm"></i>
-          <% } else { %>
-            <i class="far fa-star fa-sm"></i>
+
+    <% if (!carouselActive) { %>
+      <div class="article-social">
+        <ul>
+
+          <li class="favorite" value=<%= article._id %>>
+            <% if (currentUser.articles.find((result) => result._id.equals(article._id))) { %>
+              <i class="fas fa-star fa-sm"></i>
+            <% } else { %>
+              <i class="far fa-star fa-sm"></i>
+            <% } %>
+          </li>
+
+          <li class="like" value=<%= article._id %> >
+            <% if (currentUser.favorites.find((result) => result._id.equals(article._id))) { %>
+              <i class="fas fa-thumbs-up fa-sm"></i>
+            <% } else { %>
+              <i class="far fa-thumbs-up fa-sm"></i>
+            <% } %>
+            <span id="likes"> <%= article.favorites %> </span>
+          </li>
+
+          <li class="dislike" value=<%= article._id %>>
+            <% if (currentUser.dislikes.find((result) => result._id.equals(article._id))) { %>
+              <i class="fas fa-thumbs-down fa-sm"></i>
+            <% } else { %>
+              <i class="far fa-thumbs-down fa-sm"></i>
+            <% } %>
+            <span id="dislikes"><%= article.dislikes %></span>
+          </li>
+
+          <li class="share" value=<%= article._id %>>
+            <i class="fas fa-share-alt fa-sm"></i>
+          </li>
+
+          <% if (article.postedBy._id.equals(currentUser._id)) { %>
+            <li class="trash" value=<%= article._id %>> <i class="fas fa-trash-alt fa-sm"></i>
+           </li>
           <% } %>
-        </li>
 
-        <li class="like" value=<%= article._id %> >
-          <% if (currentUser.favorites.find((result) => result._id.equals(article._id))) { %>
-            <i class="fas fa-thumbs-up fa-sm"></i>
-          <% } else { %>
-            <i class="far fa-thumbs-up fa-sm"></i>
-          <% } %>
-          <span id="likes"> <%= article.favorites %> </span>
-        </li>
+        </ul>
 
-        <li class="dislike" value=<%= article._id %>>
-          <% if (currentUser.dislikes.find((result) => result._id.equals(article._id))) { %>
-            <i class="fas fa-thumbs-down fa-sm"></i>
-          <% } else { %>
-            <i class="far fa-thumbs-down fa-sm"></i>
-          <% } %>
-          <span id="dislikes"><%= article.dislikes %></span>
-        </li>
+        <form class="article-share" action="/articles/share" method="POST" >
+          <input class="text" type="email" placeholder="E-mail" required>
+          <button  id="sendmail" class="btn">Share</button>
+        </form>
 
-        <li class="share" value=<%= article._id %>>
-          <i class="fas fa-share-alt fa-sm"></i>
-        </li>
-
-        <% if (article.postedBy._id.equals(currentUser._id)) { %>
-        <li class="trash" value=<%= article._id %>> <i class="fas fa-trash-alt fa-sm"></i>
-        </li>
-        <% } %>
-
-      </ul>
-    </div>
-    <form class="article-share">
-      <input type="email" placeholder="E-mail" required>
-      <button class="btn">Share</button>
-    </form>
+      </div>
     <% } %>
+
   </div>
+
 <% }); %>
