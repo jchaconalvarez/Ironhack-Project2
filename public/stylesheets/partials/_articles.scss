@@ -69,9 +69,11 @@
 
 .article-description {
   grid-area: description;
+  justify-self: start;
   margin: 0 1.5em;
   font-size: 0.8em;
   @include lg {
+    // width: 90%;
     max-height: 6em;
     overflow: hidden;
   }

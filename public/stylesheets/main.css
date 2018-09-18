@@ -274,6 +274,7 @@ a {
 
 .article-description {
   grid-area: description;
+  justify-self: start;
   margin: 0 1.5em;
   font-size: 0.8em;
 }
