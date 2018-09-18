@@ -13,6 +13,7 @@ const articleSchema = new mongoose.Schema({
   urlToImage: { type:String, default: '' },
   publishedAt: { type:Date, default: Date.now },
   favorites: { type:Number, default: 0 },
+  likes: { type:Number, default: 0 },
   dislikes: { type:Number, default: 0 },
   shared: { type:Number, default: 0 },
   postedBy: UserSchema,

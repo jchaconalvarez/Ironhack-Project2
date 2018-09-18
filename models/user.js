@@ -31,6 +31,7 @@ const userSchema = new mongoose.Schema({
   },
   articles: [{ type : ObjectId, ref: 'Article' }],
   favorites: [{ type: ObjectId, ref: 'Article' }],
+  likes: [{ type: ObjectId, ref: 'Article' }],
   dislikes: [{ type: ObjectId, ref: 'Article' }],
   comments: [{ type: ObjectId, ref: 'Comment' }],
   following: [{ type: ObjectId, ref: 'User' }],
