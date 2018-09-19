@@ -105,7 +105,8 @@ $(document).ready(() => {
     axios.put('/articles/share', { email, host: window.location.hostname, link:idArticle })
       .then((response) => {
         console.log(response);
-        $('#container-messages').load(' #container-messages');
+        $(this).closest('.article-social').find('.article-share').toggle('slow');
+        $('.article-social').find('#container-messages').load(' #container-messages');
       })
       .catch((error) => {
         console.log(error);

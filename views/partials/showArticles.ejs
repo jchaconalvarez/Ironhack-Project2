@@ -19,7 +19,7 @@
         <ul>
 
           <li class="favorite" value=<%= article._id %>>
-            <% if (currentUser.articles.find((result) => result._id.equals(article._id))) { %>
+            <% if (currentUser.favorites.find((result) => result._id.equals(article._id))) { %>
               <i class="fas fa-star fa-sm"></i>
             <% } else { %>
               <i class="far fa-star fa-sm"></i>
@@ -27,7 +27,7 @@
           </li>
 
           <li class="like" value=<%= article._id %> >
-            <% if (currentUser.favorites.find((result) => result._id.equals(article._id))) { %>
+            <% if (currentUser.likes.find((result) => result._id.equals(article._id))) { %>
               <i class="fas fa-thumbs-up fa-sm"></i>
             <% } else { %>
               <i class="far fa-thumbs-up fa-sm"></i>
@@ -59,10 +59,12 @@
           <input class="text" type="email" placeholder="E-mail" required>
           <button  id="sendmail" class="btn">Share</button>
         </form>
-
       </div>
-    <% } %>
+      <% } %>
+    </div>
 
-  </div>
+    <div id="container-messages">
+      <%- include('../partials/notificationsPartial') %>
+    </div>
 
 <% }); %>
