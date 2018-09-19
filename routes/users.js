@@ -18,8 +18,10 @@ router.get('/home', (req, res, next) => {
   const user = req.session.usr;
   const { languages } = req.session.usr;
   const title = '';
+  console.log(languages);
 
-  Articles.find().sort({ publishedAt : -1.0 }).limit(50)
+
+  Articles.find({ language: { $in: languages } }).sort({ publishedAt : -1.0 }).limit(50)
     .then((topHeadlines) => {
       const articles = topHeadlines; // req.session.usr;
       res.render('user/home', { articles, user, title, carouselActive: false });
@@ -45,7 +47,7 @@ router.get('/edit', (req, res, next) => {
 
 router.post('/save', (req, res, next) => {
   const { name, email, password, en, es, de, fr, it, pt } = req.body;
-  let languages = [en, es, de, fr, it, pt ];
+  let languages = [en, es, de, fr, it, pt];
 
   languages = languages.filter(element => element != undefined);
 

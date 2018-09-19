@@ -58,7 +58,7 @@ router.post('/signup', (req, res, next) => {
               req.flash('success', 'Login correct');
               req.session.currentUser = newUser.name ? newUser.name : newUser.email; // TODO: update if change profile
               req.session.usr = newUser;
-              res.redirect('/user/home');
+              res.redirect('/user/edit');
             });
         }
       })
