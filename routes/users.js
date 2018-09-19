@@ -40,16 +40,18 @@ router.get('/edit', (req, res, next) => {
   const { usr: user } = req.session;
   const { favorites: articles } = req.session.usr;
 
-  res.render('user/edit', { user, articles });
+  res.render('user/edit', { user, articles, languages:req.session.usr.languages });
 });
 
 router.post('/save', (req, res, next) => {
-  const { name, email, password, languages } = req.body;
-  console.log(languages);
-  
+  const { name, email, password, en, es, de, fr, it, pt } = req.body;
+  let languages = [en, es, de, fr, it, pt ];
+
+  languages = languages.filter(element => element != undefined);
+
   hashedPassword = bcrypt.hashSync(password, bcrypt.genSaltSync(saltRounds));
-  const newDataOfUserPassword = { name, email, password : hashedPassword };
-  const newDataOfUser = { name, email };
+  const newDataOfUserPassword = { name, email, languages, password : hashedPassword };
+  const newDataOfUser = { name, email, languages };
 
   Users.findByIdAndUpdate(req.session.usr.id, password ? newDataOfUserPassword : newDataOfUser)
     .then(() => {
