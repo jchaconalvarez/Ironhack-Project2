@@ -148,23 +148,38 @@ a {
 }
 
 .notification-bar {
-  width: 100%;
+  width: 80%;
+  position: fixed;
+  top: 1.5em;
+  left: 0em;
+  right: 0em;
+  margin: 5% auto;
+  animation-name: fade-out;
+  animation-delay: 3500ms;
+  animation-duration: 500ms;
+  animation-fill-mode: forwards;
 }
 .notification-bar .message {
+  font-size: 0.8em;
   padding: 0.5em;
   text-align: center;
   border-radius: 5px;
-  color: #222;
+  background: #FFFFFFF0;
 }
 .notification-bar .error {
-  background: #F88;
-  border: 1px solid #ff5555;
+  color: #CC0000;
+  border: 1px solid #CC0000;
 }
 .notification-bar .success {
-  background: #696;
-  border: 1px solid #527a52;
+  color: #5CB85CDD;
+  border: 1px solid #5CB85CDD;
 }
 
+@keyframes fade-out {
+  100% {
+    opacity: 0;
+  }
+}
 .navbar {
   position: fixed;
   left: 0;
@@ -226,17 +241,17 @@ a {
   grid-template-areas: "source" "headline" "image" "description" "social" "share";
   grid-gap: 1em;
   width: 100%;
-  margin-top: 1.75em;
+  margin-top: 1.25em;
   border: 1px solid #DDD;
   border-radius: 3px;
   background-color: #FFFFFD;
   box-shadow: 1px 2px 10px rgba(50, 50, 93, 0.1), 0px 1px 10px rgba(0, 0, 0, 0.08);
 }
-.article-card:last-of-type {
+.article-card:nth-last-child(1) {
   margin-bottom: 4em;
 }
-.article-card:last-of-type:only-child {
-  margin-bottom: 0em;
+.article-card:only-child {
+  margin: 5em 0 0em 0;
 }
 @media (min-width: 1025px) {
   .article-card {
@@ -300,22 +315,14 @@ a {
   padding: 0;
   list-style: none;
 }
-.article-social button {
-  background: none;
-  border: none;
-}
 
 .article-share {
   grid-area: share;
   display: none;
   grid-template-columns: 2fr 1fr;
 }
-.article-share .btn {
-  margin-top: 0;
-}
-
-.article-share-visible {
-  display: grid;
+.article-share input {
+  font-size: 1em;
 }
 
 .carousel-wrapper {
@@ -364,8 +371,8 @@ a {
   display: grid;
   justify-items: center;
 }
-.profile-container i {
-  display: inline;
+.profile-container .fa-lg {
+  margin-right: 0.5em;
 }
 .profile-container .btn {
   width: 12em;
