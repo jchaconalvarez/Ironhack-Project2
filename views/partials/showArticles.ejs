@@ -17,7 +17,6 @@
     <% if (!carouselActive) { %>
       <div class="article-social">
         <ul>
-
           <li class="favorite" value=<%= article._id %>>
             <% if (currentUser.favorites.find((result) => result._id.equals(article._id))) { %>
               <i class="fas fa-star fa-sm"></i>
@@ -25,7 +24,6 @@
               <i class="far fa-star fa-sm"></i>
             <% } %>
           </li>
-
           <li class="like" value=<%= article._id %> >
             <% if (currentUser.likes.find((result) => result._id.equals(article._id))) { %>
               <i class="fas fa-thumbs-up fa-sm"></i>
@@ -34,7 +32,6 @@
             <% } %>
             <span id="likes"> <%= article.favorites %> </span>
           </li>
-
           <li class="dislike" value=<%= article._id %>>
             <% if (currentUser.dislikes.find((result) => result._id.equals(article._id))) { %>
               <i class="fas fa-thumbs-down fa-sm"></i>
@@ -43,18 +40,14 @@
             <% } %>
             <span id="dislikes"><%= article.dislikes %></span>
           </li>
-
           <li class="share" value=<%= article._id %>>
             <i class="fas fa-share-alt fa-sm"></i>
           </li>
-
           <% if (article.postedBy._id.equals(currentUser._id)) { %>
             <li class="trash" value=<%= article._id %>> <i class="fas fa-trash-alt fa-sm"></i>
            </li>
           <% } %>
-
         </ul>
-
         <form class="article-share" action="/articles/share" method="POST" >
           <input class="text" type="email" placeholder="E-mail" required>
           <button  id="sendmail" class="btn">Share</button>
@@ -62,9 +55,4 @@
       </div>
       <% } %>
     </div>
-
-    <div id="container-messages">
-      <%- include('../partials/notificationsPartial') %>
-    </div>
-
 <% }); %>
