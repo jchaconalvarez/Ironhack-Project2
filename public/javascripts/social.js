@@ -82,6 +82,7 @@ $(document).ready(() => {
     axios.delete(`/articles/${idArticle}/delete`)
       .then((response) => {
         $(this).closest('div.article-card').slideUp();// .hide('slow');
+        // $('#notification-bar').load(' #notification-bar');
       })
       .catch((error) => {
         console.log(error);
