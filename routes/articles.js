@@ -73,7 +73,7 @@ router.delete('/:id/delete', (req, res, next) => {
   Articles.findByIdAndRemove(id)
     .then((obj) => {
       console.log(obj);
-      req.flash('success', 'Article removed');
+      //req.flash('success', 'Article removed');
       res.send(200);
       // res.redirect('/user/home');
     })
