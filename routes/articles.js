@@ -31,6 +31,7 @@ router.post('/new', (req, res, next) => {
         .then(() => {
           Articles.findById(article._id)
             .then((article) => {
+              req.flash('success', 'Article published');
               res.redirect(`/articles/${article._id}`);
             });
         });
@@ -73,7 +74,7 @@ router.delete('/:id/delete', (req, res, next) => {
       console.log(obj);
       req.flash('success', 'Article removed');
       res.send(200);
-      //     res.redirect('/user/home');
+      res.redirect('/user/home');
     })
     .catch(next);
 });
@@ -211,10 +212,10 @@ router.put('/share', (req, res, next) => {
     <b>A cordial greeting</b> <b>The Gazette team</b>`,
   })
     .then((info) => {
-      req.flash('success', 'email send correctly');
+      req.flash('success', 'Article shared');
       res.send(info);
     }).catch((error) => {
-      req.flash('error', 'email not delivered');
+      req.flash('error', 'Article could not be shared');
       console.log(error);
     });
 });

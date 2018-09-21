@@ -5,8 +5,8 @@
 .profile-container {
   display: grid;
   justify-items: center;
-  i {
-    display: inline;
+  .fa-lg {
+    margin-right: 0.5em;
   }
   .btn {
     width: 12em;

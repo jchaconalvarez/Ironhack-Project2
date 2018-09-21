@@ -8,10 +8,9 @@ $colors: (
   blackish: #222,
   navbar-background: #FFFFFFF0,
   navbar-item: #555,
-  error: #F88,
-  error-border: darken(#F88, 10%),
-  success: #696,
-  success-border: darken(#696, 10%),
+  error: #CC0000,
+  success: #5CB85CDD,
+  notification-border: darken(#FFAA00, 10%),
 );
 
 @function color($color-name) {
