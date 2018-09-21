@@ -21,7 +21,7 @@ router.get('/home', (req, res, next) => {
   console.log(languages);
 
 
-  Articles.find({ language: { $in: languages } }).sort({ publishedAt : -1.0 }).limit(50)
+  Articles.find({ language: { $in: languages } }).sort({ timeStamp : -1.0 }).limit(50)
     .then((topHeadlines) => {
       const articles = topHeadlines; // req.session.usr;
       res.render('user/home', { articles, user, title, carouselActive: false });
@@ -88,7 +88,8 @@ router.get('/favorites', (req, res, next) => {
   const { favorites: articles } = req.session.usr;
   const title = 'Favorite articles';
 
-  res.render('user/home', { user, articles, title, carouselActive: false });
+  res.render('user/home', { user, articles, title, carouselActive: false,
+  });
 });
 
 module.exports = router;

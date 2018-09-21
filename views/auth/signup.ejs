@@ -11,7 +11,15 @@
       <label for="email">Email:</label>
       <input name="email" type="email" placeholder="Email" required>
       <label for="password">Password:</label>
-      <input name="password" type="password" placeholder="Password" required>
+      <input id="password" name="password" type="password" placeholder="Password" required>
+
+      <label for="check-password">Retype Password:</label>
+      <input id="check-password" name="check-password" type="password" placeholder="Verify your password" required>
+
+      <h3>Languages</h3>
+
+      <%- include('../partials/languagesPartial') %>
+
       <p>All fields are required.</p>
       <button type="submit" class="btn">Sign up</button>
     </form>

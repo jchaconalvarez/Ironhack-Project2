@@ -8,15 +8,13 @@ const mongoose = require('mongoose');
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 const flash = require('express-flash');
-//const axios = require('axios');
+
 require('dotenv').config();
 
 // db connection
-// if (req.app.get('env') === 'development') {
-  //mongoose.connect(process.env.MONGODB_URI_DEV, { useNewUrlParser: true });
-// } else {
-   mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true });
-// }
+
+mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true });
+
 // routers
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
