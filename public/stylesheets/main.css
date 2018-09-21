@@ -100,7 +100,7 @@ a {
 .form input, .form textarea {
   font-size: inherit;
   border: 1px solid #AAA;
-  border-radius: 3px;
+  border-radius: 5px;
   padding: 0.2em;
 }
 .form p {
