@@ -97,7 +97,7 @@ a {
 .form label {
   font-size: 0.8em;
 }
-.form input {
+.form input, .form textarea {
   font-size: inherit;
   border: 1px solid #AAA;
   border-radius: 3px;
