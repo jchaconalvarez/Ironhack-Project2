@@ -23,6 +23,7 @@
   a {
     text-decoration: none;
     color: color(highlight);
+    font-size: 0.8em;
   }
   @include lg {
     grid-template-columns: 1fr;
