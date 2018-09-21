@@ -8,12 +8,12 @@
             <div class="comment-info">
               <form name="like" action="/comments/<%= articles[0].id %>/<%= comment._id %>/like" method=POST>
                 <button type="submit">
-                  <i class="fas fa-angle-up fa-lg"></i>
+                  <!-- <i class="fas fa-angle-up fa-lg"></i> -->
                 </button>
               </form>
               <form name="like" action="/comments/<%= articles[0].id %>/<%= comment._id %>/dislike" method=POST>
                 <button type="submit">
-                  <i class="fas fa-angle-down fa-lg"></i>
+                  <!-- <i class="fas fa-angle-down fa-lg"></i> -->
                 </button>
               </form>
               <% if (comment.postedBy._id.equals(user.id)) { %>
