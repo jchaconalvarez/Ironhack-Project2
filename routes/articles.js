@@ -74,7 +74,7 @@ router.delete('/:id/delete', (req, res, next) => {
       console.log(obj);
       req.flash('success', 'Article removed');
       res.send(200);
-      res.redirect('/user/home');
+      // res.redirect('/user/home');
     })
     .catch(next);
 });
