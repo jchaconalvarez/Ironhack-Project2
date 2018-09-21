@@ -213,7 +213,7 @@ router.put('/share', (req, res, next) => {
     <b>A cordial greeting</b> <b>The Gazette team</b>`,
   })
     .then((info) => {
-      req.flash('success', 'Article shared');
+      //req.flash('success', 'Article shared');
       res.send(info);
     }).catch((error) => {
       req.flash('error', 'Article could not be shared');
