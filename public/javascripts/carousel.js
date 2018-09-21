@@ -17,7 +17,7 @@ const carousel = () => {
 
 window.onload = () => {
 //  if (window.location.href == 'https://gazetteapp.herokuapp.com') {
-    carousel();
-    setInterval(carousel, 6000);
+    // carousel();
+    // setInterval(carousel, 6000);
   // }
 };
