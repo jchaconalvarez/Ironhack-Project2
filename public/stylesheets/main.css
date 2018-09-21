@@ -138,6 +138,7 @@ a {
 .auth-container a {
   text-decoration: none;
   color: #FFAA00;
+  font-size: 0.8em;
 }
 @media (min-width: 1025px) {
   .auth-container {
