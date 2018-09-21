@@ -97,15 +97,18 @@ a {
 .form label {
   font-size: 0.8em;
 }
-.form input {
+.form input, .form textarea {
   font-size: inherit;
   border: 1px solid #AAA;
-  border-radius: 3px;
+  border-radius: 5px;
   padding: 0.2em;
 }
 .form p {
   font-size: 0.8em;
   color: #AAA;
+}
+.form img {
+  max-width: 2.5em;
 }
 
 .auth-wrapper {
@@ -138,7 +141,8 @@ a {
 }
 @media (min-width: 1025px) {
   .auth-container {
-    grid-row-start: 1;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
   }
 }
 @media (min-width: 1250px) {
@@ -251,7 +255,7 @@ a {
   margin-bottom: 4em;
 }
 .article-card:only-child {
-  margin: 5em 0 0em 0;
+  margin-top: 5em;
 }
 @media (min-width: 1025px) {
   .article-card {
@@ -290,6 +294,8 @@ a {
 .article-description {
   grid-area: description;
   justify-self: start;
+  max-width: 100%;
+  word-break: break-all;
   margin: 0 1.5em;
   font-size: 0.8em;
 }
@@ -320,9 +326,13 @@ a {
   grid-area: share;
   display: none;
   grid-template-columns: 2fr 1fr;
+  text-align: center;
 }
 .article-share input {
+  padding: 0.3em;
   font-size: 1em;
+  border: 1px solid #DDD;
+  border-radius: 5px;
 }
 
 .carousel-wrapper {

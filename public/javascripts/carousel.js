@@ -16,7 +16,7 @@ const carousel = () => {
 };
 
 window.onload = () => {
-  if (window.location.href === 'http://localhost:3000/') {
+  if (window.location.href === 'https://gazetteapp.herokuapp.com') {
     carousel();
     setInterval(carousel, 6000);
   }

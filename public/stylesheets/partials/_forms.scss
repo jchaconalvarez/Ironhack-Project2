@@ -5,14 +5,17 @@
   label {
     font-size: 0.8em;
   }
-  input {
+  input, textarea {
     font-size: inherit;
     border: 1px solid color(muted);
-    border-radius: 3px;
+    border-radius: 5px;
     padding: 0.2em;
   }
   p {
     font-size: 0.8em;
     color: color(muted);
+  }
+  img {
+    max-width: 2.5em;
   }
 }

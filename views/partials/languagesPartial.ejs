@@ -1,9 +1,9 @@
 <div class="languages">
   <% const arrayOfLanguages = ['en', 'es', 'de', 'fr', 'it', 'pt']; %>
-  <%  arrayOfLanguages.forEach((lang) => { %>
+  <% arrayOfLanguages.forEach((lang) => { %>
     <div class="checkbox">
-      <label for=<%= lang %>><img src="../../images/<%- lang %>.jpg"></label>
-      <% if(languages.find(usrLang=>usrLang===lang)) { %>
+      <label for=<%= lang %>><img src="../../images/<%- lang %>.png"></label>
+      <% if(languages.find((usrLang) => usrLang === lang)) { %>
         <input type="checkbox" name="<%= lang %>" value="<%= lang %>" checked />
       <% }else{ %>
         <input type="checkbox" name="<%= lang %>" value="<%= lang %>" />
