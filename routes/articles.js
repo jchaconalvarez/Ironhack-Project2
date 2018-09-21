@@ -13,7 +13,8 @@ router.get('/', (req, res, next) => {
 
 router.get('/new', (req, res, next) => {
   const { usr: user } = req.session;
-  res.render('articles/new', { user });
+  const languages = [{ en:'en' }, { es:'es' }, { de:'de' }, { fr:'fr' }, { it:'it' }, { pt:'pt'}]
+  res.render('articles/new', { user, languages });
 });
 
 

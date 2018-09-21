@@ -1,4 +1,4 @@
-console.log('yowaddup');
+// console.log('yowaddup');
 $(document).ready(() => {
 
   $('#check-password').on('keyup', () => {
@@ -14,7 +14,7 @@ $(document).ready(() => {
       if (password1 === password2) {
         $('#check-password').css({ backgroundColor: '#696' });
       } else {
-        $('#check-password').css({ backgroundColor: '#F88' }); 
+        $('#check-password').css({ backgroundColor: '#F88' });
       }
     } else { $('#check-password').css({ backgroundColor: 'white' }); }
 

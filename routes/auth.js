@@ -44,6 +44,7 @@ router.post('/signup', (req, res, next) => {
   // const { email, password, name } = req.body;
   const { name, email, password, checkpassword, en, es, de, fr, it, pt } = req.body;
   let languages = [en, es, de, fr, it, pt];
+  console.log(req.body);
 
   languages = languages.filter(element => element != undefined);
 
