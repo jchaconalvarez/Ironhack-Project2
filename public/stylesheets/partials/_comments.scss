@@ -1,0 +1,72 @@
+.comment-wrapper {
+  @extend %wrapper;
+  height: auto;
+  margin: 1em 0 4em 0;
+  grid-gap: 0.4em;
+  textarea {
+    resize: none;
+    border: 1px solid color(whiteish);
+    font-size: 1em;
+  }
+  .btn {
+    margin-top: 0;
+  }
+  form {
+    margin-bottom: 1em;
+    width: 50%;
+  }
+  @include lg {
+    textarea {
+      width: 100%;
+    }
+  }
+}
+
+.comment-card {
+  display: grid;
+  grid-template-areas:
+    'user'
+    'text'
+    'info';
+  width: 80%;
+  padding: 0 1em 0 1em;
+  background: color(background);
+  border: 1px solid color(whiteish);
+  &:nth-child(even) {
+    background: color(white);
+  }
+  &:last-of-type {
+    margin-bottom: 4em;
+  }
+  @include lg {
+    width: 40%;
+    margin-left: 2em;
+  }
+}
+
+.comment-user {
+  grid-area: user;
+  font-size: 0.8em;
+  font-weight: bold;
+  p {
+    margin: 0.5em 0 0.5em 0;
+  }
+}
+
+.comment-text {
+  font-size: 0.8em;
+}
+
+.comment-info {
+  grid-area: info;
+  display: grid;
+  justify-items: start;
+  grid-template-columns: 0.1fr 0.1fr 1fr;
+  form {
+    margin-bottom: 0.5em;
+  }
+  button {
+    border: none;
+    background: none;
+  }
+}

@@ -1,0 +1,26 @@
+.profile-wrapper {
+  @extend %wrapper;
+}
+
+.profile-container {
+  display: grid;
+  justify-items: center;
+  .fa-lg {
+    margin-right: 0.5em;
+  }
+  .btn {
+    width: 12em;
+    border-radius: 5px;
+  }
+}
+
+.languages {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-gap: 1em;
+  .checkbox {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+}

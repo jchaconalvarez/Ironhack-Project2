@@ -1,21 +1,16 @@
-<div class="container">
-  <h1>Rem<span>e</span>mber</h1>
-  <p>Remember your favorite articles</p>
+<div class="profile-wrapper">
+  <h1>Subm<span>i</span>t article</h1>
 
-  <form  action="/articles/new" method="POST" class="form-group" >
-    <label  for="origin">Source name:</label>
-    <input class="form-control"  placeholder="Where have you seen the news?"  type="text" id="origin" name="origin" >
-    <label  for="author">Author:</label>
-    <input class="form-control"  placeholder="Who is the journalist?"  type="text" id="author" name="author">
-    <label  for="title">Title:</label>
-    <input class="form-control"  placeholder="what is its title?"  type="text" id="title" name="title" required>
-    <label  for="description">Description:</label>
-    <input class="form-control"  placeholder="what is it about?"  type="text" id="description" name="description" required>
-    <label  for="url">URL:</label>
-    <input class="form-control"  placeholder="paste the URL"  type="text" id="url" name="url" required>
-    <label  for="urlToImage">Image:</label>
-    <input class="form-control"  placeholder="What image do you want to use? Paste the URL"  type="text" id="urlToImage" name="urlToImage">
-    <input type="submit" class="form-control btn">
-    <small class="form-text text-muted">All fields are required.</small>
+  <form class="form" id="newArticle" action="/articles/new" method="POST">
+    <label for="url">URL:</label>
+    <input placeholder="URL to article"  type="url" id="url" name="url" required>
+    <label for="title">Headline:</label>
+    <input placeholder="Article headline"  type="text" id="title" name="title" required>
+    <label for="description">Description:</label>
+    <input placeholder="Description"  type="text" id="description" name="description" required>
+    <label for="urlToImage">Image:</label>
+    <input placeholder="Image URL"  type="url" id="urlToImage" name="urlToImage">
+    <p>All fields are required</p>
+    <button type="submit" class="btn">Submit article</button>
   </form>
 </div>

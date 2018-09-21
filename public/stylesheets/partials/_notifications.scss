@@ -1,0 +1,33 @@
+.notification-bar {
+  width: 80%;
+  position: fixed;
+  top: 1.5em;
+  left: 0em;
+  right: 0em;
+  margin: 5% auto;
+  animation-name: fade-out;
+  animation-delay: 3500ms;
+  animation-duration: 500ms;
+  animation-fill-mode: forwards;
+  .message {
+    font-size: 0.8em;
+    padding: 0.5em;
+    text-align: center;
+    border-radius: 5px;
+    background: color(navbar-background);
+  }
+  .error {
+    color: color(error);
+    border: 1px solid color(error);
+  }
+  .success {
+    color: color(success);
+    border: 1px solid color(success);
+  }
+}
+
+@keyframes fade-out {
+  100% {
+    opacity: 0;
+  }
+}

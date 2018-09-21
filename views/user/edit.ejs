@@ -1,31 +1,19 @@
-<div class="container">
-  <div class="row">
-    <div class="col">
-      <h1>Edit profile</h1>
-      <form action="/user/save" method="POST" class="form-group">
-        <label for="name">Name:</label>
-        <input name="name" type="text" value="<%- user.name %>" class="form-control">
-        <label for="email">Email:</label>
-        <input name="email" type="email" value="<%- user.email %>" class="form-control">
-        <label for="password">Password:</label>
-        <input name="password" type="password" placeholder="only be saved if you change it"  class="form-control">
-        <h3>Languages</h3>
-        <p>Languages of your interest</p>
+<div class="profile-wrapper">
+  <div class="profile-container">
+    <h1>Edit pr<span>o</span>file</h1>
+    <form action="/user/save" method="POST" class="form">
+      <label for="name">Name:</label>
+      <input name="name" type="text" value="<%- user.name %>">
+      <label for="email">Email:</label>
+      <input name="email" type="email" value="<%- user.email %>">
+      <label for="password">Password:</label>
+      <input name="password" type="password">
 
-        <input type="checkbox" name = "de" value="de">
-        <input type="checkbox" name = "en" value="en">
-        <input type="checkbox" name = "es" value="es">
-        <input type="checkbox" name = "fr" value="fr">
-        <input type="checkbox" name = "it" value="it">
-        <input type="checkbox" name = "pt" value="pt">
+      <h3>Languages</h3>
 
-        <input type="submit" class="form-contol btn">
-      </div>
-        </form>
-    </div>
+      <%- include('../partials/languagesPartial') %>
+
+      <button type="submit" class="btn">Save</button>
+    </form>
   </div>
-</div>
-<h1>Favorite articles</h1>
-<div class="article-container">
-  <%- include('../partials/showArticles', articlesUser) %>
 </div>

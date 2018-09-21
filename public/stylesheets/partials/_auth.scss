@@ -1,0 +1,33 @@
+.auth-wrapper {
+  @extend %wrapper;
+  height: 100%;
+  z-index: -1;
+  @include lg {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.auth-container {
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  h1 {
+    font-size: 3em;
+    font-weight: 300;
+    margin: 0 0 0.8em 0;
+  }
+  p {
+    font-size: 0.8em;
+    color: color(muted);
+  }
+  a {
+    text-decoration: none;
+    color: color(highlight);
+  }
+  @include lg {
+    grid-row-start: 1;
+  }
+  @include xl {
+    grid-column-start: 2;
+  }
+}

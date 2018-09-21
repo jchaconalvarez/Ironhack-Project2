@@ -3,14 +3,13 @@ const mongoose = require('mongoose');
 const  { ObjectId }  = mongoose.SchemaTypes;
 
 const userSchema = new mongoose.Schema({
-  // userId: { type: ObjectId, index: true, required: true, auto: true },
   name: {
     type: String,
     trim: true,
   },
   email: {
     type: String,
-    unique: true,
+    // unique: true,
   },
   password: String,
   countries: [{
@@ -26,13 +25,16 @@ const userSchema = new mongoose.Schema({
   languages: [{
     type: String,
     enum: [
-      'ar', 'de', 'en', 'es', 'fr', 'he', 'it',
-      'nl', 'no', 'pt', 'ru', 'se', 'ud', 'zh',
+      'en', 'es', 'de', 'fr', 'it', 'pt',
     ],
     default: 'en',
   }],
   articles: [{ type : ObjectId, ref: 'Article' }],
-  following: [{ type : ObjectId, ref: 'User' }],
+  favorites: [{ type: ObjectId, ref: 'Article' }],
+  likes: [{ type: ObjectId, ref: 'Article' }],
+  dislikes: [{ type: ObjectId, ref: 'Article' }],
+  comments: [{ type: ObjectId, ref: 'Comment' }],
+  following: [{ type: ObjectId, ref: 'User' }],
 });
 
 const User = mongoose.model('User', userSchema);

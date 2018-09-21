@@ -23,7 +23,7 @@ router.post('/login', (req, res, next) => {
     User.findOne({ email })
       .then((user) => {
         if (user && bcrypt.compareSync(password, user.password)) {
-          req.session.currentUser = user.name ? user.name : user.email; // TODO: update if change profile
+          req.session.currentUser = user.name ? user.name : user.email;
           req.session.usr = user;
           res.redirect('/user/home');
         } else {
@@ -36,14 +36,22 @@ router.post('/login', (req, res, next) => {
 });
 
 router.get('/signup', (req, res, next) => {
-  res.render('auth/signup');
+  const languages = [{ en:'en' }, { es:'es' }, { de:'de' }, { fr:'fr' }, { it:'it' }, { pt:'pt' }];
+  res.render('auth/signup', { languages });
 });
-
+// TODO: Flags
 router.post('/signup', (req, res, next) => {
-  const { email, password, name } = req.body;
+  // const { email, password, name } = req.body;
+  const { name, email, password, checkpassword, en, es, de, fr, it, pt } = req.body;
+  let languages = [en, es, de, fr, it, pt];
+
+  languages = languages.filter(element => element != undefined);
 
   if (!email || !password) {
     req.flash('error', 'Username and Password are required');
+    res.redirect('/auth/signup');
+  } else if (password != checkpassword) {
+    req.flash('error', 'Password must be equal');
     res.redirect('/auth/signup');
   } else {
     User.findOne({ email })
@@ -53,8 +61,9 @@ router.post('/signup', (req, res, next) => {
           res.redirect('/auth/login');
         } else {
           hashedPassword = bcrypt.hashSync(password, bcrypt.genSaltSync(saltRounds));
-          User.create({ email, password: hashedPassword, name })
+          User.create({ email, password: hashedPassword, name, languages })
             .then((newUser) => {
+              req.flash('success', 'Login correct');
               req.session.currentUser = newUser.name ? newUser.name : newUser.email; // TODO: update if change profile
               req.session.usr = newUser;
               res.redirect('/user/home');

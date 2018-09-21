@@ -1,0 +1,15 @@
+$screen-lg-min: 1025px;
+
+$screen-xl-min: 1250px;
+
+@mixin lg {
+  @media (min-width: $screen-lg-min) {
+    @content;
+  }
+}
+
+@mixin xl {
+  @media (min-width: $screen-xl-min) {
+    @content;
+  }
+}

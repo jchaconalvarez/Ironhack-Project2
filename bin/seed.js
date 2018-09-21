@@ -2,34 +2,22 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const User = require('../models/user');
 const Article = require('../models/article');
+const Comment = require('../models/comment');
 
 
 mongoose.connect('mongodb://admin:admin2018@ds115442.mlab.com:15442/ironhack_prj2', { useNewUrlParser: true });
 
 User.collection.drop();
 Article.collection.drop();
+Comment.collection.drop();
 
 const users = [
-  {
-    name: 'perico',
-    email: 'perico@perico',
-    password: bcrypt.hashSync('perico', 10),
-    countries: ['gr', 'hk', 'us', 've', 'za'],
-    languages: ['ar', 'de', 'en'],
-  },
-  {
-    name: 'pepe',
-    email: 'pepe@pepe',
-    password: bcrypt.hashSync('pepe', 10),
-    countries: ['ve', 'pt'],
-    languages: ['en', 'it', 'es'],
-  },
   {
     name: 'test',
     email: 'test@test',
     password: bcrypt.hashSync('test', 10),
     countries: ['ve', 'za'],
-    languages: ['en', 'ru', 'fr', 'it', 'es'],
+    languages: ['en', 'fr', 'it', 'es'],
   },
 ];
 
@@ -42,9 +30,18 @@ const articles = [
     url: 'https://www.cnn.com/2018/08/11/us/plane-crash-unauthorized-takeoff/index.html',
     urlToImage: 'https://cdn.cnn.com/cnnnext/dam/assets/180811010618-seattle-washington-plane-crash-site-super-tease.jpg',
     publishedAt: '2018-08-11T08:49:58Z',
-    comment: [{ text: 'test1', rating: 2, likes: 1 }, { text: 'test2', rating: 2, likes: 1 }],
     starred: 3,
+    likes: 0,
+    dislikes: 0,
     shared: 3,
+    postedBy: {
+      name: 'test',
+      email: 'test@test',
+      password: bcrypt.hashSync('test', 10),
+      countries: ['ve', 'za'],
+      languages: ['en', 'fr', 'it', 'es'],
+    },
+    comments: [],
   },
   {
     source: { id: 'fox-news', name: 'Fox News' },
@@ -54,9 +51,18 @@ const articles = [
     url: 'http://www.foxnews.com/us/2018/08/11/pair-in-ghost-ship-warehouse-deaths-denied-plea-deals-by-judge.html',
     urlToImage: 'http://a57.foxnews.com/images.foxnews.com/content/fox-news/us/2018/08/11/pair-in-ghost-ship-warehouse-deaths-denied-plea-deals-by-judge/_jcr_content/par/featured_image/media-0.img.jpg/0/0/1533967510183.jpg?ve=1',
     publishedAt: '2018-08-11T07:19:19Z',
-    comment: [{ text: 'test1', rating: 2, likes: 1 }, { text: 'test2', rating: 2, likes: 1 }],
     starred: 3,
+    likes: 0,
+    dislikes: 0,
     shared: 3,
+    postedBy: {
+      name: 'test',
+      email: 'test@test',
+      password: bcrypt.hashSync('test', 10),
+      countries: ['ve', 'za'],
+      languages: ['en', 'fr', 'it', 'es'],
+    },
+    comments: [],
   },
   {
     source: { id: 'fox-news', name: 'Fox News' },
@@ -66,9 +72,18 @@ const articles = [
     url: 'http://www.foxnews.com/us/2018/08/11/crews-battle-growing-wildfire-near-homes-in-california.html',
     urlToImage: 'http://a57.foxnews.com/images.foxnews.com/content/fox-news/us/2018/08/11/crews-battle-growing-wildfire-near-homes-in-california/_jcr_content/par/featured-media/media-0.img.png/0/0/1533968259150.png?ve=1',
     publishedAt: '2018-08-11T06:21:38Z',
-    comment: [{ text: 'test1', rating: 2, likes: 1 }, { text: 'test2', rating: 2, likes: 1 }],
     starred: 3,
+    likes: 0,
+    dislikes: 0,
     shared: 3,
+    postedBy: {
+      name: 'test',
+      email: 'test@test',
+      password: bcrypt.hashSync('test', 10),
+      countries: ['ve', 'za'],
+      languages: ['en', 'fr', 'it', 'es'],
+    },
+    comments: [],
   },
   {
     source: { id: null, name: 'Cbssports.com' },
@@ -78,9 +93,18 @@ const articles = [
     url: 'https://www.cbssports.com/nfl/news/nfl-week-1-preseason-scores-schedule-updates-sam-darnold-shines-in-first-half-of-debut/',
     urlToImage: 'https://sportshub.cbsistatic.com/i/r/2018/08/11/8a6410a5-3207-4005-966f-ef77c8687b79/thumbnail/770x433/226cce2f881af81197f0952e10a17bfe/sam-darnold-jets.jpg',
     publishedAt: '2018-08-11T05:44:00Z',
-    comment: [{ text: 'test1', rating: 2, likes: 1 }, { text: 'test2', rating: 2, likes: 1 }],
     starred: 3,
+    likes: 0,
+    dislikes: 0,
     shared: 3,
+    postedBy: {
+      name: 'test',
+      email: 'test@test',
+      password: bcrypt.hashSync('test', 10),
+      countries: ['ve', 'za'],
+      languages: ['en', 'fr', 'it', 'es'],
+    },
+    comments: [],
   },
   {
     source: { id: 'cnn', name: 'CNN' },
@@ -90,9 +114,18 @@ const articles = [
     url: 'https://www.cnn.com/2018/08/10/politics/avenatti-wing-ding-speech/index.html',
     urlToImage: 'https://cdn.cnn.com/cnnnext/dam/assets/180810095037-avenatti-2020-presidential-run-1-super-tease.jpg',
     publishedAt: '2018-08-11T03:08:31Z',
-    comment: [{ text: 'test1', rating: 2, likes: 1 }, { text: 'test2', rating: 2, likes: 1 }],
     starred: 3,
+    likes: 0,
+    dislikes: 0,
     shared: 3,
+    postedBy: {
+      name: 'test',
+      email: 'test@test',
+      password: bcrypt.hashSync('test', 10),
+      countries: ['ve', 'za'],
+      languages: ['en', 'fr', 'it', 'es'],
+    },
+    comments: [],
   },
   {
     source: { id: 'cnn', name: 'CNN' },
@@ -102,9 +135,18 @@ const articles = [
     url: 'https://www.cnn.com/2018/08/10/health/monsanto-johnson-trial-verdict/index.html',
     urlToImage: 'https://cdn.cnn.com/cnnnext/dam/assets/180615090600-dewayne-johnson-super-tease.jpg',
     publishedAt: '2018-08-11T02:28:22Z',
-    comment: [{ text: 'test1', rating: 2, likes: 1 }, { text: 'test2', rating: 2, likes: 1 }],
     starred: 3,
+    likes: 0,
+    dislikes: 0,
     shared: 3,
+    postedBy: {
+      name: 'test',
+      email: 'test@test',
+      password: bcrypt.hashSync('test', 10),
+      countries: ['ve', 'za'],
+      languages: ['en', 'fr', 'it', 'es'],
+    },
+    comments: [],
   },
   {
     source: { id: 'the-new-york-times', name: 'The New York Times' },
@@ -114,9 +156,18 @@ const articles = [
     url: 'https://www.nytimes.com/2018/08/10/us/politics/roger-stone-russia-investigation.html',
     urlToImage: 'https://static01.nyt.com/images/2018/08/11/us/politics/11dc-stone2/11dc-stone2-facebookJumbo.jpg',
     publishedAt: '2018-08-11T00:34:04Z',
-    comment: [{ text: 'test1', rating: 2, likes: 1 }, { text: 'test2', rating: 2, likes: 1 }],
     starred: 3,
+    likes: 0,
+    dislikes: 0,
     shared: 3,
+    postedBy: {
+      name: 'test',
+      email: 'test@test',
+      password: bcrypt.hashSync('test', 10),
+      countries: ['ve', 'za'],
+      languages: ['en', 'fr', 'it', 'es'],
+    },
+    comments: [],
   },
   {
     source: { id: 'the-new-york-times', name: 'The New York Times' },
@@ -126,9 +177,18 @@ const articles = [
     url: 'https://www.nytimes.com/2018/08/10/technology/twitter-free-speech-infowars.html',
     urlToImage: 'https://static01.nyt.com/images/2018/08/11/business/11TWITTER/merlin_129213356_3ec01da6-f6b4-426a-ac33-ffcc55b6c4a3-facebookJumbo.jpg',
     publishedAt: '2018-08-11T00:33:23Z',
-    comment: [{ text: 'test1', rating: 2, likes: 1 }, { text: 'test2', rating: 2, likes: 1 }],
     starred: 3,
+    likes: 0,
+    dislikes: 0,
     shared: 3,
+    postedBy: {
+      name: 'test',
+      email: 'test@test',
+      password: bcrypt.hashSync('test', 10),
+      countries: ['ve', 'za'],
+      languages: ['en', 'fr', 'it', 'es'],
+    },
+    comments: [],
   },
   {
     source: { id: 'cnn', name: 'CNN' },
@@ -138,9 +198,18 @@ const articles = [
     url: 'https://www.cnn.com/2018/08/10/us/orca-whale-still-carrying-dead-baby-trnd/index.html',
     urlToImage: 'https://cdn.cnn.com/cnnnext/dam/assets/180727142740-killer-whale-orca-dead-baby-2-super-tease.jpg',
     publishedAt: '2018-08-11T00:30:48Z',
-    comment: [{ text: 'test1', rating: 2, likes: 1 }, { text: 'test2', rating: 2, likes: 1 }],
     starred: 3,
+    likes: 0,
+    dislikes: 0,
     shared: 3,
+    postedBy: {
+      name: 'test',
+      email: 'test@test',
+      password: bcrypt.hashSync('test', 10),
+      countries: ['ve', 'za'],
+      languages: ['en', 'fr', 'it', 'es'],
+    },
+    comments: [],
   },
   {
     source: { id: 'the-new-york-times', name: 'The New York Times' },
@@ -150,9 +219,18 @@ const articles = [
     url: 'https://www.nytimes.com/2018/08/10/world/canada/fredericton-shooting-new-brunswick-canada.html',
     urlToImage: 'https://static01.nyt.com/images/2018/08/11/world/11xp-canda/11xp-canda-facebookJumbo.jpg',
     publishedAt: '2018-08-10T23:15:00Z',
-    comment: [{ text: 'test1', rating: 2, likes: 1 }, { text: 'test2', rating: 2, likes: 1 }],
     starred: 3,
+    likes: 0,
+    dislikes: 0,
     shared: 3,
+    postedBy: {
+      name: 'test',
+      email: 'test@test',
+      password: bcrypt.hashSync('test', 10),
+      countries: ['ve', 'za'],
+      languages: ['en', 'fr', 'it', 'es'],
+    },
+    comments: [],
   },
   {
     source: { id: 'the-new-york-times', name: 'The New York Times' },
@@ -162,9 +240,18 @@ const articles = [
     url: 'https://www.nytimes.com/2018/08/10/business/turkey-erdogan-economy-lira.html',
     urlToImage: 'https://static01.nyt.com/images/2018/08/11/business/11turkey-2/11turkey-2-facebookJumbo.jpg',
     publishedAt: '2018-08-10T22:25:18Z',
-    comment: [{ text: 'test1', rating: 2, likes: 1 }, { text: 'test2', rating: 2, likes: 1 }],
     starred: 3,
+    likes: 0,
+    dislikes: 0,
     shared: 3,
+    postedBy: {
+      name: 'test',
+      email: 'test@test',
+      password: bcrypt.hashSync('test', 10),
+      countries: ['ve', 'za'],
+      languages: ['en', 'fr', 'it', 'es'],
+    },
+    comments: [],
   },
   {
     source: { id: 'the-huffington-post', name: 'The Huffington Post' },
@@ -174,9 +261,18 @@ const articles = [
     url: 'https://www.huffingtonpost.com/entry/trump-jr-fake-poll-graphic-instagram_us_5b6dc7a0e4b0530743c9b38b',
     urlToImage: 'https://img.huffingtonpost.com/asset/5b6ddd01200000dd0237971c.jpeg?cache=LJsr5c21NL&ops=1200_630',
     publishedAt: '2018-08-10T20:19:00Z',
-    comment: [{ text: 'test1', rating: 2, likes: 1 }, { text: 'test2', rating: 2, likes: 1 }],
     starred: 3,
+    likes: 0,
+    dislikes: 0,
     shared: 3,
+    postedBy: {
+      name: 'test',
+      email: 'test@test',
+      password: bcrypt.hashSync('test', 10),
+      countries: ['ve', 'za'],
+      languages: ['en', 'fr', 'it', 'es'],
+    },
+    comments: [],
   },
   {
     source: { id: 'the-washington-post', name: 'The Washington Post' },
@@ -186,9 +282,18 @@ const articles = [
     url: 'https://www.washingtonpost.com/news/local/wp/2018/08/10/paul-manafort-trial-day-9-live-coverage/',
     urlToImage: 'https://www.washingtonpost.com/resizer/xWKvHjiSCAX6jm16AuIvHtua97A=/1484x0/arc-anglerfish-washpost-prod-washpost.s3.amazonaws.com/public/NUBIN5DJRAZZ7LJSDLYXZZE7PQ.jpg',
     publishedAt: '2018-08-10T19:50:07Z',
-    comment: [{ text: 'test1', rating: 2, likes: 1 }, { text: 'test2', rating: 2, likes: 1 }],
     starred: 3,
+    likes: 0,
+    dislikes: 0,
     shared: 3,
+    postedBy: {
+      name: 'test',
+      email: 'test@test',
+      password: bcrypt.hashSync('test', 10),
+      countries: ['ve', 'za'],
+      languages: ['en', 'fr', 'it', 'es'],
+    },
+    comments: [],
   },
   {
     source: { id: null, name: 'Fastcompany.com' },
@@ -198,9 +303,18 @@ const articles = [
     url: 'https://www.fastcompany.com/90217179/no-troll-alexandria-ocasio-cortez-does-not-owe-you-a-debate',
     urlToImage: 'https://images.fastcompany.net/image/upload/w_1280,f_auto,q_auto,fl_lossy/wp-cms/uploads/2018/08/p-2-reminder-nobody-owes-you-a-debate-or-even-a-response.jpg',
     publishedAt: '2018-08-10T18:41:13Z',
-    comment: [{ text: 'test1', rating: 2, likes: 1 }, { text: 'test2', rating: 2, likes: 1 }],
     starred: 3,
+    likes: 0,
+    dislikes: 0,
     shared: 3,
+    postedBy: {
+      name: 'test',
+      email: 'test@test',
+      password: bcrypt.hashSync('test', 10),
+      countries: ['ve', 'za'],
+      languages: ['en', 'fr', 'it', 'es'],
+    },
+    comments: [],
   },
   {
     source: { id: 'fox-news', name: 'Fox News' },
@@ -210,9 +324,18 @@ const articles = [
     url: 'http://www.foxnews.com/travel/2018/08/10/8-tourists-brawl-at-rome-s-trevi-fountain-over-selfie-spot.html',
     urlToImage: 'http://a57.foxnews.com/images.foxnews.com/content/fox-news/travel/2018/08/10/8-tourists-brawl-at-rome-s-trevi-fountain-over-selfie-spot/_jcr_content/par/featured_image/media-0.img.jpg/0/0/1533908194951.jpg?ve=1',
     publishedAt: '2018-08-10T14:43:33Z',
-    comment: [{ text: 'test1', rating: 2, likes: 1 }, { text: 'test2', rating: 2, likes: 1 }],
     starred: 3,
+    likes: 0,
+    dislikes: 0,
     shared: 3,
+    postedBy: {
+      name: 'test',
+      email: 'test@test',
+      password: bcrypt.hashSync('test', 10),
+      countries: ['ve', 'za'],
+      languages: ['en', 'fr', 'it', 'es'],
+    },
+    comments: [],
   },
   {
     source: { id: null, name: 'Latimes.com' },
@@ -222,9 +345,18 @@ const articles = [
     url: 'http://www.latimes.com/local/lanow/la-me-firefighters-deaths-20180810-story.html',
     urlToImage: 'http://www.latimes.com/resizer/dVNb0Et-G6JeZt9fcOJtsDVQYqQ=/1200x0/arc-anglerfish-arc2-prod-tronc.s3.amazonaws.com/public/JAENX33KZ5G6PIVWDFYAJUP2BM.jpg',
     publishedAt: '2018-08-10T13:58:12Z',
-    comment: [{ text: 'test1', rating: 2, likes: 1 }, { text: 'test2', rating: 2, likes: 1 }],
     starred: 3,
+    likes: 0,
+    dislikes: 0,
     shared: 3,
+    postedBy: {
+      name: 'test',
+      email: 'test@test',
+      password: bcrypt.hashSync('test', 10),
+      countries: ['ve', 'za'],
+      languages: ['en', 'fr', 'it', 'es'],
+    },
+    comments: [],
   },
   {
     source: { id: 'the-washington-post', name: 'The Washington Post' },
@@ -234,9 +366,18 @@ const articles = [
     url: 'https://www.washingtonpost.com/world/2018/08/10/trumps-proposed-space-force-could-worsen-earths-orbital-debris-problem/',
     urlToImage: 'https://www.washingtonpost.com/resizer/Tx7srdrzsUOX2tghBG82AuhLGu4=/1484x0/arc-anglerfish-washpost-prod-washpost.s3.amazonaws.com/public/JIWKNIE4EUI6RKGYTNGBGKDNNM.jpg',
     publishedAt: '2018-08-10T11:33:28Z',
-    comment: [{ text: 'test1', rating: 2, likes: 1 }, { text: 'test2', rating: 2, likes: 1 }],
     starred: 3,
+    likes: 0,
+    dislikes: 0,
     shared: 3,
+    postedBy: {
+      name: 'test',
+      email: 'test@test',
+      password: bcrypt.hashSync('test', 10),
+      countries: ['ve', 'za'],
+      languages: ['en', 'fr', 'it', 'es'],
+    },
+    comments: [],
   },
   {
     source: { id: null, name: 'Npr.org' },
@@ -246,9 +387,18 @@ const articles = [
     url: 'https://www.npr.org/2018/08/10/637371714/first-ladys-parents-become-u-s-citizens-thanks-to-chain-migration',
     urlToImage: 'https://media.npr.org/assets/img/2018/08/10/ap_17169783724707_wide-d81fb4b1c48df2407c9208d887584c8f4812334c.jpg?s=1400',
     publishedAt: '2018-08-10T06:26:52Z',
-    comment: [{ text: 'test1', rating: 2, likes: 1 }, { text: 'test2', rating: 2, likes: 1 }],
     starred: 3,
+    likes: 0,
+    dislikes: 0,
     shared: 3,
+    postedBy: {
+      name: 'test',
+      email: 'test@test',
+      password: bcrypt.hashSync('test', 10),
+      countries: ['ve', 'za'],
+      languages: ['en', 'fr', 'it', 'es'],
+    },
+    comments: [],
   },
   {
     source: { id: 'the-wall-street-journal', name: 'The Wall Street Journal' },
@@ -258,9 +408,18 @@ const articles = [
     url: 'https://www.wsj.com/articles/russian-stocks-ruble-take-hit-on-uncertainty-over-u-s-sanctions-1533857395',
     urlToImage: 'https://images.wsj.net/im-21612/social',
     publishedAt: '2018-08-09T23:35:22Z',
-    comment: [{ text: 'test1', rating: 2, likes: 1 }, { text: 'test2', rating: 2, likes: 1 }],
     starred: 3,
+    likes: 0,
+    dislikes: 0,
     shared: 3,
+    postedBy: {
+      name: 'test',
+      email: 'test@test',
+      password: bcrypt.hashSync('test', 10),
+      countries: ['ve', 'za'],
+      languages: ['en', 'fr', 'it', 'es'],
+    },
+    comments: [],
   },
   {
     source: { id: null, name: 'Npr.org' },
@@ -270,18 +429,24 @@ const articles = [
     url: 'https://www.npr.org/2018/08/09/636998745/foundation-that-promotes-social-justice-magnifies-heather-heyers-legacy',
     urlToImage: 'https://media.npr.org/assets/img/2018/08/09/jtg_180808_03053-42_wide-1c33dfc7b3ce6b23125e7e83c393505c553d9658.jpg?s=1400',
     publishedAt: '2018-08-09T12:30:22Z',
-    comment: [{ text: 'test1', rating: 2, likes: 1 }, { text: 'test2', rating: 2, likes: 1 }],
     starred: 3,
+    likes: 0,
+    dislikes: 0,
     shared: 3,
+    postedBy: {
+      name: 'test',
+      email: 'test@test',
+      password: bcrypt.hashSync('test', 10),
+      countries: ['ve', 'za'],
+      languages: ['en', 'fr', 'it', 'es'],
+    },
+    comments: [],
   },
 ];
 
 User.create(users)
   .then(() => {
-    console.log('users OK');
-
     return Article.create(articles).then(() => {
-      console.log('articles OK');
       mongoose.connection.close();
     });
   })

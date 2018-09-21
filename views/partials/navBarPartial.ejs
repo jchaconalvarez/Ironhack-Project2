@@ -1,30 +1,24 @@
 <% if(locals.currentUser) { %>
   <div class="navbar">
-    <div class="row no-gutters">
-      <div class="navbar-element col">
-        <a href="/user/home">
-          <i class="far fa-newspaper fa-lg"></i>
-          <p>Headlines</p>
-        </a>
-      </div>
-      <div class="navbar-element col">
-        <a href="/user/profile">
-          <i class="fas fa-user fa-lg"></i>
-          <p> <%= currentUser %> </p>
-        </a>
-      </div>
-      <div class="navbar-element col">
-        <a href="/articles/new">
-          <i class="fas fa-plus-circle"></i>
-          <p>New</p>
-        </a>
-      </div>
-      <div class="navbar-element col">
-        <a href="/auth/logout">
-          <i class="fas fa-sign-out-alt"></i>
-          <p>Log Out</p>
-        </a>
-      </div>
-    </div>
+    <a href="/user/home" class="navbar-item">
+      <i class="far fa-newspaper fa-sm"></i>
+      <i class="far fa-newspaper fa-2x"></i>
+      <p>Headlines</p>
+    </a>
+    <a href="/user/profile" class="navbar-item">
+      <i class="fas fa-user fa-sm"></i>
+      <i class="fas fa-user fa-2x"></i>
+      <p><%= currentUser.name %></p>
+    </a>
+    <a href="/articles/new" class="navbar-item">
+      <i class="fas fa-plus-circle fa-sm"></i>
+      <i class="fas fa-plus-circle fa-2x"></i>
+      <p>New article</p>
+    </a>
+    <a href="/auth/logout" class="navbar-item">
+      <i class="fas fa-sign-out-alt fa-sm"></i>
+      <i class="fas fa-sign-out-alt fa-2x"></i>
+      <p>Log Out</p>
+    </a>
   </div>
 <% } %>

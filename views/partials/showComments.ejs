@@ -1,0 +1,31 @@
+<%
+    if (articles[0].comments) {
+      articles[0].comments.forEach((comment) => {
+%>
+        <div class="comment-card">
+          <a href="#" class="comment-user"><p><%= comment.postedBy.name %></p></a>
+          <p class="comment-text"><%= comment.text %></p>
+            <div class="comment-info">
+              <form name="like" action="/comments/<%= articles[0].id %>/<%= comment._id %>/like" method=POST>
+                <button type="submit">
+                  <i class="fas fa-angle-up fa-lg"></i>
+                </button>
+              </form>
+              <form name="like" action="/comments/<%= articles[0].id %>/<%= comment._id %>/dislike" method=POST>
+                <button type="submit">
+                  <i class="fas fa-angle-down fa-lg"></i>
+                </button>
+              </form>
+              <% if (comment.postedBy._id.equals(user.id)) { %>
+                <form name="delete" action="/comments/<%= articles[0].id %>/<%= comment._id %>/delete" method=POST>
+                  <button type=submit>
+                    <i class="fas fa-trash-alt fa-lg"></i>
+                  </button>
+                </form>
+              <% } %>
+            </div>
+        </div>
+<%
+      });
+    }
+%>

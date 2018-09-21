@@ -1,5 +1,6 @@
-<!-- <%- include('../partials/carouselPartial') %> -->
-
-<div class="article-container">
+<div class="article-wrapper">
+  <% if (title) { %>
+    <h1><%= title %></h1>
+  <% } %>
   <%- include('../partials/showArticles') %>
 </div>

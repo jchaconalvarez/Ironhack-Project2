@@ -1,0 +1,43 @@
+.navbar {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  max-height: 3em;
+  background: color(navbar-background);
+  border-top: 1px solid color(whiteish);
+  box-shadow: 0px 4px 5px 1px color(blackish);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  .navbar-item {
+    margin: 0.2em 0 1rem 0;
+    text-align: center;
+    color: color(navbar-item);
+    p {
+      margin-top: 0.2em;
+      font-size: 0.6em;
+    }
+    .fa-2x {
+      display: none;
+    }
+  }
+  @include lg {
+    top: 0;
+    min-height: 100%;
+    width: 6em;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(4, 1fr);
+    align-items: center;
+    .navbar-item {
+      .fa-sm {
+        display: none;
+      }
+      .fa-2x {
+        display: inline;
+      }
+      p {
+        font-size: 0.8em;
+      }
+    }
+  }
+}
