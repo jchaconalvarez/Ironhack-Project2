@@ -62,3 +62,6 @@ typings/
 .eslintrc.json
 package-lock.json
 .dev
+.env
+gazetteMicroservice
+.gitmodules

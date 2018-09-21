@@ -1,6 +1,10 @@
 {
   "name": "ironhack-project2",
-  "version": "0.0.0",
+  "version": "0.0.1",
+  "engines": {
+    "node": "10.10.0"
+  },
+  "description": "News Aggregator",
   "private": true,
   "scripts": {
     "start": "cross-env NODE_ENV=production node ./bin/www",
