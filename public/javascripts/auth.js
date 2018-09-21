@@ -12,7 +12,7 @@ $(document).ready(() => {
     if (password2.length > 0) {
 
       if (password1 === password2) {
-        $('#check-password').css({ backgroundColor: '#696' });
+        $('#check-password').css({ backgroundColor: 'white' });
       } else {
         $('#check-password').css({ backgroundColor: '#F88' });
       }
