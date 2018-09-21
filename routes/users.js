@@ -21,7 +21,7 @@ router.get('/home', (req, res, next) => {
   console.log(languages);
 
 
-  Articles.find({ language: { $in: languages } }).sort({ timeStamp : -1.0 }).limit(50)
+  Articles.find({ language: { $in: languages } }).sort({ timeStamp : 1.0 }).limit(50)
     .then((topHeadlines) => {
       const articles = topHeadlines; // req.session.usr;
       res.render('user/home', { articles, user, title, carouselActive: false });
