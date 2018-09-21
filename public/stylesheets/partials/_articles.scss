@@ -30,7 +30,7 @@
     margin-bottom: 4em;
   }
   &:only-child {
-    margin: 5em 0 0em 0;
+    margin-top: 5em;
   }
   @include lg {
     grid-template-areas:
@@ -70,6 +70,8 @@
 .article-description {
   grid-area: description;
   justify-self: start;
+  max-width: 100%;
+  word-break: break-all;
   margin: 0 1.5em;
   font-size: 0.8em;
   @include lg {
@@ -99,7 +101,11 @@
   grid-area: share;
   display: none;
   grid-template-columns: 2fr 1fr;;
+  text-align: center;
   input {
+    padding: 0.3em;
     font-size: 1em;
+    border: 1px solid color(whiteish);
+    border-radius: 5px;
   }
 }
