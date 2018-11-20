@@ -13,7 +13,7 @@ require('dotenv').config();
 
 // db connection
 
-mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true });
+mongoose.connect('mongodb://gazetteapp:gazette1234@ds135866.mlab.com:35866/gazetteapp', { useNewUrlParser: true });
 
 // routers
 const indexRouter = require('./routes/index');
@@ -42,7 +42,7 @@ app.set('layout', 'layout/layout');
 app.use(expressLayouts);
 
 app.use(session({
-  secret: process.env.MONGOSESSION_SECRET,
+  secret: 'some-string',
   cookie: { maxAge: 24 * 60 * 60 * 1000 },
   store: new MongoStore({
     mongooseConnection: mongoose.connection,

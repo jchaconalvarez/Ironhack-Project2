@@ -5,7 +5,7 @@ const Article = require('../models/article');
 const Comment = require('../models/comment');
 
 
-mongoose.connect('mongodb://admin:admin2018@ds115442.mlab.com:15442/ironhack_prj2', { useNewUrlParser: true });
+mongoose.connect('mongodb://gazetteapp:gazette1234@ds135866.mlab.com:35866/gazetteapp', { useNewUrlParser: true });
 
 User.collection.drop();
 Article.collection.drop();
